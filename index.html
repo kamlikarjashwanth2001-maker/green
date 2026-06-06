@@ -456,7 +456,7 @@ a{text-decoration:none;color:inherit}
 <select id="vy" disabled><option>Select Model First</option></select>
 </div>
 <button class="check-btn" id="vcheckbtn" type="button">Check Compatibility <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button>
-<div class="vehicle-result" id="vresult"></div>
+<div class="vehicle-result" id="vresult" style="display:none;"></div>
 </div>
 <div class="vehicle-image-side reveal reveal-delay-2">
 <img src="flex-vehicle.jpg" alt="Flex Fuel Vehicle">
@@ -780,12 +780,63 @@ vy.innerHTML = html; vy.disabled = false;
 };
 
 vbtn.onclick = function() {
-var tv = vt.value, bv = vb.value, mv = vm.value, yv = vy.value;
-if (!tv || !bv || !mv || !yv) {
-vr.className = 'vehicle-result partial';
-vr.innerHTML = '⚠️ Please fill <strong>all fields</strong> to check E85 compatibility.';
-return;
-}
+    var tv = vt.value, bv = vb.value, mv = vm.value, yv = vy.value;
+    
+    // Force show the result div
+    vr.style.display = 'block';
+    vr.style.marginTop = '20px';
+    vr.style.padding = '18px 20px';
+    vr.style.borderRadius = '12px';
+    vr.style.fontSize = '0.9rem';
+    vr.style.fontWeight = '600';
+    vr.style.textAlign = 'center';
+    vr.style.lineHeight = '1.6';
+    vr.style.border = '2px solid';
+    
+    if (!tv || !bv || !mv || !yv) {
+        vr.style.background = '#fff3e0';
+        vr.style.color = '#e65100';
+        vr.style.borderColor = '#ff9800';
+        vr.innerHTML = '⚠️ Please fill <strong>all fields</strong> to check E85 compatibility.';
+        // Scroll to result
+        setTimeout(function(){ vr.scrollIntoView({behavior:'smooth', block:'center'}); }, 100);
+        return;
+    }
+    
+    var data = vdb[tv][bv][mv];
+    var yr = parseInt(yv);
+    var icon = tv === 'car' ? '🚗' : tv === 'bike' ? '🏍️' : '🛺';
+    var label = tv === 'car' ? 'Car' : tv === 'bike' ? 'Bike' : 'Auto Rickshaw';
+    
+    if (data[2]) {
+        // FLEX FUEL - Compatible
+        vr.style.background = '#e8f5e9';
+        vr.style.color = '#1b5e20';
+        vr.style.borderColor = '#2e7d32';
+        vr.innerHTML = '✅ <strong>EXCELLENT NEWS!</strong><br><br>'+icon+' Your <strong>'+yv+' '+bv+' '+mv+'</strong> is a <strong>Factory Flex Fuel '+label+'</strong>!<br>Use E85 fuel directly. Enjoy 20% savings & 85% lower emissions! 🌱';
+    } else if (yr >= 2020) {
+        // PARTIAL
+        vr.style.background = '#fff3e0';
+        vr.style.color = '#e65100';
+        vr.style.borderColor = '#ff9800';
+        vr.innerHTML = '⚠️ <strong>PARTIALLY COMPATIBLE</strong><br><br>'+icon+' Your <strong>'+yv+' '+bv+' '+mv+'</strong> is likely <strong>E20 compatible</strong> but <strong>NOT E85 compatible</strong>.<br>You need a <strong>Flex Fuel Conversion Kit</strong> (~₹15,000-25,000) to use E85.';
+    } else if (yr >= 2010) {
+        // E10 ONLY
+        vr.style.background = '#ffebee';
+        vr.style.color = '#c62828';
+        vr.style.borderColor = '#f44336';
+        vr.innerHTML = '❌ <strong>NOT E85 COMPATIBLE</strong><br><br>'+icon+' Your <strong>'+yv+' '+bv+' '+mv+'</strong> can run on <strong>E10 only</strong>.<br>Using E85 may damage your engine. Consider a conversion kit.';
+    } else {
+        // TOO OLD
+        vr.style.background = '#ffebee';
+        vr.style.color = '#c62828';
+        vr.style.borderColor = '#f44336';
+        vr.innerHTML = '❌ <strong>NOT COMPATIBLE</strong><br><br>'+icon+' Your <strong>'+yv+' '+bv+' '+mv+'</strong> is too old for E85.<br>Older engines are designed only for pure petrol. <strong>Do NOT use E85.</strong>';
+    }
+    
+    // Scroll to result
+    setTimeout(function(){ vr.scrollIntoView({behavior:'smooth', block:'center'}); }, 100);
+};
 var data = vdb[tv][bv][mv];
 var yr = parseInt(yv);
 var icon = tv === 'car' ? '🚗' : tv === 'bike' ? '🏍️' : '🛺';
