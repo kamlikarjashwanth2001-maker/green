@@ -120,26 +120,1336 @@
         .view-link:hover { color: var(--primary); }
 
         /* VEHICLE CHECKER */
-        .vehicle-section { padding: 80px 40px; background: linear-gradient(135deg, var(--primary-bg-light), var(--primary-bg)); }
-        .vehicle-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; margin-top: 8px; }
-        .vehicle-form-card { background: var(--white); border-radius: var(--radius-xl); padding: 40px; box-shadow: var(--shadow-xl); }
-        .vehicle-form-card h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: 6px; color: var(--text-dark); }
-        .vehicle-form-card .form-sub { font-size: 0.85rem; color: var(--text-light); margin-bottom: 28px; }
-        .form-group { margin-bottom: 18px; }
-        .form-group label { display: block; font-size: 0.8rem; font-weight: 600; color: var(--text-medium); margin-bottom: 6px; }
-        .form-group select, .form-group input, .form-group textarea { width: 100%; padding: 12px 16px; border: 1.5px solid var(--gray-200); border-radius: var(--radius-sm); font-size: 0.85rem; font-family: inherit; color: var(--text-dark); background: var(--white); transition: var(--transition); outline: none; }
-        .form-group select { appearance: none; -webkit-appearance: none; cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 40px; }
-        .form-group textarea { resize: vertical; min-height: 80px; }
-        .form-group select:focus, .form-group input:focus, .form-group textarea:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(46,125,50,0.1); }
-        .check-btn { width: 100%; padding: 14px; background: var(--primary); color: var(--white); border: none; border-radius: var(--radius-sm); font-weight: 700; font-size: 0.9rem; font-family: inherit; cursor: pointer; transition: var(--transition); display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 10px; }
-        .check-btn:hover { background: var(--primary-dark); box-shadow: var(--shadow-green); transform: translateY(-2px); }
-        .vehicle-result { display: none; margin-top: 20px; padding: 18px 20px; border-radius: var(--radius-md); font-size: 0.9rem; font-weight: 600; text-align: center; animation: fadeInUp 0.4s ease; }
-        .vehicle-result.compatible { display: block; background: var(--primary-bg); color: var(--primary-dark); border: 1px solid rgba(46,125,50,0.25); }
-        .vehicle-result.incompatible { display: block; background: #fff3e0; color: #e65100; border: 1px solid rgba(230,81,0,0.25); }
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .vehicle-image-side { display: flex; align-items: center; justify-content: center; }
-        .vehicle-image-side img { width: 100%; max-width: 560px; border-radius: var(--radius-xl); box-shadow: var(--shadow-xl); transition: transform 0.5s ease; }
-        .vehicle-image-side:hover img { transform: scale(1.02); }
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🇮🇳 Indian Vehicle Ethanol Compatibility Checker</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0d5e0d, #1a8c1a, #2ecc71);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(0, 0, 0, 0.3);
+            width: 100%;
+            padding: 20px;
+            text-align: center;
+            color: white;
+            backdrop-filter: blur(10px);
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 5px;
+        }
+
+        .header p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .header .flag {
+            font-size: 2.5rem;
+        }
+
+        /* Main Container */
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin: 30px 15px;
+            max-width: 800px;
+            width: 95%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Vehicle Type Selection */
+        .vehicle-type-section {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .vehicle-type-section h2 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .vehicle-type-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .vehicle-type-btn {
+            padding: 15px 30px;
+            border: 3px solid #ddd;
+            border-radius: 15px;
+            background: #f8f9fa;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            min-width: 120px;
+        }
+
+        .vehicle-type-btn:hover {
+            border-color: #27ae60;
+            background: #e8f5e9;
+            transform: translateY(-3px);
+        }
+
+        .vehicle-type-btn.active {
+            border-color: #27ae60;
+            background: #27ae60;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(39, 174, 96, 0.4);
+        }
+
+        .vehicle-type-btn .icon {
+            font-size: 2rem;
+        }
+
+        /* Form Styling */
+        .form-section {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .form-section.show {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 0.95rem;
+        }
+
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
+            background: #f8f9fa;
+            color: #333;
+            cursor: pointer;
+            transition: border-color 0.3s;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23333' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+        }
+
+        .form-group select:focus {
+            outline: none;
+            border-color: #27ae60;
+            box-shadow: 0 0 0 3px rgba(39, 174, 96, 0.2);
+        }
+
+        .check-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            letter-spacing: 1px;
+        }
+
+        .check-btn:hover {
+            background: linear-gradient(135deg, #219a52, #27ae60);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(39, 174, 96, 0.4);
+        }
+
+        /* Result Section */
+        .result-section {
+            display: none;
+            margin-top: 25px;
+            padding: 25px;
+            border-radius: 15px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .result-section.show {
+            display: block;
+        }
+
+        .result-section.compatible {
+            background: linear-gradient(135deg, #d4edda, #c3e6cb);
+            border: 2px solid #28a745;
+        }
+
+        .result-section.not-compatible {
+            background: linear-gradient(135deg, #f8d7da, #f5c6cb);
+            border: 2px solid #dc3545;
+        }
+
+        .result-section.partial {
+            background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+            border: 2px solid #ffc107;
+        }
+
+        .result-icon {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .result-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .result-details {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: #333;
+        }
+
+        .result-details ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+
+        .result-details ul li {
+            margin-bottom: 5px;
+        }
+
+        .result-vehicle-info {
+            background: rgba(255, 255, 255, 0.6);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .result-vehicle-info h3 {
+            margin-bottom: 8px;
+            color: #2c3e50;
+        }
+
+        /* Info Section */
+        .info-section {
+            margin-top: 30px;
+            padding: 20px;
+            background: #e8f5e9;
+            border-radius: 15px;
+            border-left: 5px solid #27ae60;
+        }
+
+        .info-section h3 {
+            color: #27ae60;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .info-section p, .info-section li {
+            color: #555;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .info-section ul {
+            padding-left: 20px;
+            margin-top: 8px;
+        }
+
+        /* Ethanol Levels */
+        .ethanol-levels {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .ethanol-badge {
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-align: center;
+        }
+
+        .ethanol-badge.e5 {
+            background: #c8e6c9;
+            color: #2e7d32;
+        }
+
+        .ethanol-badge.e10 {
+            background: #fff9c4;
+            color: #f57f17;
+        }
+
+        .ethanol-badge.e20 {
+            background: #ffccbc;
+            color: #bf360c;
+        }
+
+        .ethanol-badge.e85 {
+            background: #ffcdd2;
+            color: #c62828;
+        }
+
+        /* Footer */
+        .footer {
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 1.4rem;
+            }
+
+            .container {
+                padding: 20px;
+                margin: 15px 10px;
+            }
+
+            .vehicle-type-btn {
+                min-width: 100px;
+                padding: 12px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="flag">🇮🇳</div>
+        <h1>🌿 Vehicle Ethanol Compatibility Checker</h1>
+        <p>Check if your Indian vehicle supports Ethanol-Blended Fuel (E5, E10, E20, E85)</p>
+    </div>
+
+    <div class="container">
+
+        <!-- Vehicle Type Selection -->
+        <div class="vehicle-type-section">
+            <h2>Select Your Vehicle Type</h2>
+            <div class="vehicle-type-buttons">
+                <div class="vehicle-type-btn" onclick="selectVehicleType('bike')" id="btn-bike">
+                    <span class="icon">🏍️</span>
+                    <span>Bike</span>
+                </div>
+                <div class="vehicle-type-btn" onclick="selectVehicleType('scooter')" id="btn-scooter">
+                    <span class="icon">🛵</span>
+                    <span>Scooter</span>
+                </div>
+                <div class="vehicle-type-btn" onclick="selectVehicleType('car')" id="btn-car">
+                    <span class="icon">🚗</span>
+                    <span>Car</span>
+                </div>
+                <div class="vehicle-type-btn" onclick="selectVehicleType('suv')" id="btn-suv">
+                    <span class="icon">🚙</span>
+                    <span>SUV</span>
+                </div>
+                <div class="vehicle-type-btn" onclick="selectVehicleType('auto')" id="btn-auto">
+                    <span class="icon">🛺</span>
+                    <span>Auto</span>
+                </div>
+                <div class="vehicle-type-btn" onclick="selectVehicleType('truck')" id="btn-truck">
+                    <span class="icon">🚛</span>
+                    <span>Truck</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Form Section -->
+        <div class="form-section" id="formSection">
+            <div class="form-group">
+                <label>📌 Select Brand</label>
+                <select id="brandSelect" onchange="loadModels()">
+                    <option value="">-- Select Brand --</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>📌 Select Model</label>
+                <select id="modelSelect" onchange="loadYears()">
+                    <option value="">-- Select Model --</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>📅 Select Year of Manufacture</label>
+                <select id="yearSelect">
+                    <option value="">-- Select Year --</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>⛽ Select Fuel Type</label>
+                <select id="fuelSelect">
+                    <option value="">-- Select Fuel Type --</option>
+                    <option value="petrol">Petrol</option>
+                    <option value="diesel">Diesel</option>
+                </select>
+            </div>
+
+            <button class="check-btn" onclick="checkCompatibility()">
+                🔍 Check Ethanol Compatibility
+            </button>
+        </div>
+
+        <!-- Result Section -->
+        <div class="result-section" id="resultSection">
+            <div class="result-icon" id="resultIcon"></div>
+            <div class="result-title" id="resultTitle"></div>
+            <div class="result-vehicle-info" id="resultVehicleInfo"></div>
+            <div class="result-details" id="resultDetails"></div>
+        </div>
+
+        <!-- Info Section -->
+        <div class="info-section">
+            <h3>ℹ️ What is Ethanol Blended Fuel?</h3>
+            <p>The Indian Government under the <strong>Ethanol Blended Petrol (EBP) Programme</strong> is promoting ethanol blending to reduce pollution and oil imports.</p>
+            <div class="ethanol-levels">
+                <span class="ethanol-badge e5">E5 - 5% Ethanol</span>
+                <span class="ethanol-badge e10">E10 - 10% Ethanol</span>
+                <span class="ethanol-badge e20">E20 - 20% Ethanol</span>
+                <span class="ethanol-badge e85">E85 - 85% Ethanol</span>
+            </div>
+            <ul>
+                <li>India currently sells <strong>E10</strong> fuel at most petrol pumps.</li>
+                <li><strong>E20</strong> fuel is being rolled out from April 2023.</li>
+                <li>Vehicles manufactured after <strong>2008</strong> generally support up to <strong>E10</strong>.</li>
+                <li>Vehicles manufactured after <strong>April 2023</strong> are <strong>E20 compliant</strong> by mandate.</li>
+                <li>Older vehicles (before 2008) may face issues with ethanol blends.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>⚠️ Disclaimer: This tool provides general guidance only. Always consult your vehicle manufacturer's manual for official compatibility information.</p>
+        <p>Made with 💚 for a Greener India | Data based on publicly available information up to 2018 models</p>
+    </div>
+
+    <script>
+        // ==========================================
+        // INDIAN VEHICLE DATABASE (Up to 2018 & older)
+        // ==========================================
+
+        const vehicleDatabase = {
+            bike: {
+                "Hero": {
+                    models: {
+                        "Splendor Plus": { startYear: 1994, endYear: 2018, engine: "97.2cc", fuelSystem: "Carburetor/FI" },
+                        "Splendor Pro": { startYear: 2011, endYear: 2018, engine: "97.2cc", fuelSystem: "Carburetor" },
+                        "Splendor iSmart": { startYear: 2014, endYear: 2018, engine: "109.15cc", fuelSystem: "FI" },
+                        "HF Deluxe": { startYear: 2012, endYear: 2018, engine: "97.2cc", fuelSystem: "Carburetor" },
+                        "Passion Pro": { startYear: 2001, endYear: 2018, engine: "109.15cc", fuelSystem: "Carburetor/FI" },
+                        "Passion XPro": { startYear: 2013, endYear: 2018, engine: "109.15cc", fuelSystem: "Carburetor" },
+                        "Glamour": { startYear: 2005, endYear: 2018, engine: "124.7cc", fuelSystem: "Carburetor/FI" },
+                        "Super Splendor": { startYear: 2008, endYear: 2018, engine: "124.7cc", fuelSystem: "Carburetor/FI" },
+                        "Achiever": { startYear: 2006, endYear: 2016, engine: "149.2cc", fuelSystem: "Carburetor" },
+                        "Xtreme": { startYear: 2008, endYear: 2018, engine: "149.2cc", fuelSystem: "Carburetor/FI" },
+                        "Xtreme Sports": { startYear: 2015, endYear: 2018, engine: "149.2cc", fuelSystem: "Carburetor" },
+                        "Hunk": { startYear: 2007, endYear: 2015, engine: "149.2cc", fuelSystem: "Carburetor" },
+                        "CBZ Xtreme": { startYear: 2004, endYear: 2012, engine: "149.2cc", fuelSystem: "Carburetor" },
+                        "Karizma": { startYear: 2003, endYear: 2016, engine: "223cc", fuelSystem: "Carburetor" },
+                        "Karizma ZMR": { startYear: 2009, endYear: 2016, engine: "223cc", fuelSystem: "FI" },
+                        "Impulse": { startYear: 2008, endYear: 2014, engine: "149.2cc", fuelSystem: "Carburetor" },
+                        "Dawn": { startYear: 1997, endYear: 2010, engine: "97.2cc", fuelSystem: "Carburetor" },
+                        "CD 100": { startYear: 1985, endYear: 2006, engine: "97.2cc", fuelSystem: "Carburetor" },
+                        "CD Deluxe": { startYear: 2006, endYear: 2015, engine: "97.2cc", fuelSystem: "Carburetor" },
+                    }
+                },
+                "Bajaj": {
+                    models: {
+                        "Pulsar 150": { startYear: 2001, endYear: 2018, engine: "149.5cc", fuelSystem: "Carburetor/FI" },
+                        "Pulsar 180": { startYear: 2001, endYear: 2018, engine: "178.6cc", fuelSystem: "Carburetor" },
+                        "Pulsar 220F": { startYear: 2007, endYear: 2018, engine: "220cc", fuelSystem: "Carburetor" },
+                        "Pulsar NS200": { startYear: 2012, endYear: 2018, engine: "199.5cc", fuelSystem: "FI" },
+                        "Pulsar RS200": { startYear: 2015, endYear: 2018, engine: "199.5cc", fuelSystem: "FI" },
+                        "Pulsar NS160": { startYear: 2017, endYear: 2018, engine: "160.3cc", fuelSystem: "FI" },
+                        "Pulsar 135 LS": { startYear: 2009, endYear: 2018, engine: "134.6cc", fuelSystem: "Carburetor" },
+                        "Avenger 220 Cruise": { startYear: 2006, endYear: 2018, engine: "220cc", fuelSystem: "Carburetor" },
+                        "Avenger 220 Street": { startYear: 2015, endYear: 2018, engine: "220cc", fuelSystem: "Carburetor" },
+                        "Avenger 150 Street": { startYear: 2015, endYear: 2018, engine: "149.5cc", fuelSystem: "Carburetor" },
+                        "Dominar 400": { startYear: 2017, endYear: 2018, engine: "373.3cc", fuelSystem: "FI" },
+                        "Discover 125": { startYear: 2004, endYear: 2018, engine: "124.6cc", fuelSystem: "Carburetor" },
+                        "Discover 150": { startYear: 2012, endYear: 2018, engine: "144.8cc", fuelSystem: "Carburetor" },
+                        "Platina": { startYear: 2006, endYear: 2018, engine: "102cc", fuelSystem: "Carburetor" },
+                        "CT 100": { startYear: 2004, endYear: 2018, engine: "99.27cc", fuelSystem: "Carburetor" },
+                        "V15": { startYear: 2016, endYear: 2018, engine: "149.5cc", fuelSystem: "Carburetor" },
+                        "Boxer": { startYear: 1998, endYear: 2010, engine: "100cc", fuelSystem: "Carburetor" },
+                        "Caliber": { startYear: 1998, endYear: 2006, engine: "112cc", fuelSystem: "Carburetor" },
+                        "Wind 125": { startYear: 2003, endYear: 2008, engine: "124.6cc", fuelSystem: "Carburetor" },
+                    }
+                },
+                "Honda": {
+                    models: {
+                        "CB Shine": { startYear: 2006, endYear: 2018, engine: "124.7cc", fuelSystem: "Carburetor" },
+                        "CB Shine SP": { startYear: 2015, endYear: 2018, engine: "124.7cc", fuelSystem: "Carburetor" },
+                        "CB Unicorn": { startYear: 2004, endYear: 2018, engine: "149.2cc", fuelSystem: "Carburetor" },
+                        "CB Unicorn 160": { startYear: 2015, endYear: 2018, engine: "162.7cc", fuelSystem: "Carburetor" },
+                        "CB Hornet 160R": { startYear: 2016, endYear: 2018, engine: "162.7cc", fuelSystem: "Carburetor" },
+                        "CBR 250R": { startYear: 2011, endYear: 2018, engine: "249.6cc", fuelSystem: "FI" },
+                        "CBR 150R": { startYear: 2012, endYear: 2017, engine: "149.4cc", fuelSystem: "FI" },
+                        "CB Trigger": { startYear: 2013, endYear: 2016, engine: "149.2cc", fuelSystem: "Carburetor" },
+                        "Dream Yuga": { startYear: 2012, endYear: 2018, engine: "109.19cc", fuelSystem: "Carburetor" },
+                        "Dream Neo": { startYear: 2013, endYear: 2018, engine: "109.19cc", fuelSystem: "Carburetor" },
+                        "CD 110 Dream": { startYear: 2014, endYear: 2018, engine: "109.19cc", fuelSystem: "Carburetor" },
+                        "Livo": { startYear: 2015, endYear: 2018, engine: "109.19cc", fuelSystem: "Carburetor" },
+                        "X-Blade": { startYear: 2018, endYear: 2018, engine: "162.7cc", fuelSystem: "Carburetor" },
+                        "Stunner": { startYear: 2009, endYear: 2013, engine: "124.7cc", fuelSystem: "Carburetor" },
+                    }
+                },
+                "TVS": {
+                    models: {
+                        "Apache RTR 160": { startYear: 2007, endYear: 2018, engine: "159.7cc", fuelSystem: "Carburetor/FI" },
+                        "Apache RTR 180": { startYear: 2008, endYear: 2018, engine: "177.4cc", fuelSystem: "Carburetor/FI" },
+                        "Apache RTR 200 4V": { startYear: 2016, endYear: 2018, engine: "197.75cc", fuelSystem: "FI" },
+                        "Apache RR 310": { startYear: 2018, endYear: 2018, engine: "312.2cc", fuelSystem: "FI" },
+                        "Star City Plus": { startYear: 2014, endYear: 2018, engine: "109.7cc", fuelSystem: "Carburetor" },
+                        "Star City": { startYear: 2005, endYear: 2018, engine: "109.7cc", fuelSystem: "Carburetor" },
+                        "Sport": { startYear: 2007, endYear: 2018, engine: "99.7cc", fuelSystem: "Carburetor" },
+                        "Victor": { startYear: 2001, endYear: 2018, engine: "109.7cc", fuelSystem: "Carburetor" },
+                        "Phoenix 125": { startYear: 2012, endYear: 2016, engine: "124.8cc", fuelSystem: "Carburetor" },
+                        "Max4R": { startYear: 2005, endYear: 2010, engine: "99.7cc", fuelSystem: "Carburetor" },
+                        "Centra": { startYear: 2004, endYear: 2008, engine: "99.7cc", fuelSystem: "Carburetor" },
+                        "Fiero": { startYear: 2003, endYear: 2010, engine: "149.5cc", fuelSystem: "Carburetor" },
+                    }
+                },
+                "Yamaha": {
+                    models: {
+                        "FZ-S FI": { startYear: 2008, endYear: 2018, engine: "149cc", fuelSystem: "FI" },
+                        "FZ FI": { startYear: 2008, endYear: 2018, engine: "149cc", fuelSystem: "FI" },
+                        "FZ25": { startYear: 2017, endYear: 2018, engine: "249cc", fuelSystem: "FI" },
+                        "Fazer 25": { startYear: 2017, endYear: 2018, engine: "249cc", fuelSystem: "FI" },
+                        "Fazer FI": { startYear: 2009, endYear: 2016, engine: "149cc", fuelSystem: "FI" },
+                        "R15 V2": { startYear: 2011, endYear: 2017, engine: "149.8cc", fuelSystem: "FI" },
+                        "R15 V3": { startYear: 2018, endYear: 2018, engine: "155.1cc", fuelSystem: "FI" },
+                        "SZ-RR": { startYear: 2012, endYear: 2016, engine: "149cc", fuelSystem: "Carburetor" },
+                        "SS 125": { startYear: 2004, endYear: 2012, engine: "123cc", fuelSystem: "Carburetor" },
+                        "YBR 110": { startYear: 2013, endYear: 2016, engine: "106cc", fuelSystem: "Carburetor" },
+                        "Crux": { startYear: 2003, endYear: 2014, engine: "106cc", fuelSystem: "Carburetor" },
+                        "Alba": { startYear: 2003, endYear: 2009, engine: "106cc", fuelSystem: "Carburetor" },
+                        "Gladiator": { startYear: 2003, endYear: 2010, engine: "123cc", fuelSystem: "Carburetor" },
+                        "RX 100": { startYear: 1985, endYear: 1996, engine: "98cc", fuelSystem: "Carburetor (2-Stroke)" },
+                        "RX 135": { startYear: 1985, endYear: 2005, engine: "132cc", fuelSystem: "Carburetor (2-Stroke)" },
+                        "RD 350": { startYear: 1983, endYear: 1989, engine: "347cc", fuelSystem: "Carburetor (2-Stroke)" },
+                    }
+                },
+                "Royal Enfield": {
+                    models: {
+                        "Classic 350": { startYear: 2009, endYear: 2018, engine: "346cc", fuelSystem: "Carburetor/FI" },
+                        "Classic 500": { startYear: 2009, endYear: 2018, engine: "499cc", fuelSystem: "Carburetor/FI" },
+                        "Bullet 350": { startYear: 1955, endYear: 2018, engine: "346cc", fuelSystem: "Carburetor" },
+                        "Bullet 500": { startYear: 2008, endYear: 2018, engine: "499cc", fuelSystem: "Carburetor" },
+                        "Thunderbird 350": { startYear: 2002, endYear: 2018, engine: "346cc", fuelSystem: "Carburetor/FI" },
+                        "Thunderbird 500": { startYear: 2012, endYear: 2018, engine: "499cc", fuelSystem: "Carburetor/FI" },
+                        "Thunderbird 350X": { startYear: 2018, endYear: 2018, engine: "346cc", fuelSystem: "FI" },
+                        "Thunderbird 500X": { startYear: 2018, endYear: 2018, engine: "499cc", fuelSystem: "FI" },
+                        "Continental GT 535": { startYear: 2013, endYear: 2018, engine: "535cc", fuelSystem: "FI" },
+                        "Interceptor 650": { startYear: 2018, endYear: 2018, engine: "648cc", fuelSystem: "FI" },
+                        "Continental GT 650": { startYear: 2018, endYear: 2018, engine: "648cc", fuelSystem: "FI" },
+                        "Himalayan": { startYear: 2016, endYear: 2018, engine: "411cc", fuelSystem: "FI" },
+                        "Machismo": { startYear: 1998, endYear: 2008, engine: "346cc", fuelSystem: "Carburetor" },
+                        "Electra": { startYear: 2002, endYear: 2018, engine: "346cc", fuelSystem: "Carburetor" },
+                    }
+                },
+                "Suzuki": {
+                    models: {
+                        "Gixxer": { startYear: 2014, endYear: 2018, engine: "154.9cc", fuelSystem: "FI" },
+                        "Gixxer SF": { startYear: 2015, endYear: 2018, engine: "154.9cc", fuelSystem: "FI" },
+                        "Intruder 150": { startYear: 2017, endYear: 2018, engine: "154.9cc", fuelSystem: "FI" },
+                        "GS150R": { startYear: 2009, endYear: 2013, engine: "149cc", fuelSystem: "FI" },
+                        "Hayate": { startYear: 2014, endYear: 2018, engine: "112.8cc", fuelSystem: "Carburetor" },
+                        "Sling Shot Plus": { startYear: 2008, endYear: 2014, engine: "124.6cc", fuelSystem: "Carburetor" },
+                        "Heat": { startYear: 2005, endYear: 2010, engine: "124.6cc", fuelSystem: "Carburetor" },
+                        "Samurai": { startYear: 1995, endYear: 2004, engine: "98cc", fuelSystem: "Carburetor" },
+                        "Fiero": { startYear: 2003, endYear: 2008, engine: "149cc", fuelSystem: "Carburetor" },
+                        "SlingShot": { startYear: 2003, endYear: 2012, engine: "124.6cc", fuelSystem: "Carburetor" },
+                        "Zeus": { startYear: 2006, endYear: 2010, engine: "124.6cc", fuelSystem: "Carburetor" },
+                        "Max 100": { startYear: 1994, endYear: 2004, engine: "98cc", fuelSystem: "Carburetor" },
+                        "Shogun": { startYear: 1999, endYear: 2006, engine: "124.6cc", fuelSystem: "Carburetor" },
+                    }
+                },
+                "KTM": {
+                    models: {
+                        "Duke 200": { startYear: 2012, endYear: 2018, engine: "199.5cc", fuelSystem: "FI" },
+                        "Duke 390": { startYear: 2013, endYear: 2018, engine: "373.2cc", fuelSystem: "FI" },
+                        "Duke 125": { startYear: 2018, endYear: 2018, engine: "124.7cc", fuelSystem: "FI" },
+                        "RC 200": { startYear: 2014, endYear: 2018, engine: "199.5cc", fuelSystem: "FI" },
+                        "RC 390": { startYear: 2014, endYear: 2018, engine: "373.2cc", fuelSystem: "FI" },
+                    }
+                },
+                "Mahindra": {
+                    models: {
+                        "Mojo": { startYear: 2015, endYear: 2018, engine: "295cc", fuelSystem: "FI" },
+                        "Centuro": { startYear: 2013, endYear: 2018, engine: "106.7cc", fuelSystem: "Carburetor" },
+                        "Gusto": { startYear: 2014, endYear: 2018, engine: "109.6cc", fuelSystem: "Carburetor" },
+                        "Pantero": { startYear: 2013, endYear: 2017, engine: "109.6cc", fuelSystem: "Carburetor" },
+                        "Duro": { startYear: 2009, endYear: 2014, engine: "124.6cc", fuelSystem: "Carburetor" },
+                    }
+                },
+            },
+            scooter: {
+                "Honda": {
+                    models: {
+                        "Activa": { startYear: 1999, endYear: 2018, engine: "109.19cc", fuelSystem: "Carburetor" },
+                        "Activa 3G": { startYear: 2014, endYear: 2016, engine: "109.19cc", fuelSystem: "Carburetor" },
+                        "Activa 4G": { startYear: 2017, endYear: 2018, engine: "109.19cc", fuelSystem: "Carburetor" },
+                        "Activa 5G": { startYear: 2018, endYear: 2018, engine: "109.19cc", fuelSystem: "Carburetor" },
+                        "Activa 125": { startYear: 2014, endYear: 2018, engine: "124.9cc", fuelSystem: "Carburetor" },
+                        "Activa i": { startYear: 2014, endYear: 2018, engine: "109.19cc", fuelSystem: "Carburetor" },
+                        "Dio": { startYear: 2002, endYear: 2018, engine: "109.19cc", fuelSystem: "Carburetor" },
+                        "Aviator": { startYear: 2009, endYear: 2018, engine: "109.19cc", fuelSystem: "Carburetor" },
+                        "Grazia": { startYear: 2017, endYear: 2018, engine: "124.9cc", fuelSystem: "Carburetor" },
+                        "Navi": { startYear: 2016, endYear: 2018, engine: "109.19cc", fuelSystem: "Carburetor" },
+                        "Cliq": { startYear: 2017, endYear: 2018, engine: "109.19cc", fuelSystem: "Carburetor" },
+                        "Eterno": { startYear: 2004, endYear: 2014, engine: "149.8cc", fuelSystem: "Carburetor" },
+                    }
+                },
+                "TVS": {
+                    models: {
+                        "Jupiter": { startYear: 2013, endYear: 2018, engine: "109.7cc", fuelSystem: "Carburetor" },
+                        "Jupiter Classic": { startYear: 2016, endYear: 2018, engine: "109.7cc", fuelSystem: "Carburetor" },
+                        "Ntorq 125": { startYear: 2018, endYear: 2018, engine: "124.8cc", fuelSystem: "FI" },
+                        "Wego": { startYear: 2010, endYear: 2018, engine: "109.7cc", fuelSystem: "Carburetor" },
+                        "Scooty Pep+": { startYear: 2005, endYear: 2018, engine: "87.8cc", fuelSystem: "Carburetor" },
+                        "Scooty Zest 110": { startYear: 2014, endYear: 2018, engine: "109.7cc", fuelSystem: "Carburetor" },
+                        "Scooty Streak": { startYear: 2009, endYear: 2014, engine: "87.8cc", fuelSystem: "Carburetor" },
+                    }
+                },
+                "Hero": {
+                    models: {
+                        "Maestro Edge": { startYear: 2015, endYear: 2018, engine: "110.9cc", fuelSystem: "Carburetor" },
+                        "Maestro": { startYear: 2012, endYear: 2015, engine: "102cc", fuelSystem: "Carburetor" },
+                        "Pleasure": { startYear: 2006, endYear: 2018, engine: "102cc", fuelSystem: "Carburetor" },
+                        "Duet": { startYear: 2015, endYear: 2018, engine: "110.9cc", fuelSystem: "Carburetor" },
+                        "Destini 125": { startYear: 2018, endYear: 2018, engine: "124.6cc", fuelSystem: "FI" },
+                    }
+                },
+                "Suzuki": {
+                    models: {
+                        "Access 125": { startYear: 2007, endYear: 2018, engine: "124cc", fuelSystem: "Carburetor/FI" },
+                        "Burgman Street": { startYear: 2018, endYear: 2018, engine: "124cc", fuelSystem: "FI" },
+                        "Lets": { startYear: 2014, endYear: 2018, engine: "112.8cc", fuelSystem: "Carburetor" },
+                        "Swish 125": { startYear: 2012, endYear: 2016, engine: "124cc", fuelSystem: "Carburetor" },
+                    }
+                },
+                "Yamaha": {
+                    models: {
+                        "Fascino": { startYear: 2015, endYear: 2018, engine: "113cc", fuelSystem: "Carburetor" },
+                        "Ray ZR": { startYear: 2016, endYear: 2018, engine: "113cc", fuelSystem: "Carburetor" },
+                        "Ray": { startYear: 2012, endYear: 2016, engine: "113cc", fuelSystem: "Carburetor" },
+                        "Alpha": { startYear: 2014, endYear: 2016, engine: "113cc", fuelSystem: "Carburetor" },
+                        "Cygnus Ray ZR": { startYear: 2016, endYear: 2018, engine: "113cc", fuelSystem: "Carburetor" },
+                    }
+                },
+                "Mahindra": {
+                    models: {
+                        "Gusto 110": { startYear: 2014, endYear: 2018, engine: "109.6cc", fuelSystem: "Carburetor" },
+                        "Gusto 125": { startYear: 2015, endYear: 2018, engine: "124.6cc", fuelSystem: "Carburetor" },
+                        "Rodeo RZ": { startYear: 2010, endYear: 2014, engine: "124.6cc", fuelSystem: "Carburetor" },
+                        "Duro DZ": { startYear: 2010, endYear: 2014, engine: "124.6cc", fuelSystem: "Carburetor" },
+                    }
+                },
+                "Vespa": {
+                    models: {
+                        "VX 125": { startYear: 2012, endYear: 2018, engine: "125cc", fuelSystem: "FI" },
+                        "SXL 125": { startYear: 2014, endYear: 2018, engine: "125cc", fuelSystem: "FI" },
+                        "SXL 150": { startYear: 2014, endYear: 2018, engine: "150cc", fuelSystem: "FI" },
+                        "VXL 150": { startYear: 2016, endYear: 2018, engine: "150cc", fuelSystem: "FI" },
+                        "Elegante": { startYear: 2016, endYear: 2018, engine: "150cc", fuelSystem: "FI" },
+                    }
+                },
+                "Aprilia": {
+                    models: {
+                        "SR 125": { startYear: 2018, endYear: 2018, engine: "124.5cc", fuelSystem: "FI" },
+                        "SR 150": { startYear: 2016, endYear: 2018, engine: "154.8cc", fuelSystem: "Carburetor/FI" },
+                    }
+                },
+            },
+            car: {
+                "Maruti Suzuki": {
+                    models: {
+                        "Alto 800": { startYear: 2012, endYear: 2018, engine: "796cc", fuelSystem: "FI" },
+                        "Alto K10": { startYear: 2010, endYear: 2018, engine: "998cc", fuelSystem: "FI" },
+                        "Alto (Old)": { startYear: 2000, endYear: 2012, engine: "796cc", fuelSystem: "Carburetor/FI" },
+                        "WagonR": { startYear: 1999, endYear: 2018, engine: "998cc/1197cc", fuelSystem: "FI" },
+                        "Swift": { startYear: 2005, endYear: 2018, engine: "1197cc/1248cc", fuelSystem: "FI" },
+                        "Swift Dzire": { startYear: 2008, endYear: 2018, engine: "1197cc/1248cc", fuelSystem: "FI" },
+                        "Baleno": { startYear: 2015, endYear: 2018, engine: "1197cc/1248cc", fuelSystem: "FI" },
+                        "Celerio": { startYear: 2014, endYear: 2018, engine: "998cc", fuelSystem: "FI" },
+                        "Celerio X": { startYear: 2017, endYear: 2018, engine: "998cc", fuelSystem: "FI" },
+                        "Ignis": { startYear: 2017, endYear: 2018, engine: "1197cc/1248cc", fuelSystem: "FI" },
+                        "Ciaz": { startYear: 2014, endYear: 2018, engine: "1373cc/1248cc", fuelSystem: "FI" },
+                        "Vitara Brezza": { startYear: 2016, endYear: 2018, engine: "1248cc", fuelSystem: "FI" },
+                        "S-Cross": { startYear: 2015, endYear: 2018, engine: "1248cc/1598cc", fuelSystem: "FI" },
+                        "Ertiga": { startYear: 2012, endYear: 2018, engine: "1373cc/1248cc", fuelSystem: "FI" },
+                        "Eeco": { startYear: 2010, endYear: 2018, engine: "1196cc", fuelSystem: "FI" },
+                        "Omni": { startYear: 1984, endYear: 2018, engine: "796cc", fuelSystem: "Carburetor" },
+                        "Gypsy": { startYear: 1985, endYear: 2018, engine: "1298cc", fuelSystem: "Carburetor" },
+                        "Zen": { startYear: 1993, endYear: 2006, engine: "993cc", fuelSystem: "Carburetor/FI" },
+                        "Zen Estilo": { startYear: 2006, endYear: 2013, engine: "998cc", fuelSystem: "FI" },
+                        "Esteem": { startYear: 1994, endYear: 2007, engine: "1298cc", fuelSystem: "Carburetor/FI" },
+                        "800": { startYear: 1983, endYear: 2014, engine: "796cc", fuelSystem: "Carburetor" },
+                        "SX4": { startYear: 2007, endYear: 2014, engine: "1586cc/1248cc", fuelSystem: "FI" },
+                        "Ritz": { startYear: 2009, endYear: 2016, engine: "1197cc/1248cc", fuelSystem: "FI" },
+                        "A-Star": { startYear: 2008, endYear: 2014, engine: "998cc", fuelSystem: "FI" },
+                    }
+                },
+                "Hyundai": {
+                    models: {
+                        "i10": { startYear: 2007, endYear: 2018, engine: "1086cc/1197cc", fuelSystem: "FI" },
+                        "Grand i10": { startYear: 2013, endYear: 2018, engine: "1197cc/1186cc", fuelSystem: "FI" },
+                        "i20": { startYear: 2008, endYear: 2018, engine: "1197cc/1368cc/1396cc", fuelSystem: "FI" },
+                        "Elite i20": { startYear: 2014, endYear: 2018, engine: "1197cc/1368cc/1396cc", fuelSystem: "FI" },
+                        "i20 Active": { startYear: 2015, endYear: 2018, engine: "1197cc/1396cc", fuelSystem: "FI" },
+                        "Verna": { startYear: 2006, endYear: 2018, engine: "1396cc/1591cc/1582cc", fuelSystem: "FI" },
+                        "Xcent": { startYear: 2014, endYear: 2018, engine: "1197cc/1186cc", fuelSystem: "FI" },
+                        "Creta": { startYear: 2015, endYear: 2018, engine: "1591cc/1396cc/1582cc", fuelSystem: "FI" },
+                        "Elantra": { startYear: 2016, endYear: 2018, engine: "1999cc/1582cc", fuelSystem: "FI" },
+                        "Santro": { startYear: 1998, endYear: 2014, engine: "1086cc", fuelSystem: "FI" },
+                        "Santro Xing": { startYear: 2003, endYear: 2014, engine: "1086cc", fuelSystem: "FI" },
+                        "Eon": { startYear: 2011, endYear: 2018, engine: "814cc/998cc", fuelSystem: "FI" },
+                        "Accent": { startYear: 1999, endYear: 2014, engine: "1495cc/1493cc", fuelSystem: "FI" },
+                        "Getz": { startYear: 2004, endYear: 2009, engine: "1086cc/1341cc/1493cc", fuelSystem: "FI" },
+                        "Tucson": { startYear: 2016, endYear: 2018, engine: "1999cc/1995cc", fuelSystem: "FI" },
+                    }
+                },
+                "Tata": {
+                    models: {
+                        "Tiago": { startYear: 2016, endYear: 2018, engine: "1199cc/1047cc", fuelSystem: "FI" },
+                        "Tigor": { startYear: 2017, endYear: 2018, engine: "1199cc/1047cc", fuelSystem: "FI" },
+                        "Nexon": { startYear: 2017, endYear: 2018, engine: "1199cc/1497cc", fuelSystem: "FI" },
+                        "Bolt": { startYear: 2015, endYear: 2018, engine: "1193cc/1248cc", fuelSystem: "FI" },
+                        "Zest": { startYear: 2014, endYear: 2018, engine: "1193cc/1248cc", fuelSystem: "FI" },
+                        "Nano": { startYear: 2008, endYear: 2018, engine: "624cc", fuelSystem: "FI" },
+                        "Indica": { startYear: 1998, endYear: 2018, engine: "1193cc/1396cc", fuelSystem: "FI" },
+                        "Indica Vista": { startYear: 2008, endYear: 2016, engine: "1193cc/1248cc", fuelSystem: "FI" },
+                        "Indigo": { startYear: 2002, endYear: 2014, engine: "1396cc/1405cc", fuelSystem: "FI" },
+                        "Indigo eCS": { startYear: 2009, endYear: 2018, engine: "1193cc/1248cc", fuelSystem: "FI" },
+                        "Manza": { startYear: 2009, endYear: 2015, engine: "1368cc/1248cc", fuelSystem: "FI" },
+                        "Safari": { startYear: 1998, endYear: 2018, engine: "2179cc", fuelSystem: "FI" },
+                        "Safari Storme": { startYear: 2012, endYear: 2018, engine: "2179cc", fuelSystem: "FI" },
+                        "Hexa": { startYear: 2017, endYear: 2018, engine: "2179cc", fuelSystem: "FI" },
+                        "Sumo": { startYear: 1994, endYear: 2018, engine: "2956cc/2179cc", fuelSystem: "FI" },
+                    }
+                },
+                "Honda": {
+                    models: {
+                        "City": { startYear: 1998, endYear: 2018, engine: "1497cc/1498cc", fuelSystem: "FI" },
+                        "Amaze": { startYear: 2013, endYear: 2018, engine: "1199cc/1498cc", fuelSystem: "FI" },
+                        "Jazz": { startYear: 2015, endYear: 2018, engine: "1199cc/1498cc", fuelSystem: "FI" },
+                        "WR-V": { startYear: 2017, endYear: 2018, engine: "1199cc/1498cc", fuelSystem: "FI" },
+                        "BR-V": { startYear: 2016, endYear: 2018, engine: "1497cc/1498cc", fuelSystem: "FI" },
+                        "Civic (Old)": { startYear: 2006, endYear: 2012, engine: "1799cc", fuelSystem: "FI" },
+                        "CR-V": { startYear: 2004, endYear: 2018, engine: "1997cc/2354cc", fuelSystem: "FI" },
+                        "Brio": { startYear: 2011, endYear: 2018, engine: "1198cc", fuelSystem: "FI" },
+                        "Mobilio": { startYear: 2014, endYear: 2016, engine: "1497cc/1498cc", fuelSystem: "FI" },
+                        "Accord": { startYear: 2001, endYear: 2016, engine: "2354cc", fuelSystem: "FI" },
+                    }
+                },
+                "Toyota": {
+                    models: {
+                        "Innova": { startYear: 2005, endYear: 2015, engine: "2494cc", fuelSystem: "FI" },
+                        "Innova Crysta": { startYear: 2016, endYear: 2018, engine: "2393cc/2755cc", fuelSystem: "FI" },
+                        "Fortuner": { startYear: 2009, endYear: 2018, engine: "2694cc/2755cc", fuelSystem: "FI" },
+                        "Etios": { startYear: 2010, endYear: 2018, engine: "1197cc/1364cc", fuelSystem: "FI" },
+                        "Etios Liva": { startYear: 2011, endYear: 2018, engine: "1197cc/1364cc", fuelSystem: "FI" },
+                        "Etios Cross": { startYear: 2014, endYear: 2018, engine: "1197cc/1364cc", fuelSystem: "FI" },
+                        "Corolla Altis": { startYear: 2003, endYear: 2018, engine: "1798cc/1364cc", fuelSystem: "FI" },
+                        "Camry": { startYear: 2002, endYear: 2018, engine: "2494cc", fuelSystem: "FI" },
+                        "Qualis": { startYear: 2000, endYear: 2005, engine: "2446cc", fuelSystem: "FI" },
+                        "Land Cruiser Prado": { startYear: 2003, endYear: 2018, engine: "2982cc", fuelSystem: "FI" },
+                    }
+                },
+                "Mahindra": {
+                    models: {
+                        "Scorpio": { startYear: 2002, endYear: 2018, engine: "2179cc/2523cc", fuelSystem: "FI" },
+                        "Bolero": { startYear: 2001, endYear: 2018, engine: "2523cc", fuelSystem: "FI" },
+                        "XUV500": { startYear: 2011, endYear: 2018, engine: "2179cc", fuelSystem: "FI" },
+                        "TUV300": { startYear: 2015, endYear: 2018, engine: "1493cc", fuelSystem: "FI" },
+                        "KUV100": { startYear: 2016, endYear: 2018, engine: "1198cc/1493cc", fuelSystem: "FI" },
+                        "Thar": { startYear: 2010, endYear: 2018, engine: "2498cc/2179cc", fuelSystem: "FI" },
+                        "Xylo": { startYear: 2009, endYear: 2018, engine: "2179cc/2489cc", fuelSystem: "FI" },
+                        "Verito": { startYear: 2011, endYear: 2018, engine: "1461cc", fuelSystem: "FI" },
+                        "Quanto": { startYear: 2012, endYear: 2015, engine: "1493cc", fuelSystem: "FI" },
+                        "NuvoSport": { startYear: 2016, endYear: 2018, engine: "1493cc", fuelSystem: "FI" },
+                        "Marazzo": { startYear: 2018, endYear: 2018, engine: "1497cc", fuelSystem: "FI" },
+                        "Commander": { startYear: 1991, endYear: 2010, engine: "2498cc", fuelSystem: "Mechanical" },
+                    }
+                },
+                "Ford": {
+                    models: {
+                        "EcoSport": { startYear: 2013, endYear: 2018, engine: "999cc/1497cc/1498cc", fuelSystem: "FI" },
+                        "Figo": { startYear: 2010, endYear: 2018, engine: "1196cc/1499cc/1498cc", fuelSystem: "FI" },
+                        "Figo Aspire": { startYear: 2015, endYear: 2018, engine: "1196cc/1499cc/1498cc", fuelSystem: "FI" },
+                        "Freestyle": { startYear: 2018, endYear: 2018, engine: "1196cc/1498cc", fuelSystem: "FI" },
+                        "Endeavour": { startYear: 2003, endYear: 2018, engine: "2198cc/3198cc", fuelSystem: "FI" },
+                        "Ikon": { startYear: 1999, endYear: 2011, engine: "1299cc/1596cc/1753cc", fuelSystem: "FI" },
+                        "Fiesta": { startYear: 2005, endYear: 2015, engine: "1388cc/1560cc", fuelSystem: "FI" },
+                        "Fusion": { startYear: 2004, endYear: 2010, engine: "1388cc/1560cc", fuelSystem: "FI" },
+                        "Classic": { startYear: 2011, endYear: 2014, engine: "1388cc/1560cc", fuelSystem: "FI" },
+                    }
+                },
+                "Volkswagen": {
+                    models: {
+                        "Polo": { startYear: 2010, endYear: 2018, engine: "999cc/1197cc/1498cc", fuelSystem: "FI" },
+                        "Ameo": { startYear: 2016, endYear: 2018, engine: "1197cc/1498cc", fuelSystem: "FI" },
+                        "Vento": { startYear: 2010, endYear: 2018, engine: "1197cc/1498cc/1598cc", fuelSystem: "FI" },
+                        "Jetta": { startYear: 2008, endYear: 2015, engine: "1984cc/1968cc", fuelSystem: "FI" },
+                    }
+                },
+                "Renault": {
+                    models: {
+                        "Kwid": { startYear: 2015, endYear: 2018, engine: "799cc/999cc", fuelSystem: "FI" },
+                        "Duster": { startYear: 2012, endYear: 2018, engine: "1461cc/1498cc", fuelSystem: "FI" },
+                        "Captur": { startYear: 2017, endYear: 2018, engine: "1498cc/1461cc", fuelSystem: "FI" },
+                        "Lodgy": { startYear: 2015, endYear: 2018, engine: "1461cc", fuelSystem: "FI" },
+                        "Scala": { startYear: 2012, endYear: 2016, engine: "1461cc/1498cc", fuelSystem: "FI" },
+                        "Pulse": { startYear: 2012, endYear: 2015, engine: "1198cc/1461cc", fuelSystem: "FI" },
+                        "Fluence": { startYear: 2011, endYear: 2015, engine: "1598cc/1461cc", fuelSystem: "FI" },
+                    }
+                },
+                "Nissan": {
+                    models: {
+                        "Micra": { startYear: 2010, endYear: 2018, engine: "1198cc/1461cc", fuelSystem: "FI" },
+                        "Sunny": { startYear: 2011, endYear: 2018, engine: "1498cc/1461cc", fuelSystem: "FI" },
+                        "Terrano": { startYear: 2013, endYear: 2018, engine: "1461cc/1498cc", fuelSystem: "FI" },
+                        "Kicks": { startYear: 2018, endYear: 2018, engine: "1461cc/1498cc", fuelSystem: "FI" },
+                    }
+                },
+                "Datsun": {
+                    models: {
+                        "GO": { startYear: 2014, endYear: 2018, engine: "1198cc", fuelSystem: "FI" },
+                        "GO+": { startYear: 2015, endYear: 2018, engine: "1198cc", fuelSystem: "FI" },
+                        "redi-GO": { startYear: 2016, endYear: 2018, engine: "799cc/999cc", fuelSystem: "FI" },
+                    }
+                },
+                "Chevrolet": {
+                    models: {
+                        "Beat": { startYear: 2010, endYear: 2017, engine: "936cc/1199cc/995cc", fuelSystem: "FI" },
+                        "Spark": { startYear: 2007, endYear: 2016, engine: "995cc", fuelSystem: "FI" },
+                        "Sail": { startYear: 2012, endYear: 2017, engine: "1199cc/1248cc", fuelSystem: "FI" },
+                        "Cruze": { startYear: 2009, endYear: 2017, engine: "1598cc/1956cc", fuelSystem: "FI" },
+                        "Enjoy": { startYear: 2013, endYear: 2017, engine: "1248cc/1199cc", fuelSystem: "FI" },
+                        "Tavera": { startYear: 2004, endYear: 2017, engine: "2499cc", fuelSystem: "FI" },
+                        "Aveo": { startYear: 2006, endYear: 2012, engine: "1399cc/1598cc", fuelSystem: "FI" },
+                        "Optra": { startYear: 2003, endYear: 2012, engine: "1598cc/1753cc", fuelSystem: "FI" },
+                    }
+                },
+                "Skoda": {
+                    models: {
+                        "Rapid": { startYear: 2011, endYear: 2018, engine: "1498cc/1598cc", fuelSystem: "FI" },
+                        "Octavia": { startYear: 2001, endYear: 2018, engine: "1798cc/1984cc/1968cc", fuelSystem: "FI" },
+                        "Superb": { startYear: 2004, endYear: 2018, engine: "1798cc/1984cc/1968cc", fuelSystem: "FI" },
+                        "Fabia": { startYear: 2007, endYear: 2014, engine: "1197cc/1422cc", fuelSystem: "FI" },
+                        "Laura": { startYear: 2005, endYear: 2013, engine: "1798cc/1968cc", fuelSystem: "FI" },
+                    }
+                },
+                "Fiat": {
+                    models: {
+                        "Punto": { startYear: 2009, endYear: 2018, engine: "1199cc/1248cc/1368cc", fuelSystem: "FI" },
+                        "Linea": { startYear: 2009, endYear: 2018, engine: "1368cc/1248cc", fuelSystem: "FI" },
+                        "Avventura": { startYear: 2014, endYear: 2018, engine: "1368cc/1248cc", fuelSystem: "FI" },
+                        "Palio": { startYear: 2001, endYear: 2010, engine: "1172cc/1596cc", fuelSystem: "FI" },
+                        "Petra": { startYear: 2004, endYear: 2007, engine: "1596cc/1910cc", fuelSystem: "FI" },
+                        "Uno": { startYear: 2009, endYear: 2013, engine: "999cc/1248cc", fuelSystem: "FI" },
+                    }
+                },
+                "Ambassador": {
+                    models: {
+                        "Ambassador": { startYear: 1958, endYear: 2014, engine: "1489cc/1817cc/1995cc", fuelSystem: "Carburetor" },
+                    }
+                },
+            },
+            suv: {
+                "Mahindra": {
+                    models: {
+                        "Scorpio": { startYear: 2002, endYear: 2018, engine: "2179cc", fuelSystem: "FI" },
+                        "XUV500": { startYear: 2011, endYear: 2018, engine: "2179cc", fuelSystem: "FI" },
+                        "Thar": { startYear: 2010, endYear: 2018, engine: "2498cc", fuelSystem: "FI" },
+                        "Bolero": { startYear: 2001, endYear: 2018, engine: "2523cc", fuelSystem: "FI" },
+                        "TUV300": { startYear: 2015, endYear: 2018, engine: "1493cc", fuelSystem: "FI" },
+                        "NuvoSport": { startYear: 2016, endYear: 2018, engine: "1493cc", fuelSystem: "FI" },
+                        "KUV100": { startYear: 2016, endYear: 2018, engine: "1198cc/1493cc", fuelSystem: "FI" },
+                    }
+                },
+                "Toyota": {
+                    models: {
+                        "Fortuner": { startYear: 2009, endYear: 2018, engine: "2694cc/2755cc", fuelSystem: "FI" },
+                        "Land Cruiser Prado": { startYear: 2003, endYear: 2018, engine: "2982cc", fuelSystem: "FI" },
+                    }
+                },
+                "Ford": {
+                    models: {
+                        "Endeavour": { startYear: 2003, endYear: 2018, engine: "2198cc/3198cc", fuelSystem: "FI" },
+                        "EcoSport": { startYear: 2013, endYear: 2018, engine: "999cc/1497cc/1498cc", fuelSystem: "FI" },
+                    }
+                },
+                "Hyundai": {
+                    models: {
+                        "Creta": { startYear: 2015, endYear: 2018, engine: "1591cc/1396cc/1582cc", fuelSystem: "FI" },
+                        "Tucson": { startYear: 2016, endYear: 2018, engine: "1999cc/1995cc", fuelSystem: "FI" },
+                        "Santa Fe": { startYear: 2010, endYear: 2016, engine: "2199cc", fuelSystem: "FI" },
+                    }
+                },
+                "Tata": {
+                    models: {
+                        "Nexon": { startYear: 2017, endYear: 2018, engine: "1199cc/1497cc", fuelSystem: "FI" },
+                        "Safari Storme": { startYear: 2012, endYear: 2018, engine: "2179cc", fuelSystem: "FI" },
+                        "Hexa": { startYear: 2017, endYear: 2018, engine: "2179cc", fuelSystem: "FI" },
+                    }
+                },
+                "Renault": {
+                    models: {
+                        "Duster": { startYear: 2012, endYear: 2018, engine: "1461cc/1498cc", fuelSystem: "FI" },
+                        "Captur": { startYear: 2017, endYear: 2018, engine: "1498cc/1461cc", fuelSystem: "FI" },
+                    }
+                },
+                "Nissan": {
+                    models: {
+                        "Terrano": { startYear: 2013, endYear: 2018, engine: "1461cc/1498cc", fuelSystem: "FI" },
+                    }
+                },
+                "Jeep": {
+                    models: {
+                        "Compass": { startYear: 2017, endYear: 2018, engine: "1956cc/1368cc", fuelSystem: "FI" },
+                        "Wrangler": { startYear: 2016, endYear: 2018, engine: "2776cc", fuelSystem: "FI" },
+                    }
+                },
+            },
+            auto: {
+                "Bajaj": {
+                    models: {
+                        "RE Compact": { startYear: 2010, endYear: 2018, engine: "198.88cc", fuelSystem: "Carburetor" },
+                        "RE 4-Stroke": { startYear: 2005, endYear: 2018, engine: "198.88cc", fuelSystem: "Carburetor" },
+                        "RE 2-Stroke": { startYear: 1980, endYear: 2010, engine: "145.45cc", fuelSystem: "Carburetor (2-Stroke)" },
+                        "Maxima": { startYear: 2008, endYear: 2018, engine: "236.2cc", fuelSystem: "Carburetor" },
+                    }
+                },
+                "TVS": {
+                    models: {
+                        "King": { startYear: 2000, endYear: 2018, engine: "199.26cc", fuelSystem: "Carburetor" },
+                        "King Deluxe": { startYear: 2010, endYear: 2018, engine: "199.26cc", fuelSystem: "Carburetor" },
+                    }
+                },
+                "Piaggio": {
+                    models: {
+                        "Ape Auto": { startYear: 2006, endYear: 2018, engine: "395cc", fuelSystem: "Carburetor" },
+                        "Ape City": { startYear: 2010, endYear: 2018, engine: "197.3cc", fuelSystem: "FI" },
+                        "Ape Xtra": { startYear: 2012, endYear: 2018, engine: "395cc", fuelSystem: "Carburetor" },
+                    }
+                },
+                "Mahindra": {
+                    models: {
+                        "Alfa": { startYear: 2008, endYear: 2018, engine: "436cc", fuelSystem: "FI" },
+                        "Alfa Passenger": { startYear: 2010, endYear: 2018, engine: "436cc", fuelSystem: "FI" },
+                    }
+                },
+            },
+            truck: {
+                "Tata": {
+                    models: {
+                        "Ace": { startYear: 2005, endYear: 2018, engine: "702cc", fuelSystem: "FI" },
+                        "Ace HT": { startYear: 2010, endYear: 2018, engine: "702cc", fuelSystem: "FI" },
+                        "Super Ace": { startYear: 2009, endYear: 2018, engine: "1405cc", fuelSystem: "FI" },
+                        "407": { startYear: 1986, endYear: 2018, engine: "3783cc", fuelSystem: "Mechanical" },
+                        "709": { startYear: 1990, endYear: 2015, engine: "3783cc", fuelSystem: "Mechanical" },
+                        "1109": { startYear: 2000, endYear: 2018, engine: "5675cc", fuelSystem: "Mechanical" },
+                        "LPT 1613": { startYear: 2005, endYear: 2018, engine: "5675cc", fuelSystem: "Mechanical" },
+                    }
+                },
+                "Ashok Leyland": {
+                    models: {
+                        "Dost": { startYear: 2011, endYear: 2018, engine: "1478cc", fuelSystem: "FI" },
+                        "Partner": { startYear: 2013, endYear: 2018, engine: "2953cc", fuelSystem: "FI" },
+                        "Ecomet": { startYear: 2014, endYear: 2018, engine: "2953cc/3760cc", fuelSystem: "FI" },
+                    }
+                },
+                "Mahindra": {
+                    models: {
+                        "Bolero Pickup": { startYear: 2005, endYear: 2018, engine: "2523cc", fuelSystem: "FI" },
+                        "Loadking": { startYear: 2007, endYear: 2018, engine: "2498cc", fuelSystem: "FI" },
+                        "Jayo": { startYear: 2014, endYear: 2018, engine: "1493cc", fuelSystem: "FI" },
+                    }
+                },
+                "Eicher": {
+                    models: {
+                        "Pro 1049": { startYear: 2013, endYear: 2018, engine: "2953cc", fuelSystem: "FI" },
+                        "Pro 1059": { startYear: 2014, endYear: 2018, engine: "2953cc", fuelSystem: "FI" },
+                        "Pro 1110": { startYear: 2015, endYear: 2018, engine: "3298cc", fuelSystem: "FI" },
+                    }
+                },
+                "Force": {
+                    models: {
+                        "Traveller": { startYear: 2007, endYear: 2018, engine: "2596cc", fuelSystem: "FI" },
+                        "Trax": { startYear: 2005, endYear: 2018, engine: "2596cc", fuelSystem: "FI" },
+                        "Gurkha": { startYear: 2008, endYear: 2018, engine: "2596cc", fuelSystem: "FI" },
+                    }
+                },
+            },
+        };
+
+        // ==========================================
+        // STATE VARIABLES
+        // ==========================================
+        let selectedType = '';
+
+        // ==========================================
+        // FUNCTIONS
+        // ==========================================
+
+        function selectVehicleType(type) {
+            selectedType = type;
+
+            // Update button styles
+            document.querySelectorAll('.vehicle-type-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById('btn-' + type).classList.add('active');
+
+            // Show form
+            document.getElementById('formSection').classList.add('show');
+
+            // Hide previous result
+            document.getElementById('resultSection').classList.remove('show');
+
+            // Load brands
+            loadBrands();
+
+            // Reset subsequent dropdowns
+            document.getElementById('modelSelect').innerHTML = '<option value="">-- Select Model --</option>';
+            document.getElementById('yearSelect').innerHTML = '<option value="">-- Select Year --</option>';
+            document.getElementById('fuelSelect').value = '';
+        }
+
+        function loadBrands() {
+            const brandSelect = document.getElementById('brandSelect');
+            brandSelect.innerHTML = '<option value="">-- Select Brand --</option>';
+
+            if (vehicleDatabase[selectedType]) {
+                const brands = Object.keys(vehicleDatabase[selectedType]);
+                brands.sort();
+                brands.forEach(brand => {
+                    const option = document.createElement('option');
+                    option.value = brand;
+                    option.textContent = brand;
+                    brandSelect.appendChild(option);
+                });
+            }
+        }
+
+        function loadModels() {
+            const brandSelect = document.getElementById('brandSelect');
+            const modelSelect = document.getElementById('modelSelect');
+            const yearSelect = document.getElementById('yearSelect');
+
+            modelSelect.innerHTML = '<option value="">-- Select Model --</option>';
+            yearSelect.innerHTML = '<option value="">-- Select Year --</option>';
+
+            const brand = brandSelect.value;
+            if (brand && vehicleDatabase[selectedType] && vehicleDatabase[selectedType][brand]) {
+                const models = Object.keys(vehicleDatabase[selectedType][brand].models);
+                models.sort();
+                models.forEach(model => {
+                    const option = document.createElement('option');
+                    option.value = model;
+                    option.textContent = model;
+                    modelSelect.appendChild(option);
+                });
+            }
+        }
+
+        function loadYears() {
+            const brandSelect = document.getElementById('brandSelect');
+            const modelSelect = document.getElementById('modelSelect');
+            const yearSelect = document.getElementById('yearSelect');
+
+            yearSelect.innerHTML = '<option value="">-- Select Year --</option>';
+
+            const brand = brandSelect.value;
+            const model = modelSelect.value;
+
+            if (brand && model && vehicleDatabase[selectedType][brand].models[model]) {
+                const vehicleInfo = vehicleDatabase[selectedType][brand].models[model];
+                for (let year = vehicleInfo.endYear; year >= vehicleInfo.startYear; year--) {
+                    const option = document.createElement('option');
+                    option.value = year;
+                    option.textContent = year;
+                    yearSelect.appendChild(option);
+                }
+            }
+        }
+
+        function checkCompatibility() {
+            const brand = document.getElementById('brandSelect').value;
+            const model = document.getElementById('modelSelect').value;
+            const year = parseInt(document.getElementById('yearSelect').value);
+            const fuel = document.getElementById('fuelSelect').value;
+
+            // Validation
+            if (!brand || !model || !year || !fuel) {
+                alert('⚠️ Please fill in all fields to check compatibility!');
+                return;
+            }
+
+            const vehicleInfo = vehicleDatabase[selectedType][brand].models[model];
+            const resultSection = document.getElementById('resultSection');
+            const resultIcon = document.getElementById('resultIcon');
+            const resultTitle = document.getElementById('resultTitle');
+            const resultVehicleInfo = document.getElementById('resultVehicleInfo');
+            const resultDetails = document.getElementById('resultDetails');
+
+            // Vehicle Info Display
+            const typeLabels = {
+                bike: '🏍️ Motorcycle',
+                scooter: '🛵 Scooter',
+                car: '🚗 Car',
+                suv: '🚙 SUV',
+                auto: '🛺 Auto Rickshaw',
+                truck: '🚛 Commercial Vehicle'
+            };
+
+            resultVehicleInfo.innerHTML = `
+                <h3>📋 Your Vehicle Details</h3>
+                <p><strong>Type:</strong> ${typeLabels[selectedType]}</p>
+                <p><strong>Brand:</strong> ${brand}</p>
+                <p><strong>Model:</strong> ${model}</p>
+                <p><strong>Year:</strong> ${year}</p>
+                <p><strong>Engine:</strong> ${vehicleInfo.engine}</p>
+                <p><strong>Fuel System:</strong> ${vehicleInfo.fuelSystem}</p>
+                <p><strong>Fuel Type:</strong> ${fuel.charAt(0).toUpperCase() + fuel.slice(1)}</p>
+            `;
+
+            // DIESEL vehicles - Ethanol not applicable
+            if (fuel === 'diesel') {
+                resultSection.className = 'result-section show not-compatible';
+                resultIcon.textContent = '⛽';
+                resultTitle.textContent = 'Ethanol Blending Not Applicable for Diesel';
+                resultDetails.innerHTML = `
+                    <p>Ethanol blending is only done with <strong>petrol (gasoline)</strong> fuel in India. Your diesel vehicle uses a different fuel system.</p>
+                    <ul>
+                        <li>🔹 Ethanol-blended fuels (E5, E10, E20) are <strong>petrol products only</strong>.</li>
+                        <li>🔹 For diesel vehicles, the government has a separate <strong>Biodiesel programme</strong>.</li>
+                        <li>🔹 Biodiesel blending (B5, B7) is being explored for diesel engines.</li>
+                    </ul>
+                    <p><strong>Note:</strong> Never put ethanol-blended petrol in a diesel engine. It can cause severe damage.</p>
+                `;
+                resultSection.style.display = 'block';
+                resultSection.scrollIntoView({ behavior: 'smooth' });
+                return;
+            }
+
+            // Check for 2-stroke engines
+            const isTwoStroke = vehicleInfo.fuelSystem.includes('2-Stroke');
+
+            // Determine compatibility based on year and fuel system
+            let compatibility = '';
+            let details = '';
+
+            if (isTwoStroke) {
+                // 2-Stroke engines
+                compatibility = 'not-compatible';
+                resultIcon.textContent = '❌';
+                resultTitle.textContent = 'NOT Compatible with Ethanol Blends';
+                details = `
+                    <p>Your <strong>${brand} ${model} (${year})</strong> has a <strong>2-Stroke engine</strong>.</p>
+                    <ul>
+                        <li>❌ <strong>E5 (5% Ethanol):</strong> Not Recommended</li>
+                        <li>❌ <strong>E10 (10% Ethanol):</strong> Not Recommended</li>
+                        <li>❌ <strong>E20 (20% Ethanol):</strong> Not Compatible</li>
+                        <li>❌ <strong>E85 (85% Ethanol):</strong> Not Compatible</li>
+                    </ul>
+                    <p><strong>Why?</strong> 2-Stroke engines use a pre-mix of oil and fuel. Ethanol can:</p>
+                    <ul>
+                        <li>⚠️ Absorb moisture and cause corrosion</li>
+                        <li>⚠️ Damage rubber seals and fuel lines</li>
+                        <li>⚠️ Affect the oil-fuel mixture ratio</li>
+                        <li>⚠️ Cause poor performance and potential engine damage</li>
+                    </ul>
+                    <p><strong>Recommendation:</strong> Use pure petrol (E0) if available, or minimal ethanol blend. Consider upgrading to a 4-stroke vehicle.</p>
+                `;
+            } else if (year < 2000) {
+                // Very old vehicles (before 2000)
+                compatibility = 'not-compatible';
+                resultIcon.textContent = '❌';
+                resultTitle.textContent = 'NOT Recommended for Ethanol Blends';
+                details = `
+                    <p>Your <strong>${brand} ${model} (${year})</strong> was manufactured <strong>before 2000</strong>.</p>
+                    <ul>
+                        <li>⚠️ <strong>E5 (5% Ethanol):</strong> May work but NOT recommended</li>
+                        <li>❌ <strong>E10 (10% Ethanol):</strong> Not Recommended</li>
+                        <li>❌ <strong>E20 (20% Ethanol):</strong> Not Compatible</li>
+                        <li>❌ <strong>E85 (85% Ethanol):</strong> Not Compatible</li>
+                    </ul>
+                    <p><strong>Why?</strong> Vehicles from this era typically have:</p>
+                    <ul>
+                        <li>⚠️ Carburetor fuel systems not designed for ethanol</li>
+                        <li>⚠️ Rubber seals and gaskets that ethanol can degrade</li>
+                        <li>⚠️ Metal fuel components prone to ethanol-induced corrosion</li>
+                        <li>⚠️ No electronic fuel management to adjust for ethanol</li>
+                    </ul>
+                    <p><strong>Recommendation:</strong> Try to use pure petrol (E0) if available. If using E5 or E10 fuel (now common at pumps), monitor your vehicle for:</p>
+                    <ul>
+                        <li>🔍 Starting problems</li>
+                        <li>🔍 Fuel line leaks</li>
+                        <li>🔍 Reduced mileage</li>
+                        <li>🔍 Engine knocking</li>
+                    </ul>
+                `;
+            } else if (year >= 2000 && year <= 2007) {
+                // 2000-2007 vehicles
+                compatibility = 'partial';
+                resultIcon.textContent = '⚠️';
+                resultTitle.textContent = 'Partially Compatible - Use with Caution';
+                details = `
+                    <p>Your <strong>${brand} ${model} (${year})</strong> was manufactured between <strong>2000-2007</strong>.</p>
+                    <ul>
+                        <li>✅ <strong>E5 (5% Ethanol):</strong> Generally Safe</li>
+                        <li>⚠️ <strong>E10 (10% Ethanol):</strong> May work, but monitor performance</li>
+                        <li>❌ <strong>E20 (20% Ethanol):</strong> Not Recommended</li>
+                        <li>❌ <strong>E85 (85% Ethanol):</strong> Not Compatible</li>
+                    </ul>
+                    <p><strong>Details:</strong></p>
+                    <ul>
+                        <li>🔹 Your vehicle's fuel system (${vehicleInfo.fuelSystem}) was designed for pure petrol</li>
+                        <li>🔹 E5 fuel is generally tolerated by most vehicles of this era</li>
+                        <li>🔹 E10 may cause slightly reduced fuel efficiency (1-3%)</li>
+                        <li>🔹 Some rubber components may need checking/replacement over time</li>
+                    </ul>
+                    <p><strong>Recommendation:</strong></p>
+                    <ul>
+                        <li>✅ E5 fuel available at most pumps is generally fine</li>
+                        <li>🔧 Get your fuel system inspected annually</li>
+                        <li>🔧 Replace rubber fuel lines with ethanol-resistant ones if possible</li>
+                        <li>⛽ Avoid E20 fuel when it becomes available at pumps</li>
+                    </ul>
+                `;
+            } else if (year >= 2008 && year <= 2015) {
+                // 2008-2015 vehicles
+                compatibility = 'compatible';
+                resultIcon.textContent = '✅';
+                resultTitle.textContent = 'Compatible with E10 Ethanol Blend';
+                details = `
+                    <p>Your <strong>${brand} ${model} (${year})</strong> is <strong>compatible with E10 ethanol-blended fuel</strong>! 🎉</p>
+                    <ul>
+                        <li>✅ <strong>E5 (5% Ethanol):</strong> Fully Compatible ✅</li>
+                        <li>✅ <strong>E10 (10% Ethanol):</strong> Compatible ✅</li>
+                        <li>⚠️ <strong>E20 (20% Ethanol):</strong> Not officially supported - use with caution</li>
+                        <li>❌ <strong>E85 (85% Ethanol):</strong> Not Compatible</li>
+                    </ul>
+                    <p><strong>Good News:</strong></p>
+                    <ul>
+                        <li>🔹 Most vehicles after 2008 were designed to handle E10 fuel</li>
+                        <li>🔹 Your fuel system (${vehicleInfo.fuelSystem}) can process E10 properly</li>
+                        <li>🔹 You may notice 1-2% reduction in mileage with E10 (normal)</li>
+                        <li>🔹 E10 produces fewer emissions, better for the environment 🌿</li>
+                    </ul>
+                    <p><strong>Tips:</strong></p>
+                    <ul>
+                        <li>⛽ The petrol you're currently buying at Indian pumps is likely E10</li>
+                        <li>🔧 Regular servicing ensures best performance with ethanol fuel</li>
+                        <li>📋 Check your owner's manual for specific ethanol recommendations</li>
+                    </ul>
+                `;
+            } else if (year >= 2016 && year <= 2018) {
+                // 2016-2018 vehicles
+                let hasFI = vehicleInfo.fuelSystem.includes('FI');
+                
+                if (hasFI) {
+                    compatibility = 'compatible';
+                    resultIcon.textContent = '✅';
+                    resultTitle.textContent = 'Highly Compatible with Ethanol Blends!';
+                    details = `
+                        <p>Your <strong>${brand} ${model} (${year})</strong> with <strong>Fuel Injection</strong> is well-suited for ethanol-blended fuel! 🎉</p>
+                        <ul>
+                            <li>✅ <strong>E5 (5% Ethanol):</strong> Fully Compatible ✅</li>
+                            <li>✅ <strong>E10 (10% Ethanol):</strong> Fully Compatible ✅</li>
+                            <li>⚠️ <strong>E20 (20% Ethanol):</strong> Likely compatible (check manufacturer)</li>
+                            <li>❌ <strong>E85 (85% Ethanol):</strong> Not Compatible (needs flex-fuel engine)</li>
+                        </ul>
+                        <p><strong>Why your vehicle is well-suited:</strong></p>
+                        <ul>
+                            <li>🔹 Modern Fuel Injection system adjusts for ethanol content</li>
+                            <li>🔹 Engine materials are ethanol-resistant</li>
+                            <li>🔹 ECU can optimize fuel-air mixture automatically</li>
+                            <li>🔹 Meets BS-IV/BS-VI emission norms compatible with E10</li>
+                        </ul>
+                        <p><strong>Environmental Impact:</strong></p>
+                        <ul>
+                            <li>🌿 Using E10 reduces CO emissions by ~20%</li>
+                            <li>🌿 Reduces India's crude oil imports</li>
+                            <li>🌿 Supports Indian farmers (sugarcane & grain-based ethanol)</li>
+                            <li>🌿 Your vehicle contributes to India's green fuel mission!</li>
+                        </ul>
+                    `;
+                } else {
+                    compatibility = 'compatible';
+                    resultIcon.textContent = '✅';
+                    resultTitle.textContent = 'Compatible with E10 Ethanol Blend';
+                    details = `
+                        <p>Your <strong>${brand} ${model} (${year})</strong> is <strong>compatible with E10 fuel</strong>.</p>
+                        <ul>
+                            <li>✅ <strong>E5 (5% Ethanol):</strong> Fully Compatible ✅</li>
+                            <li>✅ <strong>E10 (10% Ethanol):</strong> Compatible ✅</li>
+                            <li>⚠️ <strong>E20 (20% Ethanol):</strong> Use with caution</li>
+                            <li>❌ <strong>E85 (85% Ethanol):</strong> Not Compatible</li>
+                        </ul>
+                        <p><strong>Note:</strong> Your vehicle uses a ${vehicleInfo.fuelSystem} fuel system. While compatible with E10, for best results:</p>
+                        <ul>
+                            <li>🔧 Keep your carburetor clean and well-maintained</li>
+                            <li>⛽ Use the ethanol-blended fuel available at authorized petrol pumps</li>
+                            <li>📋 Regular servicing will optimize performance</li>
+                        </ul>
+                    `;
+                }
+            }
+
+            resultDetails.innerHTML = details;
+            resultSection.className = 'result-section show ' + compatibility;
+            resultSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+
+</body>
+</html>
 
         /* COST CALCULATOR */
         .calc-section { padding: 80px 40px; background: var(--white); }
