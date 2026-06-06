@@ -76,8 +76,8 @@
         .mobile-nav a:hover, .mobile-nav a.active { background: var(--primary-bg); color: var(--primary); }
 
         /* HERO */
-        .hero { margin-top: 32px; padding-top: 72px; position: relative; min-height: 100vh; display: flex; align-items: stretch; overflow: hidden; background-image: url('https://images.unsplash.com/photo-1542345812-d98b5cd6cf45?auto=format&fit=crop&w=1920&q=80'); background-size: cover; background-position: center bottom; background-repeat: no-repeat; }
-        .hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(248,253,248,0.9) 0%, rgba(248,253,248,0.7) 22%, rgba(248,253,248,0.2) 38%, rgba(248,253,248,0.2) 62%, rgba(248,253,248,0.7) 78%, rgba(248,253,248,0.9) 100%); pointer-events: none; z-index: 1; }
+        .hero { margin-top: 32px; padding-top: 72px; position: relative; min-height: 100vh; display: flex; align-items: stretch; overflow: hidden; background-image: url('hero-bg.jpg'); background-size: cover; background-position: center bottom; background-repeat: no-repeat; }
+        .hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(248,253,248,0.85) 0%, rgba(248,253,248,0.5) 22%, rgba(248,253,248,0.05) 38%, rgba(248,253,248,0.05) 62%, rgba(248,253,248,0.5) 78%, rgba(248,253,248,0.85) 100%); pointer-events: none; z-index: 1; }
         .hero-wrapper { width: 100%; max-width: 1440px; margin: 0 auto; display: flex; position: relative; z-index: 2; align-items: stretch; }
         .hero-left { flex: 0 0 38%; padding: 60px 20px 60px 48px; display: flex; flex-direction: column; justify-content: center; }
         .hero-title { font-size: 3.4rem; font-weight: 800; line-height: 1.12; color: var(--text-dark); margin-bottom: 20px; letter-spacing: -0.5px; }
@@ -119,60 +119,27 @@
         .view-link { font-size: 0.8rem; color: var(--text-light); font-weight: 500; display: inline-flex; align-items: center; gap: 4px; transition: var(--transition); }
         .view-link:hover { color: var(--primary); }
 
-        /* UPDATED VEHICLE CHECKER STYLES */
+        /* VEHICLE CHECKER */
         .vehicle-section { padding: 80px 40px; background: linear-gradient(135deg, var(--primary-bg-light), var(--primary-bg)); }
-        .vehicle-section-header { margin-bottom: 32px; text-align: center; }
-        .vehicle-section-badge { display: inline-block; background: rgba(46,125,50,0.12); color: var(--primary-dark); font-size: 0.72rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 5px 14px; border-radius: 30px; margin-bottom: 10px; }
-        .vehicle-section-title { font-size: 2.2rem; font-weight: 800; color: var(--text-dark); margin-bottom: 8px; }
-        .vehicle-section-title span { color: var(--primary); }
-        .vehicle-section-sub { font-size: 0.95rem; color: var(--text-light); max-width: 800px; margin: 0 auto; line-height: 1.6; }
-        .news-badge { display: inline-block; background: #e53935; color: #fff; font-size: 0.65rem; font-weight: 700; padding: 2px 8px; border-radius: 20px; margin-left: 8px; vertical-align: middle; }
-        .vehicle-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 32px; align-items: start; margin-top: 20px; }
-        
+        .vehicle-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; margin-top: 8px; }
         .vehicle-form-card { background: var(--white); border-radius: var(--radius-xl); padding: 40px; box-shadow: var(--shadow-xl); }
-        .vehicle-form-card h3 { font-size: 1.35rem; font-weight: 800; margin-bottom: 4px; color: var(--text-dark); }
-        .vehicle-form-card .form-sub { font-size: 0.85rem; color: var(--text-light); margin-bottom: 26px; }
+        .vehicle-form-card h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: 6px; color: var(--text-dark); }
+        .vehicle-form-card .form-sub { font-size: 0.85rem; color: var(--text-light); margin-bottom: 28px; }
         .form-group { margin-bottom: 18px; }
-        .form-group label { display: block; font-size: 0.75rem; font-weight: 700; color: var(--text-medium); margin-bottom: 6px; letter-spacing: 0.5px; text-transform: uppercase; }
-        .form-group select, .form-group input { width: 100%; padding: 12px 16px; border: 1.5px solid var(--gray-200); border-radius: var(--radius-sm); font-size: 0.85rem; font-family: inherit; color: var(--text-dark); background: var(--white); transition: var(--transition); outline: none; appearance: none; -webkit-appearance: none; }
-        .form-group select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 40px; cursor: pointer; }
-        .form-group select:focus, .form-group input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(46,125,50,0.10); }
-        .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+        .form-group label { display: block; font-size: 0.8rem; font-weight: 600; color: var(--text-medium); margin-bottom: 6px; }
+        .form-group select, .form-group input, .form-group textarea { width: 100%; padding: 12px 16px; border: 1.5px solid var(--gray-200); border-radius: var(--radius-sm); font-size: 0.85rem; font-family: inherit; color: var(--text-dark); background: var(--white); transition: var(--transition); outline: none; }
+        .form-group select { appearance: none; -webkit-appearance: none; cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 40px; }
+        .form-group textarea { resize: vertical; min-height: 80px; }
+        .form-group select:focus, .form-group input:focus, .form-group textarea:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(46,125,50,0.1); }
         .check-btn { width: 100%; padding: 14px; background: var(--primary); color: var(--white); border: none; border-radius: var(--radius-sm); font-weight: 700; font-size: 0.9rem; font-family: inherit; cursor: pointer; transition: var(--transition); display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 10px; }
         .check-btn:hover { background: var(--primary-dark); box-shadow: var(--shadow-green); transform: translateY(-2px); }
-
-        .vehicle-result { display: none; margin-top: 20px; padding: 18px 20px; border-radius: var(--radius-md); animation: e85FadeInUp 0.4s ease; }
-        .vehicle-result.show { display: block; }
-        .vehicle-result.compatible   { background: #e8f5e9; color: #1b5e20; border: 1px solid rgba(46,125,50,0.25); }
-        .vehicle-result.incompatible { background: #fff3e0; color: #e65100; border: 1px solid rgba(230,81,0,0.25); }
-        .vehicle-result.caution      { background: #fffde7; color: #f57f17; border: 1px solid rgba(245,127,23,0.3); }
-        .vehicle-result.unknown      { background: #e3f2fd; color: #0d47a1; border: 1px solid rgba(13,71,161,0.2); }
-        .result-header { display: flex; align-items: center; gap: 9px; font-weight: 800; font-size: 1rem; margin-bottom: 8px; }
-        .result-icon { font-size: 1.3rem; line-height: 1; }
-        .result-body { font-weight: 500; line-height: 1.65; font-size: 0.84rem; }
-        .result-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
-        .e85-tag { font-size: 0.7rem; font-weight: 700; padding: 3px 10px; border-radius: 20px; }
-        .e85-tag.green  { background: rgba(46,125,50,0.13);  color: #1b5e20; }
-        .e85-tag.orange { background: rgba(230,81,0,0.10);   color: #bf360c; }
-        .e85-tag.blue   { background: rgba(13,71,161,0.08);  color: #0d47a1; }
-        .e85-tag.yellow { background: rgba(245,127,23,0.12); color: #e65100; }
-
-        .vehicle-info-card { background: var(--white); border-radius: var(--radius-xl); padding: 36px; box-shadow: var(--shadow-xl); height: 100%; display: flex; flex-direction: column; justify-content: space-between; }
-        .vehicle-info-card h4 { font-size: 1rem; font-weight: 800; color: var(--text-dark); margin-bottom: 18px; padding-bottom: 12px; border-bottom: 1.5px solid var(--gray-200); }
-        .bike-list { list-style: none; display: flex; flex-direction: column; gap: 9px; max-height: 380px; overflow-y: auto; padding-right: 6px; }
-        .bike-list::-webkit-scrollbar { width: 5px; }
-        .bike-list::-webkit-scrollbar-thumb { background: var(--gray-300); border-radius: 3px; }
-        .bike-item { display: flex; align-items: flex-start; gap: 10px; padding: 10px 13px; border-radius: var(--radius-sm); border: 1px solid #e8f5e9; background: #f9fef9; transition: var(--transition); }
-        .bike-item:hover { border-color: rgba(46,125,50,0.3); background: #f1f8e9; }
-        .bike-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
-        .bike-dot.e85-full  { background: var(--primary); }
-        .bike-dot.e85-pilot { background: #f57c00; }
-        .bike-name   { font-size: 0.81rem; font-weight: 700; color: var(--text-dark); }
-        .bike-compat { font-size: 0.72rem; color: var(--text-light); margin-top: 2px; line-height: 1.4; }
-        .info-legend { display: flex; gap: 18px; margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--gray-200); }
-        .legend-item { display: flex; align-items: center; gap: 6px; font-size: 0.72rem; color: var(--text-medium); font-weight: 600; }
-
-        @keyframes e85FadeInUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .vehicle-result { display: none; margin-top: 20px; padding: 18px 20px; border-radius: var(--radius-md); font-size: 0.9rem; font-weight: 600; text-align: center; animation: fadeInUp 0.4s ease; }
+        .vehicle-result.compatible { display: block; background: var(--primary-bg); color: var(--primary-dark); border: 1px solid rgba(46,125,50,0.25); }
+        .vehicle-result.incompatible { display: block; background: #fff3e0; color: #e65100; border: 1px solid rgba(230,81,0,0.25); }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .vehicle-image-side { display: flex; align-items: center; justify-content: center; }
+        .vehicle-image-side img { width: 100%; max-width: 560px; border-radius: var(--radius-xl); box-shadow: var(--shadow-xl); transition: transform 0.5s ease; }
+        .vehicle-image-side:hover img { transform: scale(1.02); }
 
         /* COST CALCULATOR */
         .calc-section { padding: 80px 40px; background: var(--white); }
@@ -205,16 +172,16 @@
         /* DASHBOARD */
         .dashboard-section { padding: 80px 40px; background: var(--off-white); }
         .dash-grid { display: grid; grid-template-columns: 1.8fr 1fr; gap: 20px; }
-        .metrics-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+        .metrics-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
         .metric-box { padding: 20px; border-radius: var(--radius-md); position: relative; overflow: hidden; }
-        .metric-box.primary-metric { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: var(--white); grid-column: span 2; }
+        .metric-box.primary-metric { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: var(--white); }
         .metric-tag { display: inline-block; font-size: 0.7rem; font-weight: 500; background: rgba(255,255,255,0.18); padding: 4px 10px; border-radius: var(--radius-full); margin-bottom: 14px; }
         .metric-box.primary-metric .metric-number { font-size: 2rem; font-weight: 800; line-height: 1.1; }
         .metric-box.primary-metric .metric-unit { font-size: 0.95rem; font-weight: 400; opacity: 0.8; }
         .metric-box.primary-metric .metric-compare { font-size: 0.73rem; opacity: 0.7; margin-top: 4px; }
         .metric-box.primary-metric .metric-percent { font-size: 0.75rem; margin-top: 10px; display: flex; align-items: center; gap: 4px; font-weight: 600; }
         .metric-float-icon { position: absolute; top: 16px; right: 16px; width: 38px; height: 38px; background: rgba(255,255,255,0.15); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; }
-        .metric-box.secondary-metric { background: var(--white); border: 1px solid var(--gray-100); }
+        .metric-box.secondary-metric { background: var(--off-white); border: 1px solid var(--gray-100); }
         .sec-metric-label { font-size: 0.8rem; color: var(--text-light); font-weight: 500; margin-bottom: 10px; }
         .sec-metric-value { font-size: 2rem; font-weight: 800; color: var(--text-dark); line-height: 1.1; }
         .sec-metric-value .dim { font-size: 1rem; color: var(--text-lighter); font-weight: 500; }
@@ -253,29 +220,29 @@
         /* COMPARISON */
         .comparison-section { padding: 80px 40px; background: var(--off-white); }
         .comp-grid { display: grid; grid-template-columns: 1.8fr 1fr; gap: 20px; }
-        .comp-inner { display: grid; grid-template-columns: 1.1fr 1fr 0.9fr; gap: 24px; align-items: start; }
+        .comp-inner { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; align-items: start; }
         .chart-label { font-size: 0.85rem; font-weight: 600; color: var(--text-medium); margin-bottom: 16px; }
         .bars-area { display: flex; align-items: flex-end; gap: 24px; height: 190px; padding-bottom: 32px; position: relative; }
         .bars-area::after { content: ''; position: absolute; bottom: 32px; left: 0; right: 0; height: 1px; background: var(--gray-100); }
         .y-labels { position: absolute; left: -8px; bottom: 32px; top: 0; display: flex; flex-direction: column; justify-content: space-between; font-size: 0.6rem; color: var(--text-lighter); }
         .bar-col { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 8px; }
-        .bar-stick { width: 44px; border-radius: 6px 6px 2px 2px; position: relative; min-height: 10px; transition: height 1.8s ease; }
+        .bar-stick { width: 48px; border-radius: 6px 6px 2px 2px; position: relative; min-height: 10px; transition: height 1.8s ease; }
         .bar-stick.color-e85 { background: linear-gradient(180deg, #2e7d32, #1b5e20); }
         .bar-stick.color-e20 { background: linear-gradient(180deg, #8bc34a, #689f38); }
         .bar-stick.color-petrol { background: linear-gradient(180deg, #43a047, #2e7d32); }
         .bar-val { position: absolute; top: -24px; left: 50%; transform: translateX(-50%); font-size: 0.78rem; font-weight: 700; color: var(--text-dark); white-space: nowrap; }
         .bar-name { font-size: 0.75rem; font-weight: 600; color: var(--text-light); }
-        .benefits-col { display: flex; flex-direction: column; gap: 14px; }
+        .benefits-col { display: flex; flex-direction: column; gap: 18px; }
         .benefit-row { display: flex; gap: 12px; align-items: flex-start; }
         .benefit-icon-box { width: 38px; height: 38px; min-width: 38px; background: var(--primary-bg); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; }
         .benefit-icon-box svg { width: 18px; height: 18px; stroke: var(--primary); }
         .benefit-info h4 { font-size: 0.85rem; font-weight: 700; color: var(--text-dark); margin-bottom: 2px; }
         .benefit-info p { font-size: 0.73rem; color: var(--text-lighter); }
-        .promo-box { background: var(--primary-bg-light); border-radius: var(--radius-md); padding: 24px 16px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; }
-        .promo-box .promo-huge { font-size: 2.8rem; font-weight: 900; color: var(--primary); line-height: 1; }
-        .promo-box .promo-text { font-size: 0.85rem; font-weight: 600; color: var(--text-medium); }
-        .promo-box .promo-subtext { font-size: 0.75rem; color: var(--text-light); }
-        .promo-link { display: inline-flex; align-items: center; gap: 6px; background: var(--white); color: var(--text-dark); padding: 8px 18px; border-radius: var(--radius-full); font-weight: 600; font-size: 0.78rem; border: 1px solid var(--gray-200); transition: var(--transition); margin-top: 4px; }
+        .promo-box { background: var(--primary-bg-light); border-radius: var(--radius-md); padding: 28px 20px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; }
+        .promo-box .promo-huge { font-size: 3.2rem; font-weight: 900; color: var(--primary); line-height: 1; }
+        .promo-box .promo-text { font-size: 0.9rem; font-weight: 600; color: var(--text-medium); }
+        .promo-box .promo-subtext { font-size: 0.8rem; color: var(--text-light); }
+        .promo-link { display: inline-flex; align-items: center; gap: 6px; background: var(--white); color: var(--text-dark); padding: 10px 22px; border-radius: var(--radius-full); font-weight: 600; font-size: 0.8rem; border: 1px solid var(--gray-200); transition: var(--transition); margin-top: 6px; }
         .promo-link:hover { border-color: var(--primary); color: var(--primary); }
         .news-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
         .news-entry { display: flex; gap: 14px; align-items: flex-start; }
@@ -287,6 +254,8 @@
         .news-headline { font-size: 0.88rem; font-weight: 700; color: var(--text-dark); line-height: 1.45; margin-bottom: 10px; transition: opacity 0.25s ease; }
         .news-read-more { font-size: 0.75rem; color: var(--primary); font-weight: 600; display: inline-flex; align-items: center; gap: 4px; }
         .news-arrows { display: flex; gap: 8px; margin-top: 18px; justify-content: flex-end; }
+        .arrow-btn { width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--gray-200); background: var(--white); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: var(--transition); color: var(--text-light); font-size: 14px; }
+        .arrow-btn:hover { border-color: var(--primary); color: var(--primary); }
 
         /* FEATURES STRIP */
         .features-strip { padding: 60px 40px; background: var(--white); }
@@ -332,6 +301,15 @@
         .leaflet-popup-content-wrapper { border-radius: 10px !important; }
         .leaflet-popup-content { margin: 12px 16px !important; font-family: 'Inter', sans-serif !important; font-size: 13px !important; }
         .custom-pin { background: var(--primary); width: 18px; height: 18px; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); border: 2.5px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
+        .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); z-index: 100000; display: none; align-items: center; justify-content: center; padding: 20px; }
+        .modal-overlay.active { display: flex; }
+        .modal-box { background: var(--white); border-radius: var(--radius-xl); padding: 36px; width: 100%; max-width: 500px; max-height: 90vh; overflow-y: auto; position: relative; animation: slideUp 0.4s ease; }
+        @keyframes slideUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        .modal-close { position: absolute; top: 16px; right: 16px; width: 36px; height: 36px; border-radius: 50%; background: var(--gray-100); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: var(--transition); font-size: 18px; }
+        .modal-close:hover { background: var(--primary-bg); color: var(--primary); transform: rotate(90deg); }
+        .modal-box h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: 6px; color: var(--text-dark); }
+        .modal-box .modal-sub { font-size: 0.85rem; color: var(--text-light); margin-bottom: 24px; }
+        .modal-success { display: none; padding: 16px; margin-top: 16px; background: var(--primary-bg); color: var(--primary-dark); border-radius: var(--radius-md); font-weight: 600; text-align: center; font-size: 0.85rem; }
 
         /* POLICY TIMELINE */
         .policy-section { padding: 80px 40px; background: linear-gradient(180deg, var(--off-white), var(--primary-bg-light)); }
@@ -356,17 +334,6 @@
         .timeline-status.current { background: #FFF3E0; color: #E65100; }
         .timeline-status.future { background: var(--gray-100); color: var(--text-light); }
 
-        /* MODAL */
-        .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); z-index: 100000; display: none; align-items: center; justify-content: center; padding: 20px; }
-        .modal-overlay.active { display: flex; }
-        .modal-box { background: var(--white); border-radius: var(--radius-xl); padding: 36px; width: 100%; max-width: 500px; max-height: 90vh; overflow-y: auto; position: relative; animation: slideUp 0.4s ease; }
-        @keyframes slideUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-        .modal-close { position: absolute; top: 16px; right: 16px; width: 36px; height: 36px; border-radius: 50%; background: var(--gray-100); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: var(--transition); font-size: 18px; }
-        .modal-close:hover { background: var(--primary-bg); color: var(--primary); transform: rotate(90deg); }
-        .modal-box h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: 6px; color: var(--text-dark); }
-        .modal-box .modal-sub { font-size: 0.85rem; color: var(--text-light); margin-bottom: 24px; }
-        .modal-success { display: none; padding: 16px; margin-top: 16px; background: var(--primary-bg); color: var(--primary-dark); border-radius: var(--radius-md); font-weight: 600; text-align: center; font-size: 0.85rem; }
-
         /* FOOTER */
         .footer { background: #111; color: var(--white); padding: 60px 48px 30px; }
         .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr 1.3fr; gap: 40px; margin-bottom: 40px; }
@@ -384,7 +351,6 @@
         .scroll-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; background: var(--primary); color: white; border: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 9998; box-shadow: var(--shadow-green); transition: var(--transition); opacity: 0; visibility: hidden; transform: translateY(10px); font-size: 18px; }
         .scroll-top.visible { opacity: 1; visibility: visible; transform: translateY(0); }
 
-        /* RESPONSIVE LAYOUTS */
         @media (max-width: 1200px) { .hero-title { font-size: 2.8rem; } .comp-inner { grid-template-columns: 1fr 1fr; } .promo-box { display: none; } .calc-grid { grid-template-columns: 1fr; } }
         @media (max-width: 1024px) {
             .navbar { padding: 0 24px; } .nav-links { display: none; } .mobile-hamburger { display: flex; }
@@ -438,12 +404,11 @@
     </a>
     <nav class="nav-links">
         <a href="#" class="active">Home</a>
-        <a href="#vehicle-checker">Vehicle Check</a>
-        <a href="#stations">Fuel Stations</a>
+        <a href="#vehicles">Vehicle Check</a>
         <a href="#calculator">Calculator</a>
         <a href="#dashboard">Dashboard</a>
-        <a href="#comparison">Comparison</a>
         <a href="#catalog">FFV Models</a>
+        <a href="#stations">Fuel Stations</a>
         <a href="#policy">Policy</a>
         <a href="#dashboard" class="nav-cta-btn">Live Dashboard <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg></a>
     </nav>
@@ -452,24 +417,23 @@
 
 <div class="mobile-nav" id="mobileNav">
     <a href="#" class="active" onclick="toggleMenu()">Home</a>
-    <a href="#vehicle-checker" onclick="toggleMenu()">Vehicle Check</a>
-    <a href="#stations" onclick="toggleMenu()">Fuel Stations</a>
+    <a href="#vehicles" onclick="toggleMenu()">Vehicle Check</a>
     <a href="#calculator" onclick="toggleMenu()">Cost Calculator</a>
     <a href="#dashboard" onclick="toggleMenu()">Dashboard</a>
-    <a href="#comparison" onclick="toggleMenu()">Comparison</a>
     <a href="#catalog" onclick="toggleMenu()">FFV Models</a>
+    <a href="#stations" onclick="toggleMenu()">Fuel Stations</a>
     <a href="#policy" onclick="toggleMenu()">Policy Timeline</a>
 </div>
 
-<!-- 1. HERO (Image Background) -->
+<!-- 1. HERO -->
 <section class="hero" id="home">
     <div class="hero-wrapper">
         <div class="hero-left">
             <h1 class="hero-title reveal">India's <span class="green">E85</span><br>Fuel Intelligence<br>Platform</h1>
             <p class="hero-desc reveal reveal-delay-1">Real-time analytics, fuel prices, station locator, vehicle compatibility and everything you need to know about E85 in India.</p>
             <div class="hero-btns reveal reveal-delay-2">
-                <a href="#vehicle-checker" class="btn-hero-primary">Check Your Vehicle <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
-                <a href="#stations" class="btn-hero-secondary"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor"/></svg> Find Stations</a>
+                <a href="#vehicles" class="btn-hero-primary">Check Your Vehicle <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+                <a href="#dashboard" class="btn-hero-secondary"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor"/></svg> Watch Video</a>
             </div>
             <div class="hero-tags reveal reveal-delay-3">
                 <div class="hero-tag"><span class="hero-tag-dot"></span> Cleaner Fuel</div>
@@ -493,125 +457,32 @@
     </div>
 </section>
 
-<!-- 2. VEHICLE CHECKER (UPDATED INTERFACE) -->
-<section class="vehicle-section" id="vehicle-checker">
-  <div class="vehicle-section-header reveal">
-    <div class="vehicle-section-badge">E85 Compatibility Checker</div>
-    <h2 class="vehicle-section-title">Is Your Vehicle <span>E85 Ready</span>?</h2>
-    <p class="vehicle-section-sub">India launched E85 fuel in June 2025 — check if your bike, scooter, or car can safely use it. Free, instant, no login needed.</p>
-  </div>
-
-  <div class="section-container">
-    <div class="vehicle-grid">
-  
-      <div class="vehicle-form-card reveal">
-        <h3>Check Your Vehicle <span class="news-badge">FREE</span></h3>
-        <div class="form-sub">Select your vehicle details for an instant E85 compatibility result</div>
-  
-        <div class="form-group">
-          <label>Vehicle Type</label>
-          <select id="e85-vtype" onchange="e85PopulateBrands()">
-            <option value="">Select vehicle type...</option>
-            <option value="bike">Motorcycle / Bike</option>
-            <option value="scooter">Scooter</option>
-            <option value="car">Car / SUV</option>
-            <option value="three-wheeler">Three-Wheeler / Auto</option>
-          </select>
-        </div>
-  
-        <div class="form-row-2">
-          <div class="form-group">
-            <label>Brand / Make</label>
-            <select id="e85-vbrand" onchange="e85PopulateModels()">
-              <option value="">Select brand...</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Model</label>
-            <select id="e85-vmodel">
-              <option value="">Select model...</option>
-            </select>
-          </div>
-        </div>
-  
-        <div class="form-group">
-          <label>Manufacturing Year</label>
-          <select id="e85-vyear">
-            <option value="">Select year...</option>
-            <option value="2025">2025</option>
-            <option value="2024">2024</option>
-            <option value="2023">2023</option>
-            <option value="2022">2022</option>
-            <option value="2021">2021</option>
-            <option value="2020">2020</option>
-            <option value="2019">2019</option>
-            <option value="2018">2018</option>
-            <option value="old">2017 or older</option>
-          </select>
-        </div>
-  
-        <button class="check-btn" onclick="e85CheckVehicle()">⚡ Check E85 Compatibility</button>
-  
-        <div class="vehicle-result" id="e85-result">
-          <div class="result-header">
-            <span class="result-icon" id="e85-resIcon"></span>
-            <span id="e85-resTitle"></span>
-          </div>
-          <div class="result-body" id="e85-resBody"></div>
-          <div class="result-tags" id="e85-resTags"></div>
-        </div>
-      </div>
-  
-      <div class="vehicle-info-card reveal reveal-delay-2">
-        <h4>E85-Compatible Vehicles in India</h4>
-        <ul class="bike-list">
-          <li class="bike-item"><div class="bike-dot e85-full"></div><div><div class="bike-name">Hero Splendor Plus Flex Fuel</div><div class="bike-compat">E85 ✓ · ₹82,810 · Launched Jun 2025 · +7% power</div></div></li>
-          <li class="bike-item"><div class="bike-dot e85-full"></div><div><div class="bike-name">Hero HF Deluxe Flex Fuel</div><div class="bike-compat">E85 ✓ · Budget commuter · Launched Jun 2025</div></div></li>
-          <li class="bike-item"><div class="bike-dot e85-full"></div><div><div class="bike-name">Suzuki Gixxer SF 250 Flex Fuel</div><div class="bike-compat">E85 ✓ · ₹1.98 lakh · 27.9 PS / 22.5 Nm</div></div></li>
-          <li class="bike-item"><div class="bike-dot e85-full"></div><div><div class="bike-name">Honda CB300F Flex Fuel</div><div class="bike-compat">E85 ✓ · First 300cc flex-fuel bike in India</div></div></li>
-          <li class="bike-item"><div class="bike-dot e85-full"></div><div><div class="bike-name">Bajaj Pulsar NS160 Flex Fuel</div><div class="bike-compat">E100 ✓ · Any petrol-ethanol blend</div></div></li>
-          <li class="bike-item"><div class="bike-dot e85-full"></div><div><div class="bike-name">TVS Apache RTR 200 Fi E100</div><div class="bike-compat">E100 ✓ · 197cc · First ethanol bike India</div></div></li>
-          <li class="bike-item"><div class="bike-dot e85-full"></div><div><div class="bike-name">TVS Raider 125 FFT</div><div class="bike-compat">E85 ✓ · 125cc · 70 kmpl · Launching mid-2025</div></div></li>
-          <li class="bike-item"><div class="bike-dot e85-pilot"></div><div><div class="bike-name">Maruti WagonR Flex Fuel</div><div class="bike-compat">E85 ✓ · Car · Unveiled Jun 2025</div></div></li>
-          <li class="bike-item"><div class="bike-dot e85-pilot"></div><div><div class="bike-name">Toyota Innova Hycross Flex</div><div class="bike-compat">E85 ✓ · Pilot/Prototype stage</div></div></li>
-          <li class="bike-item"><div class="bike-dot e85-pilot"></div><div><div class="bike-name">Tata Punch Flex Fuel</div><div class="bike-compat">E85–E100 ✓ · Launch expected late 2026</div></div></li>
-        </ul>
-        <div class="info-legend">
-          <div class="legend-item"><div class="bike-dot e85-full"></div> Available / Launching</div>
-          <div class="legend-item"><div class="bike-dot e85-pilot"></div> Announced / Pilot</div>
-        </div>
-      </div>
-  
-    </div>
-  </div>
-</section>
-
-<!-- 3. FUEL STATIONS -->
-<section class="stations-section" id="stations">
+<!-- 2. VEHICLE CHECKER -->
+<section class="vehicle-section" id="vehicles">
     <div class="section-container">
         <div class="section-header reveal">
-            <div class="section-badge">📍 Locate</div>
-            <h2 class="section-title"><span class="green">E85</span> Fuel Station Network</h2>
-            <p class="section-subtitle">Find E85 fuel stations near you across India. Search by city, view details, and submit new stations.</p>
+            <div class="section-badge">🚗 Check</div>
+            <h2 class="section-title">Vehicle <span class="green">Compatibility</span> Checker</h2>
+            <p class="section-subtitle">Find out if your vehicle is compatible with E85 flex fuel in seconds.</p>
         </div>
-        <div class="stations-toolbar reveal">
-            <div class="search-wrapper">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-                <input type="text" class="search-input" id="searchStations" placeholder="Search by city (Delhi, Mumbai, Bengaluru...)" oninput="filterStations()">
+        <div class="vehicle-grid">
+            <div class="vehicle-form-card reveal">
+                <h3>Check Your Vehicle</h3>
+                <p class="form-sub">Select your vehicle details to check E85 compatibility.</p>
+                <div class="form-group"><label>Vehicle Brand</label><select id="vehicleBrand"><option value="">Select Brand</option><option value="maruti">Maruti Suzuki</option><option value="toyota">Toyota</option><option value="hyundai">Hyundai</option><option value="tata">Tata Motors</option><option value="mahindra">Mahindra</option><option value="honda">Honda</option><option value="kia">Kia</option><option value="mg">MG Motor</option><option value="tvs">TVS</option><option value="bajaj">Bajaj</option><option value="hero">Hero</option><option value="royalenfield">Royal Enfield</option></select></div>
+                <div class="form-group"><label>Model</label><select id="vehicleModel"><option value="">Select Model</option><option value="innova">Innova HyCross Flex</option><option value="landcruiser">Land Cruiser Flex</option><option value="baleno">Baleno Flex Fuel</option><option value="nexon">Nexon Flex Fuel</option><option value="xuv700">XUV700 Flex</option><option value="creta">Creta Flex</option><option value="city">City Flex Fuel</option><option value="apache">Apache RTR 200 Flex</option><option value="pulsar">Pulsar NS 160 Flex</option><option value="splendor">Splendor+ Flex</option></select></div>
+                <div class="form-group"><label>Year</label><select id="vehicleYear"><option value="">Select Year</option><option value="2025">2025</option><option value="2024">2024</option><option value="2023">2023</option><option value="2022">2022</option><option value="2021">2021</option></select></div>
+                <button class="check-btn" onclick="checkVehicle()">Check Compatibility <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button>
+                <div class="vehicle-result" id="vehicleResult"></div>
             </div>
-            <button class="submit-station-btn" onclick="openModal()">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
-                Submit New Station
-            </button>
-        </div>
-        <div class="stations-layout reveal">
-            <div class="stations-list" id="stationsList"></div>
-            <div id="stations-map"></div>
+            <div class="vehicle-image-side reveal reveal-delay-2">
+                <img src="flex-vehicle.jpg" alt="Toyota Land Cruiser Flex Fuel">
+            </div>
         </div>
     </div>
 </section>
 
-<!-- 4. COST CALCULATOR -->
+<!-- 3. COST CALCULATOR -->
 <section class="calc-section" id="calculator">
     <div class="section-container">
         <div class="section-header reveal">
@@ -660,7 +531,7 @@
     </div>
 </section>
 
-<!-- 5. DASHBOARD (with Mini Map) -->
+<!-- 4. DASHBOARD -->
 <section class="dashboard-section" id="dashboard">
     <div class="section-container" style="padding:0 40px;">
         <div class="section-header reveal">
@@ -690,74 +561,7 @@
     </div>
 </section>
 
-<!-- 6. COMPARISON -->
-<section class="comparison-section" id="comparison">
-    <div class="section-container" style="padding:0 40px;">
-        <div class="section-header reveal">
-            <div class="section-badge" style="background:var(--white);">📊 Compare</div>
-            <h2 class="section-title">E85 vs <span class="green">Petrol vs E20</span></h2>
-            <p class="section-subtitle">See why E85 is the smartest fuel choice for your wallet and the environment.</p>
-        </div>
-        <div class="comp-grid">
-            <div class="glass-card reveal">
-                <div class="card-header"><h2 class="card-title">Price & Benefits Comparison</h2></div>
-                <div class="comp-inner">
-                    <div>
-                        <div class="chart-label">Price Comparison (₹ /L)</div>
-                        <div class="bars-area">
-                            <div class="y-labels"><span>100</span><span>75</span><span>50</span><span>25</span><span>0</span></div>
-                            <div class="bar-col"><div class="bar-stick color-e85" style="height:0" data-h="120px"><span class="bar-val">74.28</span></div><span class="bar-name">E85</span></div>
-                            <div class="bar-col"><div class="bar-stick color-e20" style="height:0" data-h="140px"><span class="bar-val">87.15</span></div><span class="bar-name">E20</span></div>
-                            <div class="bar-col"><div class="bar-stick color-petrol" style="height:0" data-h="155px"><span class="bar-val">94.72</span></div><span class="bar-name">Petrol</span></div>
-                        </div>
-                    </div>
-                    <div class="benefits-col">
-                        <div class="benefit-row"><div class="benefit-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m8 12 2.5 2.5L16 9"/></svg></div><div class="benefit-info"><h4>Lower Cost</h4><p>Save up to 20% on fuel cost</p></div></div>
-                        <div class="benefit-row"><div class="benefit-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="benefit-info"><h4>Cleaner Emissions</h4><p>Up to 85% lower carbon emissions</p></div></div>
-                        <div class="benefit-row"><div class="benefit-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><div class="benefit-info"><h4>Higher Octane</h4><p>Better performance & efficiency</p></div></div>
-                        <div class="benefit-row"><div class="benefit-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></div><div class="benefit-info"><h4>Made in India</h4><p>Supports our farmers & economy</p></div></div>
-                    </div>
-                    <div class="promo-box">
-                        <div class="promo-huge">E85</div>
-                        <div class="promo-text">The Future Fuel</div>
-                        <div class="promo-subtext">for a Sustainable India</div>
-                        <a href="#calculator" class="promo-link">Calculate Savings →</a>
-                    </div>
-                </div>
-            </div>
-            <div class="glass-card reveal reveal-delay-1">
-                <div class="news-header"><h2 class="card-title">Live Updates</h2></div>
-                <div class="news-entry">
-                    <div class="news-thumb"><img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=400&q=80" alt="News"></div>
-                    <div class="news-body">
-                        <div class="news-meta-row"><span class="news-cat">Industry News</span><span class="news-time">2h ago</span></div>
-                        <h3 class="news-headline" id="newsHeadline">E85 rollout expands to 100+ new fuel stations across India</h3>
-                        <a href="#" class="news-read-more">Read More →</a>
-                    </div>
-                </div>
-                <div class="news-arrows">
-                    <button class="arrow-btn" onclick="prevNews()">←</button>
-                    <button class="arrow-btn" onclick="nextNews()">→</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- 7. FEATURES STRIP -->
-<section class="features-strip" id="features">
-    <div class="section-container" style="padding:0 40px;">
-        <div class="features-strip-inner reveal">
-            <div class="feat-item"><div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></div><div class="feat-text"><h4>Real-time Analytics</h4><p>Live fuel & market data</p></div></div>
-            <div class="feat-item"><div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0116 0Z"/><circle cx="12" cy="10" r="3"/></svg></div><div class="feat-text"><h4>Fuel Station Locator</h4><p>Find E85 stations near you</p></div></div>
-            <div class="feat-item"><div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="2"/><polygon points="16 8 20 5.5 20 15.5 16 13 16 8"/></svg></div><div class="feat-text"><h4>Vehicle Compatibility</h4><p>Check cars & bikes</p></div></div>
-            <div class="feat-item"><div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><div class="feat-text"><h4>Cost Calculator</h4><p>Save money, choose E85</p></div></div>
-            <div class="feat-item"><div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 22h16a2 2 0 002-2V4a2 2 0 00-2-2H8a2 2 0 00-2 2v16a2 2 0 01-2 2Z"/></svg></div><div class="feat-text"><h4>Latest News</h4><p>E85 industry updates</p></div></div>
-        </div>
-    </div>
-</section>
-
-<!-- 8. VEHICLE CATALOG -->
+<!-- 5. VEHICLE CATALOG (CARS + BIKES) -->
 <section class="catalog-section" id="catalog">
     <div class="section-container">
         <div class="section-header reveal">
@@ -785,6 +589,99 @@
             <button class="filter-pill brand-pill" data-brand="yamaha" onclick="filterCatalog('yamaha', this)">Yamaha</button>
         </div>
         <div class="catalog-grid reveal" id="catalogGrid"></div>
+    </div>
+</section>
+
+<!-- 6. COMPARISON -->
+<section class="comparison-section">
+    <div class="section-container" style="padding:0 40px;">
+        <div class="section-header reveal">
+            <div class="section-badge" style="background:var(--white);">📊 Compare</div>
+            <h2 class="section-title">E85 vs <span class="green">Petrol vs E20</span></h2>
+            <p class="section-subtitle">See why E85 is the smartest fuel choice for your wallet and the environment.</p>
+        </div>
+        <div class="comp-grid">
+            <div class="glass-card reveal">
+                <div class="card-header"><h2 class="card-title">Price & Benefits Comparison</h2></div>
+                <div class="comp-inner">
+                    <div>
+                        <div class="chart-label">Price Comparison (₹ /L)</div>
+                        <div class="bars-area">
+                            <div class="y-labels"><span>100</span><span>75</span><span>50</span><span>25</span><span>0</span></div>
+                            <div class="bar-col"><div class="bar-stick color-e85" style="height:0" data-h="120px"><span class="bar-val">74.28</span></div><span class="bar-name">E85</span></div>
+                            <div class="bar-col"><div class="bar-stick color-e20" style="height:0" data-h="140px"><span class="bar-val">87.15</span></div><span class="bar-name">E20</span></div>
+                            <div class="bar-col"><div class="bar-stick color-petrol" style="height:0" data-h="155px"><span class="bar-val">94.72</span></div><span class="bar-name">Petrol</span></div>
+                        </div>
+                    </div>
+                    <div class="benefits-col">
+                        <div class="benefit-row"><div class="benefit-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m8 12 2.5 2.5L16 9"/></svg></div><div class="benefit-info"><h4>Lower Cost</h4><p>Save up to 20% on fuel cost</p></div></div>
+                        <div class="benefit-row"><div class="benefit-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="benefit-info"><h4>Cleaner Emissions</h4><p>Up to 85% lower carbon emissions</p></div></div>
+                        <div class="benefit-row"><div class="benefit-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><div class="benefit-info"><h4>Higher Octane</h4><p>Better performance & efficiency</p></div></div>
+                        <div class="benefit-row"><div class="benefit-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></div><div class="benefit-info"><h4>Made in India</h4><p>Supports our farmers & economy</p></div></div>
+                    </div>
+                    <div class="promo-box">
+                        <img src="e85-nozzle.png" alt="E85 Nozzle" style="width:130px;height:auto;margin-bottom:4px;filter:drop-shadow(0 10px 25px rgba(0,0,0,0.15));">
+                        <div class="promo-huge">E85</div>
+                        <div class="promo-text">The Future Fuel</div>
+                        <div class="promo-subtext">for a Sustainable India</div>
+                        <a href="#calculator" class="promo-link">Calculate Savings →</a>
+                    </div>
+                </div>
+            </div>
+            <div class="glass-card reveal reveal-delay-1">
+                <div class="news-header"><h2 class="card-title">Live Updates</h2><a href="#" class="view-link">View All News →</a></div>
+                <div class="news-entry">
+                    <div class="news-thumb"><img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=400&q=80" alt="News"></div>
+                    <div class="news-body">
+                        <div class="news-meta-row"><span class="news-cat">Industry News</span><span class="news-time">2h ago</span></div>
+                        <h3 class="news-headline" id="newsHeadline">E85 rollout expands to 100+ new fuel stations across India</h3>
+                        <a href="#" class="news-read-more">Read More →</a>
+                    </div>
+                </div>
+                <div class="news-arrows">
+                    <button class="arrow-btn" onclick="prevNews()">←</button>
+                    <button class="arrow-btn" onclick="nextNews()">→</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 7. FEATURES STRIP -->
+<section class="features-strip">
+    <div class="section-container" style="padding:0 40px;">
+        <div class="features-strip-inner reveal">
+            <div class="feat-item"><div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></div><div class="feat-text"><h4>Real-time Analytics</h4><p>Live fuel & market data</p></div></div>
+            <div class="feat-item"><div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0116 0Z"/><circle cx="12" cy="10" r="3"/></svg></div><div class="feat-text"><h4>Fuel Station Locator</h4><p>Find E85 stations near you</p></div></div>
+            <div class="feat-item"><div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="2"/><polygon points="16 8 20 5.5 20 15.5 16 13 16 8"/></svg></div><div class="feat-text"><h4>Vehicle Compatibility</h4><p>Check cars & bikes</p></div></div>
+            <div class="feat-item"><div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><div class="feat-text"><h4>Cost Calculator</h4><p>Save money, choose E85</p></div></div>
+            <div class="feat-item"><div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 22h16a2 2 0 002-2V4a2 2 0 00-2-2H8a2 2 0 00-2 2v16a2 2 0 01-2 2Z"/></svg></div><div class="feat-text"><h4>Latest News</h4><p>E85 industry updates</p></div></div>
+        </div>
+    </div>
+</section>
+
+<!-- 8. FUEL STATIONS -->
+<section class="stations-section" id="stations">
+    <div class="section-container">
+        <div class="section-header reveal">
+            <div class="section-badge">📍 Locate</div>
+            <h2 class="section-title"><span class="green">E85</span> Fuel Station Network</h2>
+            <p class="section-subtitle">Find E85 fuel stations near you across India. Search by city, view details, and submit new stations.</p>
+        </div>
+        <div class="stations-toolbar reveal">
+            <div class="search-wrapper">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                <input type="text" class="search-input" id="searchStations" placeholder="Search by city (Delhi, Mumbai, Bengaluru...)" oninput="filterStations()">
+            </div>
+            <button class="submit-station-btn" onclick="openModal()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+                Submit New Station
+            </button>
+        </div>
+        <div class="stations-layout reveal">
+            <div class="stations-list" id="stationsList"></div>
+            <div id="stations-map"></div>
+        </div>
     </div>
 </section>
 
@@ -879,7 +776,7 @@
     </div>
 </div>
 
-<!-- 10. FOOTER -->
+<!-- FOOTER -->
 <footer class="footer" id="contact">
     <div class="footer-grid">
         <div>
@@ -887,7 +784,7 @@
             <p class="footer-desc">India's leading E85 fuel intelligence platform providing real-time analytics, station locator, vehicle compatibility for cars & bikes, cost calculator, and comprehensive biofuel information.</p>
         </div>
         <div class="footer-col"><h4>Platform</h4><ul><li><a href="#dashboard">Dashboard</a></li><li><a href="#stations">Fuel Stations</a></li><li><a href="#calculator">Cost Calculator</a></li><li><a href="#catalog">FFV Catalog</a></li></ul></div>
-        <div class="footer-col"><h4>Resources</h4><ul><li><a href="#vehicle-checker">Vehicle Check</a></li><li><a href="#policy">Policy Timeline</a></li><li><a href="#">Industry Reports</a></li><li><a href="#">API Access</a></li></ul></div>
+        <div class="footer-col"><h4>Resources</h4><ul><li><a href="#vehicles">Vehicle Check</a></li><li><a href="#policy">Policy Timeline</a></li><li><a href="#">Industry Reports</a></li><li><a href="#">API Access</a></li></ul></div>
         <div class="footer-col"><h4>Company</h4><ul><li><a href="#">About Us</a></li><li><a href="#">Contact</a></li><li><a href="#">Careers</a></li><li><a href="#">Privacy</a></li></ul></div>
         <div class="footer-col"><h4>Stay Updated</h4><p style="font-size:0.78rem;color:rgba(255,255,255,0.45);margin-bottom:14px">Get latest E85 news delivered.</p><div style="display:flex;gap:8px"><input type="email" placeholder="Enter email" style="flex:1;padding:10px 14px;border-radius:8px;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.06);color:white;font-size:0.8rem;outline:none"><button style="padding:10px 20px;background:var(--primary);color:white;border:none;border-radius:8px;font-weight:600;font-size:0.8rem;cursor:pointer">Subscribe</button></div></div>
     </div>
@@ -912,7 +809,7 @@ let miniMap, stationsMap, markers = [];
 
 const vehiclesData = [
     { type: 'car', brand: 'toyota', name: 'Innova HyCross Flex', img: 'https://images.unsplash.com/photo-1549317661-bd32c8ce0afa?auto=format&fit=crop&w=400&q=80', mileage: '15.1 km/L', engine: '2.0L', price: '₹19.99 L', tag: 'NEW' },
-    { type: 'car', brand: 'toyota', name: 'Land Cruiser Flex', img: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=400&q=80', mileage: '12 km/L', engine: '3.5L', price: '₹2.10 Cr', tag: 'PREMIUM' },
+    { type: 'car', brand: 'toyota', name: 'Land Cruiser Flex', img: 'flex-vehicle.jpg', mileage: '12 km/L', engine: '3.5L', price: '₹2.10 Cr', tag: 'PREMIUM' },
     { type: 'car', brand: 'maruti', name: 'Baleno Flex Fuel', img: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=400&q=80', mileage: '22 km/L', engine: '1.2L', price: '₹7.50 L', tag: 'POPULAR' },
     { type: 'car', brand: 'maruti', name: 'Wagon R Flex', img: 'https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=400&q=80', mileage: '24 km/L', engine: '1.0L', price: '₹6.20 L', tag: 'BUDGET' },
     { type: 'car', brand: 'tata', name: 'Nexon Flex Fuel', img: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=400&q=80', mileage: '17 km/L', engine: '1.2L', price: '₹9.80 L', tag: 'NEW' },
@@ -1045,291 +942,6 @@ function submitStation(e) {
     setTimeout(() => { closeModal(); renderStations([...stationsData, ...userSubmittedStations]); }, 2000);
 }
 
-/* ===== JS — OFFLINE-READY RULE-BASED E85 DATABASE ENGINE ===== */
-var E85_DB = {
-  bike: {
-    Hero: {
-      brands: ['Hero'],
-      models: {
-        'Splendor Plus Flex Fuel': { status:'compatible', maxBlend:'E85', price:'₹82,810', note:'Official flex-fuel variant. Launched June 2025. Upgraded injectors, seals, and ECU from factory. Safe to fill E85 directly.' },
-        'HF Deluxe Flex Fuel':    { status:'compatible', maxBlend:'E85', price:'Budget commuter', note:'Official flex-fuel variant launched June 2025. Can run on any blend from E20 to E85 safely.' },
-        'Splendor Plus':          { status:'incompatible', maxBlend:'E20', note:'Standard BS6 model — max E20 only. DO NOT use E85. It will corrode fuel lines, damage injectors, and void warranty. Use only E20 or regular petrol.' },
-        'Splendor+':              { status:'incompatible', maxBlend:'E20', note:'Standard BS6 model — max E20 only. DO NOT use E85. It will corrode fuel lines, damage injectors, and void warranty.' },
-        'HF Deluxe':              { status:'incompatible', maxBlend:'E20', note:'Standard BS6 model — max E20 only. DO NOT use E85. Will damage fuel pump and injectors.' },
-        'Passion Pro':            { status:'incompatible', maxBlend:'E20', note:'Standard BS6 model. Max E20 only. Not rated for high ethanol blends.' },
-        'Glamour':                { status:'incompatible', maxBlend:'E20', note:'BS6 engine supports max E20. E85 will damage fuel system components.' },
-        'Xpulse 200':             { status:'incompatible', maxBlend:'E20', note:'Adventure bike with standard fuel system. Max E20. E85 not supported.' },
-        'Xtreme 160R':            { status:'incompatible', maxBlend:'E20', note:'Standard BS6 engine. Max E20 only.' },
-        'Destini 125':            { status:'incompatible', maxBlend:'E20', note:'Scooter with standard fuel system. Max E20 only.' },
-      }
-    },
-    Honda: {
-      models: {
-        'CB300F Flex Fuel': { status:'compatible', maxBlend:'E85', note:'First 300cc flex-fuel motorcycle in India. Factory-built flex-fuel system. Safe for E85.' },
-        'CB300F':           { status:'incompatible', maxBlend:'E20', note:'Standard (non-flex) CB300F supports max E20. Only the specific "Flex Fuel" variant supports E85.' },
-        'Shine':            { status:'incompatible', maxBlend:'E20', note:'Standard commuter — max E20 only. E85 will corrode seals and damage the carb/injector.' },
-        'SP 125':           { status:'incompatible', maxBlend:'E20', note:'BS6 engine, max E20 only.' },
-        'Unicorn':          { status:'incompatible', maxBlend:'E20', note:'Max E20. Not compatible with E85.' },
-        'Hornet 2.0':       { status:'incompatible', maxBlend:'E20', note:'Standard fuel system. E85 not supported.' },
-        'CB200X':           { status:'incompatible', maxBlend:'E20', note:'Standard BS6 model. Max E20 only.' },
-        'CBR650R':          { status:'incompatible', maxBlend:'E20', note:'Sport bike with standard fuel system. Max E20 only.' },
-        'Activa 6G':        { status:'incompatible', maxBlend:'E20', note:'Scooter — max E20 only. No flex-fuel variant available.' },
-        'Dio':              { status:'incompatible', maxBlend:'E20', note:'Scooter — standard fuel system, max E20 only.' },
-      }
-    },
-    Bajaj: {
-      models: {
-        'Pulsar NS160 Flex Fuel': { status:'compatible', maxBlend:'E100', note:'Official flex-fuel variant. Can run on any blend from E20 to E100 (100% ethanol). Upgraded fuel system from factory.' },
-        'Pulsar NS200':           { status:'incompatible', maxBlend:'E20', note:'Standard NS200 — max E20 only. E85 will damage injectors and fuel pump.' },
-        'Pulsar 150':             { status:'incompatible', maxBlend:'E20', note:'Standard carburetor/fuel-injected model. Max E20 only. E85 not supported.' },
-        'Pulsar 125':             { status:'incompatible', maxBlend:'E20', note:'Standard model — max E20 only.' },
-        'Pulsar RS200':           { status:'incompatible', maxBlend:'E20', note:'Standard fuel system. E85 not compatible.' },
-        'Dominar 400':            { status:'incompatible', maxBlend:'E20', note:'Standard BS6 engine. Max E20 only.' },
-        'Avenger 220':            { status:'incompatible', maxBlend:'E20', note:'Standard cruiser — max E20 only.' },
-        'CT 110':                 { status:'incompatible', maxBlend:'E20', note:'Commuter bike — standard fuel system, max E20 only.' },
-        'Platina':                { status:'incompatible', maxBlend:'E20', note:'Budget commuter — max E20 only. Not rated for E85.' },
-      }
-    },
-    TVS: {
-      models: {
-        'Apache RTR 200 Fi E100': { status:'compatible', maxBlend:'E100', note:'First ethanol-capable motorcycle in India. Specially tuned 197cc engine. Supports E100 (pure ethanol). Factory flex-fuel system.' },
-        'Raider 125 FFT':         { status:'compatible', maxBlend:'E85', note:'Flex Fuel Technology (FFT) variant. E85 compatible. Launching mid-2025. 70 kmpl claimed fuel efficiency.' },
-        'Apache RTR 160':         { status:'incompatible', maxBlend:'E20', note:'Standard Apache — max E20 only. Not the E100 variant.' },
-        'Apache RTR 200 4V':      { status:'incompatible', maxBlend:'E20', note:'Standard 200 4V — only the specific "Fi E100" variant supports ethanol.' },
-        'Apache RR 310':          { status:'incompatible', maxBlend:'E20', note:'Track-focused bike with standard fuel system. Max E20 only.' },
-        'Raider 125':             { status:'caution', maxBlend:'E20', note:'Standard Raider 125 supports max E20. Only the "FFT" (Flex Fuel Technology) variant supports E85. Check your variant badge before fueling.' },
-        'Ntorq 125':              { status:'incompatible', maxBlend:'E20', note:'Scooter — standard fuel system. Max E20 only.' },
-        'Jupiter':                { status:'incompatible', maxBlend:'E20', note:'Scooter — max E20 only. No flex-fuel variant.' },
-        'iQube':                  { status:'incompatible', maxBlend:'none', note:'Electric scooter — does not use petrol or ethanol fuel at all.' },
-      }
-    },
-    Suzuki: {
-      models: {
-        'Gixxer SF 250 Flex Fuel': { status:'compatible', maxBlend:'E85', price:'₹1.98 lakh', note:'Official flex-fuel variant. 27.9 PS, 22.5 Nm, 6-speed. Factory E85 compatible fuel system.' },
-        'Gixxer SF 250':           { status:'incompatible', maxBlend:'E20', note:'Standard (non-flex) Gixxer SF 250 — max E20 only. Only the "Flex Fuel" badge variant supports E85.' },
-        'Gixxer 250':              { status:'incompatible', maxBlend:'E20', note:'Standard model — max E20 only.' },
-        'Gixxer 155':              { status:'incompatible', maxBlend:'E20', note:'Standard 155cc model — max E20 only.' },
-        'Access 125':              { status:'incompatible', maxBlend:'E20', note:'Scooter — standard fuel system, max E20 only.' },
-        'Burgman Street':          { status:'incompatible', maxBlend:'E20', note:'Scooter — max E20 only. No flex-fuel variant available.' },
-        'V-Strom SX':              { status:'incompatible', maxBlend:'E20', note:'Adventure bike — standard fuel system, max E20 only.' },
-      }
-    },
-    'Royal Enfield': {
-      models: {
-        'Classic 350 Flex Fuel':    { status:'caution', maxBlend:'E85', note:'Flex-fuel prototype spotted testing. Not yet officially launched. DO NOT assume your Classic 350 is E85 compatible unless it has a "Flex Fuel" badge.' },
-        'Classic 350':              { status:'incompatible', maxBlend:'E20', note:'Standard Classic 350 — max E20 only. E85 will damage the fuel system. Only the upcoming "Flex Fuel" variant (not yet launched) will support E85.' },
-        'Bullet 350':               { status:'incompatible', maxBlend:'E20', note:'Traditional carb/EFI model. Max E20 only. Not rated for high ethanol blends.' },
-        'Meteor 350':               { status:'incompatible', maxBlend:'E20', note:'Standard fuel system — max E20 only.' },
-        'Hunter 350':               { status:'incompatible', maxBlend:'E20', note:'Standard BS6 model — max E20 only.' },
-        'Himalayan':                { status:'incompatible', maxBlend:'E20', note:'Adventure bike with standard fuel system. Max E20 only.' },
-        'Interceptor 650':          { status:'incompatible', maxBlend:'E20', note:'Standard 650 twin — max E20 only. No flex-fuel variant.' },
-        'Continental GT 650':       { status:'incompatible', maxBlend:'E20', note:'Cafe racer with standard fuel system. Max E20 only.' },
-        'Scram 411':                { status:'incompatible', maxBlend:'E20', note:'Standard model — max E20 only.' },
-      }
-    },
-    Yamaha: {
-      models: {
-        'FZ-S V3':     { status:'incompatible', maxBlend:'E20', note:'Standard BS6 model. Max E20. No flex-fuel variant available yet.' },
-        'FZ-X':        { status:'incompatible', maxBlend:'E20', note:'Standard fuel system — max E20 only.' },
-        'R15 V4':      { status:'incompatible', maxBlend:'E20', note:'Sport bike with standard fuel injection. Max E20 only.' },
-        'MT-15 V2':    { status:'incompatible', maxBlend:'E20', note:'Standard fuel system — max E20 only.' },
-        'Fascino 125': { status:'incompatible', maxBlend:'E20', note:'Scooter — standard fuel system, max E20 only.' },
-        'Ray ZR 125':  { status:'incompatible', maxBlend:'E20', note:'Scooter — max E20 only. No flex-fuel variant.' },
-        'Aerox 155':   { status:'incompatible', maxBlend:'E20', note:'Scooter — max E20 only.' },
-      }
-    },
-    KTM: {
-      models: {
-        'Duke 125':   { status:'incompatible', maxBlend:'E20', note:'Standard fuel system. Max E20 only. Austrian brand — no India flex-fuel variant announced.' },
-        'Duke 200':   { status:'incompatible', maxBlend:'E20', note:'Standard model — max E20 only.' },
-        'Duke 390':   { status:'incompatible', maxBlend:'E20', note:'Standard fuel system — max E20 only.' },
-        'RC 390':     { status:'incompatible', maxBlend:'E20', note:'Track-focused bike — max E20 only.' },
-        'Adventure 390': { status:'incompatible', maxBlend:'E20', note:'Standard fuel system — max E20 only. No flex-fuel variant.' },
-      }
-    },
-    Jawa: {
-      models: {
-        'Jawa 42':       { status:'incompatible', maxBlend:'E20', note:'Standard BS6 model — max E20 only.' },
-        'Jawa Classic':  { status:'incompatible', maxBlend:'E20', note:'Standard fuel system — max E20 only.' },
-        'Yezdi Roadster':{ status:'incompatible', maxBlend:'E20', note:'Standard model — max E20 only.' },
-      }
-    }
-  },
-  car: {
-    'Maruti Suzuki': {
-      models: {
-        'WagonR Flex Fuel': { status:'compatible', maxBlend:'E85', note:'First mass-market E85 car in India. Unveiled June 2025. Pricing and availability coming soon. Wait for official launch before fueling E85.' },
-        'WagonR':           { status:'incompatible', maxBlend:'E20', note:'Standard WagonR — max E20 only. Only the specific "Flex Fuel" variant (coming soon) supports E85.' },
-        'Swift':            { status:'incompatible', maxBlend:'E20', note:'BS6 Phase 2 — max E20. No flex-fuel variant announced yet.' },
-        'Baleno':           { status:'incompatible', maxBlend:'E20', note:'Standard model — max E20 only.' },
-        'Fronx':            { status:'caution', maxBlend:'E20', note:'Fronx Flex Fuel (E85) has been announced but not yet launched. Your current Fronx supports max E20 only.' },
-        'Dzire':            { status:'incompatible', maxBlend:'E20', note:'Standard BS6 model — max E20 only.' },
-        'Alto K10':         { status:'incompatible', maxBlend:'E20', note:'Budget hatchback — max E20 only.' },
-        'Ertiga':           { status:'incompatible', maxBlend:'E20', note:'MPV — standard fuel system, max E20 only.' },
-        'Brezza':           { status:'incompatible', maxBlend:'E20', note:'SUV — standard BS6 fuel system, max E20 only.' },
-        'Grand Vitara':     { status:'incompatible', maxBlend:'E20', note:'Hybrid SUV — max E20 only. No flex-fuel variant.' },
-      }
-    },
-    Toyota: {
-      models: {
-        'Innova Hycross Flex': { status:'caution', maxBlend:'E85', note:'Flex-fuel prototype. Pilot/test phase only. Not available for purchase yet. Do not use E85 in standard Innova Hycross.' },
-        'Innova Hycross':      { status:'incompatible', maxBlend:'E20', note:'Standard Innova Hycross — max E20 only. Only the prototype flex-fuel version supports E85, and it is not publicly available yet.' },
-        'Innova Crysta':       { status:'incompatible', maxBlend:'E10', note:'Older diesel/petrol model — max E10 recommended. Not rated for E20 or above.' },
-        'Glanza':              { status:'incompatible', maxBlend:'E20', note:'Rebadged Baleno — max E20 only.' },
-        'Urban Cruiser Hyryder':{ status:'incompatible', maxBlend:'E20', note:'Hybrid SUV — max E20 only. No flex-fuel variant.' },
-        'Fortuner':            { status:'incompatible', maxBlend:'none', note:'Diesel engine — E85 is petrol/ethanol blend and is NOT compatible with diesel engines.' },
-        'Hilux':               { status:'incompatible', maxBlend:'none', note:'Diesel engine — not compatible with E85 at all.' },
-      }
-    },
-    Tata: {
-      models: {
-        'Punch Flex Fuel': { status:'caution', maxBlend:'E85', note:'Announced at Bharat Mobility Expo 2025. Expected launch late 2026. Not yet available. Current Punch supports max E20 only.' },
-        'Punch':           { status:'incompatible', maxBlend:'E20', note:'Standard Punch — max E20 only. The flex-fuel variant is expected in late 2026. Do not use E85 in current model.' },
-        'Nexon':           { status:'incompatible', maxBlend:'E20', note:'Standard BS6 model — max E20 only. No flex-fuel variant announced.' },
-        'Altroz':          { status:'incompatible', maxBlend:'E20', note:'Standard model — max E20 only.' },
-        'Tiago':           { status:'incompatible', maxBlend:'E20', note:'Budget hatchback — max E20 only.' },
-        'Tigor':           { status:'incompatible', maxBlend:'E20', note:'Compact sedan — max E20 only.' },
-        'Harrier':         { status:'incompatible', maxBlend:'E20', note:'Diesel/petrol SUV — max E20 for petrol variants. Diesel variants not compatible with E85.' },
-        'Safari':          { status:'incompatible', maxBlend:'E20', note:'Standard fuel system — max E20 only.' },
-        'Curvv':           { status:'incompatible', maxBlend:'E20', note:'New SUV — standard fuel system, max E20 only.' },
-        'Nexon EV':        { status:'incompatible', maxBlend:'none', note:'Electric vehicle — does not use any petrol or ethanol fuel.' },
-        'Tiago EV':        { status:'incompatible', maxBlend:'none', note:'Electric vehicle — no petrol/ethanol compatibility.' },
-      }
-    },
-    Hyundai: {
-      models: {
-        'i20':         { status:'incompatible', maxBlend:'E20', note:'BS6 Phase 2 — max E20 only. No flex-fuel variant announced in India.' },
-        'Verna':       { status:'incompatible', maxBlend:'E20', note:'Standard sedan — max E20 only.' },
-        'Creta':       { status:'incompatible', maxBlend:'E20', note:'Standard SUV — max E20 only. No E85 variant available.' },
-        'Venue':       { status:'incompatible', maxBlend:'E20', note:'Compact SUV — max E20 only.' },
-        'Alcazar':     { status:'incompatible', maxBlend:'E20', note:'3-row SUV — standard fuel system, max E20 only.' },
-        'Tucson':      { status:'incompatible', maxBlend:'E20', note:'Mid-size SUV — max E20 only.' },
-        'Grand i10':   { status:'incompatible', maxBlend:'E20', note:'Budget hatchback — max E20 only.' },
-        'Aura':        { status:'incompatible', maxBlend:'E20', note:'Compact sedan — max E20 only.' },
-        'Ioniq 5':     { status:'incompatible', maxBlend:'none', note:'Electric vehicle — no petrol or ethanol fuel compatibility.' },
-      }
-    },
-    Kia: {
-      models: {
-        'Seltos':    { status:'incompatible', maxBlend:'E20', note:'Standard SUV — max E20 only. No flex-fuel variant announced.' },
-        'Sonet':     { status:'incompatible', maxBlend:'E20', note:'Compact SUV — max E20 only.' },
-        'Carens':    { status:'incompatible', maxBlend:'E20', note:'MPV — max E20 only.' },
-        'EV6':       { status:'incompatible', maxBlend:'none', note:'Electric vehicle — no petrol or ethanol fuel.' },
-      }
-    },
-    Mahindra: {
-      models: {
-        'XUV700':    { status:'incompatible', maxBlend:'E20', note:'Standard BS6 — max E20 only. No flex-fuel variant.' },
-        'Thar':      { status:'incompatible', maxBlend:'E20', note:'4x4 — max E20 for petrol variants. Diesel variants not E85 compatible at all.' },
-        'Scorpio-N': { status:'incompatible', maxBlend:'E20', note:'Standard model — max E20 only.' },
-        'Bolero':    { status:'incompatible', maxBlend:'none', note:'Diesel engine — not compatible with E85 (ethanol-petrol blend).' },
-        'XUV300':    { status:'incompatible', maxBlend:'E20', note:'Standard model — max E20 only.' },
-        'BE 6':      { status:'incompatible', maxBlend:'none', note:'Electric vehicle — no petrol or ethanol fuel.' },
-      }
-    }
-  }
-};
-
-var BRANDS_BY_TYPE = {
-  bike:          ['Hero','Honda','Bajaj','TVS','Suzuki','Royal Enfield','Yamaha','KTM','Jawa'],
-  scooter:       ['Hero','Honda','TVS','Suzuki','Yamaha'],
-  car:           ['Maruti Suzuki','Toyota','Tata','Hyundai','Kia','Mahindra'],
-  'three-wheeler': []
-};
-
-function e85PopulateBrands() {
-  var type   = document.getElementById('e85-vtype').value;
-  var bSel   = document.getElementById('e85-vbrand');
-  var mSel   = document.getElementById('e85-vmodel');
-  bSel.innerHTML = '<option value="">Select brand...</option>';
-  mSel.innerHTML = '<option value="">Select model...</option>';
-  document.getElementById('e85-result').className = 'vehicle-result';
-  var brands = BRANDS_BY_TYPE[type] || [];
-  brands.forEach(function(b){ bSel.innerHTML += '<option>'+b+'</option>'; });
-}
-
-function e85PopulateModels() {
-  var type  = document.getElementById('e85-vtype').value;
-  var brand = document.getElementById('e85-vbrand').value;
-  var mSel  = document.getElementById('e85-vmodel');
-  mSel.innerHTML = '<option value="">Select model...</option>';
-  document.getElementById('e85-result').className = 'vehicle-result';
-  var db = type === 'scooter' ? E85_DB.bike : (E85_DB[type] || {});
-  if (!db[brand]) return;
-  var models = Object.keys(db[brand].models);
-  models.forEach(function(m){ mSel.innerHTML += '<option>'+m+'</option>'; });
-}
-
-function e85CheckVehicle() {
-  var type  = document.getElementById('e85-vtype').value;
-  var brand = document.getElementById('e85-vbrand').value;
-  var model = document.getElementById('e85-vmodel').value;
-  var year  = document.getElementById('e85-vyear').value;
-
-  if (!type || !brand || !model) {
-    alert('Please select vehicle type, brand, and model.');
-    return;
-  }
-
-  var dbType = type === 'scooter' ? 'bike' : type;
-  var db     = E85_DB[dbType];
-  var result;
-
-  if (db && db[brand] && db[brand].models[model]) {
-    result = db[brand].models[model];
-  } else if (type === 'three-wheeler') {
-    result = { status:'unknown', maxBlend:'E20', note:'Three-wheelers / auto-rickshaws in India currently run on CNG, petrol (max E20), or LPG. No E85 compatible three-wheelers have been announced yet. Standard petrol autos support max E20 only.' };
-  } else {
-    result = { status:'incompatible', maxBlend:'E20', note:'This model is not in our E85 compatible list. In India, only vehicles specifically labelled "Flex Fuel", "FFV", "FFT", or "E85" from the manufacturer are safe to use E85. Standard petrol vehicles (BS6 Phase 2) support max E20 only. Using E85 in a non-flex-fuel vehicle will damage the fuel pump, injectors, rubber seals, and cause engine misfires. Stick to E20 or regular petrol.' };
-  }
-
-  var oldYear = (year === 'old' || year === '2017 or older' || parseInt(year) < 2018);
-  if (oldYear && result.status !== 'compatible') {
-    result = { status:'incompatible', maxBlend:'E10', note:'Pre-2018 vehicles in India are generally BS4 or older and are rated for max E10 only. Using E20 or E85 will damage rubber seals, carburetors, and fuel system components. Use only E10 or regular petrol.' };
-  }
-
-  var icons  = { compatible:'✅', incompatible:'❌', caution:'⚠️', unknown:'ℹ️' };
-  var titles = {
-    compatible:   'Compatible with E85!',
-    incompatible: 'Not Compatible with E85',
-    caution:      'Check Your Variant First',
-    unknown:      'No E85 Data Available'
-  };
-
-  var tags = [];
-  var colors = [];
-
-  if (result.status === 'compatible') {
-    tags   = ['E85 Safe', result.maxBlend, 'Flex Fuel ✓'];
-    colors = ['green','green','green'];
-    if (result.price) { tags.push(result.price); colors.push('blue'); }
-  } else if (result.status === 'incompatible') {
-    tags   = ['Max: '+result.maxBlend, 'Not Flex Fuel', 'E85 = Damage risk'];
-    colors = ['orange','orange','orange'];
-    if (oldYear) { tags.push('Pre-BS6 Vehicle'); colors.push('orange'); }
-  } else if (result.status === 'caution') {
-    tags   = ['Check Variant Badge', result.maxBlend, 'Confirm Before Fueling'];
-    colors = ['yellow','blue','yellow'];
-  } else {
-    tags   = ['Data Not Available', 'Max: E20 assumed', 'Consult Dealer'];
-    colors = ['blue','orange','blue'];
-  }
-
-  var el = document.getElementById('e85-result');
-  el.className = 'vehicle-result show ' + result.status;
-  document.getElementById('e85-resIcon').textContent  = icons[result.status];
-  document.getElementById('e85-resTitle').textContent = brand + ' ' + model + ' — ' + titles[result.status];
-  document.getElementById('e85-resBody').textContent  = result.note;
-
-  var tagsEl = document.getElementById('e85-resTags');
-  tagsEl.innerHTML = '';
-  tags.forEach(function(tag, i) {
-    tagsEl.innerHTML += '<span class="e85-tag '+colors[i]+'">'+tag+'</span>';
-  });
-
-  el.scrollIntoView({ behavior:'smooth', block:'nearest' });
-}
-
 window.addEventListener('load', () => { 
     setTimeout(() => { 
         document.getElementById('loadingScreen').classList.add('hidden'); 
@@ -1350,7 +962,16 @@ const headlines = ["E85 rollout expands to 100+ new fuel stations across India",
 let idx = 0; const hl = document.getElementById('newsHeadline');
 function nextNews() { idx = (idx + 1) % headlines.length; hl.style.opacity = 0; setTimeout(() => { hl.textContent = headlines[idx]; hl.style.opacity = 1; }, 200); }
 function prevNews() { idx = (idx - 1 + headlines.length) % headlines.length; hl.style.opacity = 0; setTimeout(() => { hl.textContent = headlines[idx]; hl.style.opacity = 1; }, 200); }
-
+function checkVehicle() {
+    const brand = document.getElementById('vehicleBrand').value;
+    const model = document.getElementById('vehicleModel').value;
+    const year = document.getElementById('vehicleYear').value;
+    const result = document.getElementById('vehicleResult');
+    if (!brand || !model || !year) { result.className = 'vehicle-result incompatible'; result.innerHTML = '⚠️ Please select all fields to check compatibility.'; return; }
+    const compatible = ['innova', 'landcruiser', 'baleno', 'nexon', 'xuv700', 'apache', 'pulsar', 'splendor'];
+    if (compatible.includes(model) && parseInt(year) >= 2023) { result.className = 'vehicle-result compatible'; result.innerHTML = '✅ Great news! Your vehicle is <strong>E85 Compatible</strong>. You can safely use E85 fuel.'; } 
+    else { result.className = 'vehicle-result incompatible'; result.innerHTML = '⚠️ Your vehicle may <strong>not be compatible</strong>. Consider a flex-fuel conversion kit.'; }
+}
 document.querySelectorAll('a[href^="#"]').forEach(a => { a.addEventListener('click', function(e) { const id = this.getAttribute('href'); if (id === '#') return; e.preventDefault(); const t = document.querySelector(id); if (t) window.scrollTo({ top: t.offsetTop - 110, behavior: 'smooth' }); }); });
 </script>
 </body>
