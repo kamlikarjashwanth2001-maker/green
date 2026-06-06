@@ -21,7 +21,6 @@
             --text-dark: #1a1a1a; --text-medium: #333333; --text-light: #666666; --text-lighter: #999999;
             --shadow-sm: 0 1px 3px rgba(0,0,0,0.08); --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
             --shadow-lg: 0 8px 30px rgba(0,0,0,0.1); --shadow-xl: 0 12px 40px rgba(0,0,0,0.12);
-            --shadow-2xl: 0 20px 60px rgba(0,0,0,0.15);
             --shadow-green: 0 8px 30px rgba(46,125,50,0.25);
             --radius-sm: 8px; --radius-md: 12px; --radius-lg: 16px; --radius-xl: 20px; --radius-full: 50px;
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -45,33 +44,17 @@
         .reveal-delay-1 { transition-delay: 0.1s; } .reveal-delay-2 { transition-delay: 0.2s; }
         .reveal-delay-3 { transition-delay: 0.3s; } .reveal-delay-4 { transition-delay: 0.4s; }
 
-        /* ===== LIVE PRICE TICKER (TOP BAR) ===== */
-        .price-ticker {
-            background: linear-gradient(90deg, #1b5e20, #2e7d32, #1b5e20);
-            color: white;
-            padding: 8px 0;
-            overflow: hidden;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 10001;
-            font-size: 0.78rem;
-            font-weight: 500;
-        }
+        /* LIVE PRICE TICKER */
+        .price-ticker { background: linear-gradient(90deg, #1b5e20, #2e7d32, #1b5e20); color: white; padding: 8px 0; overflow: hidden; position: fixed; top: 0; left: 0; right: 0; z-index: 10001; font-size: 0.78rem; font-weight: 500; }
         .ticker-track { display: flex; animation: tickerScroll 40s linear infinite; white-space: nowrap; gap: 40px; padding-left: 100%; }
         .ticker-item { display: inline-flex; align-items: center; gap: 8px; }
         .ticker-item strong { color: #c8e6c9; }
         .ticker-item .price-up { color: #4caf50; }
         .ticker-item .price-down { color: #ffeb3b; }
         .ticker-dot { width: 6px; height: 6px; background: #81c784; border-radius: 50%; }
-        @keyframes tickerScroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-100%); }
-        }
+        @keyframes tickerScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
         .price-ticker:hover .ticker-track { animation-play-state: paused; }
 
-        /* ===== NAVBAR (Adjusted for ticker) ===== */
         .navbar { position: fixed; top: 32px; left: 0; right: 0; z-index: 10000; background: rgba(255,255,255,0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.3); padding: 0 48px; height: 72px; display: flex; align-items: center; justify-content: space-between; transition: var(--transition); }
         .navbar.scrolled { background: rgba(255,255,255,0.95); box-shadow: var(--shadow-md); height: 64px; }
         .nav-logo { display: flex; align-items: center; gap: 12px; }
@@ -91,7 +74,6 @@
         .mobile-nav a { display: block; padding: 14px 20px; font-size: 1rem; font-weight: 500; color: var(--text-medium); border-radius: var(--radius-sm); margin-bottom: 4px; }
         .mobile-nav a:hover, .mobile-nav a.active { background: var(--primary-bg); color: var(--primary); }
 
-        /* HERO */
         .hero { margin-top: 32px; padding-top: 72px; position: relative; min-height: 100vh; display: flex; align-items: stretch; overflow: hidden; background-image: url('hero-bg.jpg'); background-size: cover; background-position: center bottom; background-repeat: no-repeat; }
         .hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(248,253,248,0.85) 0%, rgba(248,253,248,0.5) 22%, rgba(248,253,248,0.05) 38%, rgba(248,253,248,0.05) 62%, rgba(248,253,248,0.5) 78%, rgba(248,253,248,0.85) 100%); pointer-events: none; z-index: 1; }
         .hero-wrapper { width: 100%; max-width: 1440px; margin: 0 auto; display: flex; position: relative; z-index: 2; align-items: stretch; }
@@ -121,97 +103,17 @@
         .stat-change { font-size: 0.7rem; color: var(--primary-light); margin-top: 8px; font-weight: 600; }
 
         .section-container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
-        .dashboard-section { padding: 0 40px 50px; margin-top: -40px; position: relative; z-index: 10; }
-        .dash-grid { display: grid; grid-template-columns: 1.8fr 1fr; gap: 20px; }
+        .section-header { text-align: center; margin-bottom: 48px; }
+        .section-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--white); color: var(--primary); padding: 6px 16px; border-radius: var(--radius-full); font-size: 0.75rem; font-weight: 600; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 1px; box-shadow: var(--shadow-sm); }
+        .section-title { font-size: 2.4rem; font-weight: 800; color: var(--text-dark); margin-bottom: 14px; }
+        .section-title .green { color: var(--primary); }
+        .section-subtitle { font-size: 1.05rem; color: var(--text-light); max-width: 600px; margin: 0 auto; line-height: 1.7; }
         .glass-card { background: rgba(255,255,255,0.96); backdrop-filter: blur(20px); border: 1px solid rgba(0,0,0,0.04); border-radius: var(--radius-lg); padding: 28px; box-shadow: var(--shadow-md); transition: var(--transition); }
         .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
         .card-title { font-size: 1.1rem; font-weight: 700; color: var(--text-dark); }
         .live-badge { display: flex; align-items: center; gap: 6px; font-size: 0.8rem; color: var(--text-light); font-weight: 500; }
         .live-pulse { width: 8px; height: 8px; background: var(--primary-light); border-radius: 50%; animation: pulse 2s infinite; }
         @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(0.85); } }
-        .metrics-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
-        .metric-box { padding: 20px; border-radius: var(--radius-md); position: relative; overflow: hidden; }
-        .metric-box.primary-metric { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: var(--white); }
-        .metric-tag { display: inline-block; font-size: 0.7rem; font-weight: 500; background: rgba(255,255,255,0.18); padding: 4px 10px; border-radius: var(--radius-full); margin-bottom: 14px; }
-        .metric-box.primary-metric .metric-number { font-size: 2rem; font-weight: 800; line-height: 1.1; }
-        .metric-box.primary-metric .metric-unit { font-size: 0.95rem; font-weight: 400; opacity: 0.8; }
-        .metric-box.primary-metric .metric-compare { font-size: 0.73rem; opacity: 0.7; margin-top: 4px; }
-        .metric-box.primary-metric .metric-percent { font-size: 0.75rem; margin-top: 10px; display: flex; align-items: center; gap: 4px; font-weight: 600; }
-        .metric-float-icon { position: absolute; top: 16px; right: 16px; width: 38px; height: 38px; background: rgba(255,255,255,0.15); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; }
-        .metric-box.secondary-metric { background: var(--off-white); border: 1px solid var(--gray-100); }
-        .sec-metric-label { font-size: 0.8rem; color: var(--text-light); font-weight: 500; margin-bottom: 10px; }
-        .sec-metric-value { font-size: 2rem; font-weight: 800; color: var(--text-dark); line-height: 1.1; }
-        .sec-metric-value .dim { font-size: 1rem; color: var(--text-lighter); font-weight: 500; }
-        .sec-metric-sub { font-size: 0.73rem; color: var(--text-lighter); margin-top: 4px; }
-        .sparkline-svg { width: 100%; height: 28px; margin-top: 12px; }
-        .progress-track { width: 100%; height: 6px; background: var(--gray-100); border-radius: 3px; margin-top: 16px; overflow: hidden; }
-        .progress-fill { height: 100%; border-radius: 3px; background: var(--primary); transition: width 2s ease; }
-        .view-link { font-size: 0.8rem; color: var(--text-light); font-weight: 500; display: inline-flex; align-items: center; gap: 4px; transition: var(--transition); }
-        .view-link:hover { color: var(--primary); }
-        #mini-india-map { width: 100%; height: 240px; border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--gray-100); margin: 12px 0; z-index: 1; }
-        .leaflet-popup-content-wrapper { border-radius: 10px !important; }
-        .leaflet-popup-content { margin: 12px 16px !important; font-family: 'Inter', sans-serif !important; font-size: 13px !important; }
-        .leaflet-popup-content strong { color: var(--primary); display: block; margin-bottom: 4px; font-size: 14px; }
-        .custom-pin { background: var(--primary); width: 18px; height: 18px; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); border: 2.5px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
-        .map-footer-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; border-top: 1px solid var(--gray-100); padding-top: 16px; }
-        .map-stat-item { text-align: center; } .map-stat-item:last-child { border-left: 1px solid var(--gray-100); padding-left: 12px; }
-        .map-stat-label { font-size: 0.7rem; color: var(--text-light); margin-bottom: 4px; }
-        .map-stat-val { font-size: 1.6rem; font-weight: 800; color: var(--text-dark); }
-
-        .comparison-section { padding: 0 40px 50px; }
-        .comp-grid { display: grid; grid-template-columns: 1.8fr 1fr; gap: 20px; }
-        .comp-inner { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; align-items: start; }
-        .chart-label { font-size: 0.85rem; font-weight: 600; color: var(--text-medium); margin-bottom: 16px; }
-        .bars-area { display: flex; align-items: flex-end; gap: 24px; height: 190px; padding-bottom: 32px; position: relative; }
-        .bars-area::after { content: ''; position: absolute; bottom: 32px; left: 0; right: 0; height: 1px; background: var(--gray-100); }
-        .y-labels { position: absolute; left: -8px; bottom: 32px; top: 0; display: flex; flex-direction: column; justify-content: space-between; font-size: 0.6rem; color: var(--text-lighter); }
-        .bar-col { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 8px; }
-        .bar-stick { width: 48px; border-radius: 6px 6px 2px 2px; position: relative; min-height: 10px; transition: height 1.8s ease; }
-        .bar-stick.color-e85 { background: linear-gradient(180deg, #2e7d32, #1b5e20); }
-        .bar-stick.color-e20 { background: linear-gradient(180deg, #8bc34a, #689f38); }
-        .bar-stick.color-petrol { background: linear-gradient(180deg, #43a047, #2e7d32); }
-        .bar-val { position: absolute; top: -24px; left: 50%; transform: translateX(-50%); font-size: 0.78rem; font-weight: 700; color: var(--text-dark); white-space: nowrap; }
-        .bar-name { font-size: 0.75rem; font-weight: 600; color: var(--text-light); }
-        .benefits-col { display: flex; flex-direction: column; gap: 18px; }
-        .benefit-row { display: flex; gap: 12px; align-items: flex-start; }
-        .benefit-icon-box { width: 38px; height: 38px; min-width: 38px; background: var(--primary-bg); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; }
-        .benefit-icon-box svg { width: 18px; height: 18px; stroke: var(--primary); }
-        .benefit-info h4 { font-size: 0.85rem; font-weight: 700; color: var(--text-dark); margin-bottom: 2px; }
-        .benefit-info p { font-size: 0.73rem; color: var(--text-lighter); }
-        .promo-box { background: var(--primary-bg-light); border-radius: var(--radius-md); padding: 28px 20px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; }
-        .promo-box .promo-huge { font-size: 3.2rem; font-weight: 900; color: var(--primary); line-height: 1; }
-        .promo-box .promo-text { font-size: 0.9rem; font-weight: 600; color: var(--text-medium); }
-        .promo-box .promo-subtext { font-size: 0.8rem; color: var(--text-light); }
-        .promo-link { display: inline-flex; align-items: center; gap: 6px; background: var(--white); color: var(--text-dark); padding: 10px 22px; border-radius: var(--radius-full); font-weight: 600; font-size: 0.8rem; border: 1px solid var(--gray-200); transition: var(--transition); margin-top: 6px; }
-        .promo-link:hover { border-color: var(--primary); color: var(--primary); }
-
-        .news-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-        .news-entry { display: flex; gap: 14px; align-items: flex-start; }
-        .news-thumb { width: 130px; min-width: 130px; height: 95px; border-radius: var(--radius-sm); overflow: hidden; background: var(--primary-bg); }
-        .news-thumb img { width: 100%; height: 100%; object-fit: cover; }
-        .news-meta-row { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
-        .news-cat { font-size: 0.62rem; font-weight: 600; color: var(--primary); background: var(--primary-bg); padding: 2px 8px; border-radius: var(--radius-full); text-transform: uppercase; }
-        .news-time { font-size: 0.62rem; color: var(--text-lighter); }
-        .news-headline { font-size: 0.88rem; font-weight: 700; color: var(--text-dark); line-height: 1.45; margin-bottom: 10px; transition: opacity 0.25s ease; }
-        .news-read-more { font-size: 0.75rem; color: var(--primary); font-weight: 600; display: inline-flex; align-items: center; gap: 4px; }
-        .news-arrows { display: flex; gap: 8px; margin-top: 18px; justify-content: flex-end; }
-        .arrow-btn { width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--gray-200); background: var(--white); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: var(--transition); color: var(--text-light); font-size: 14px; }
-        .arrow-btn:hover { border-color: var(--primary); color: var(--primary); }
-
-        .features-strip { padding: 0 40px 50px; }
-        .features-strip-inner { background: var(--white); border-radius: var(--radius-lg); padding: 24px 32px; box-shadow: var(--shadow-md); border: 1px solid rgba(0,0,0,0.04); display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
-        .feat-item { display: flex; align-items: center; gap: 12px; padding: 8px 0; }
-        .feat-icon { width: 44px; height: 44px; min-width: 44px; background: var(--primary-bg); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; }
-        .feat-icon svg { width: 22px; height: 22px; stroke: var(--primary); }
-        .feat-text h4 { font-size: 0.82rem; font-weight: 700; color: var(--text-dark); }
-        .feat-text p { font-size: 0.68rem; color: var(--text-lighter); }
-
-        /* SECTIONS COMMON */
-        .section-header { text-align: center; margin-bottom: 48px; }
-        .section-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--white); color: var(--primary); padding: 6px 16px; border-radius: var(--radius-full); font-size: 0.75rem; font-weight: 600; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 1px; box-shadow: var(--shadow-sm); }
-        .section-title { font-size: 2.4rem; font-weight: 800; color: var(--text-dark); margin-bottom: 14px; }
-        .section-title .green { color: var(--primary); }
-        .section-subtitle { font-size: 1.05rem; color: var(--text-light); max-width: 600px; margin: 0 auto; line-height: 1.7; }
 
         /* VEHICLE CHECKER */
         .vehicle-section { padding: 80px 40px; background: linear-gradient(135deg, var(--primary-bg-light), var(--primary-bg)); }
@@ -267,6 +169,9 @@
         .station-badge.e85 { background: var(--gray-100); color: var(--text-medium); }
         #stations-map { width: 100%; height: 600px; border-radius: var(--radius-xl); overflow: hidden; border: 1px solid var(--gray-200); box-shadow: var(--shadow-xl); z-index: 1; }
         .no-results { padding: 32px; text-align: center; color: var(--text-lighter); font-size: 0.9rem; }
+        .leaflet-popup-content-wrapper { border-radius: 10px !important; }
+        .leaflet-popup-content { margin: 12px 16px !important; font-family: 'Inter', sans-serif !important; font-size: 13px !important; }
+        .custom-pin { background: var(--primary); width: 18px; height: 18px; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); border: 2.5px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
         .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); z-index: 100000; display: none; align-items: center; justify-content: center; padding: 20px; }
         .modal-overlay.active { display: flex; }
         .modal-box { background: var(--white); border-radius: var(--radius-xl); padding: 36px; width: 100%; max-width: 500px; max-height: 90vh; overflow-y: auto; position: relative; animation: slideUp 0.4s ease; }
@@ -277,7 +182,97 @@
         .modal-box .modal-sub { font-size: 0.85rem; color: var(--text-light); margin-bottom: 24px; }
         .modal-success { display: none; padding: 16px; margin-top: 16px; background: var(--primary-bg); color: var(--primary-dark); border-radius: var(--radius-md); font-weight: 600; text-align: center; font-size: 0.85rem; }
 
-        /* ===== COST CALCULATOR (Option A) ===== */
+        /* COMPARISON */
+        .comparison-section { padding: 80px 40px; background: var(--off-white); }
+        .comp-grid { display: grid; grid-template-columns: 1.8fr 1fr; gap: 20px; }
+        .comp-inner { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; align-items: start; }
+        .chart-label { font-size: 0.85rem; font-weight: 600; color: var(--text-medium); margin-bottom: 16px; }
+        .bars-area { display: flex; align-items: flex-end; gap: 24px; height: 190px; padding-bottom: 32px; position: relative; }
+        .bars-area::after { content: ''; position: absolute; bottom: 32px; left: 0; right: 0; height: 1px; background: var(--gray-100); }
+        .y-labels { position: absolute; left: -8px; bottom: 32px; top: 0; display: flex; flex-direction: column; justify-content: space-between; font-size: 0.6rem; color: var(--text-lighter); }
+        .bar-col { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+        .bar-stick { width: 48px; border-radius: 6px 6px 2px 2px; position: relative; min-height: 10px; transition: height 1.8s ease; }
+        .bar-stick.color-e85 { background: linear-gradient(180deg, #2e7d32, #1b5e20); }
+        .bar-stick.color-e20 { background: linear-gradient(180deg, #8bc34a, #689f38); }
+        .bar-stick.color-petrol { background: linear-gradient(180deg, #43a047, #2e7d32); }
+        .bar-val { position: absolute; top: -24px; left: 50%; transform: translateX(-50%); font-size: 0.78rem; font-weight: 700; color: var(--text-dark); white-space: nowrap; }
+        .bar-name { font-size: 0.75rem; font-weight: 600; color: var(--text-light); }
+        .benefits-col { display: flex; flex-direction: column; gap: 18px; }
+        .benefit-row { display: flex; gap: 12px; align-items: flex-start; }
+        .benefit-icon-box { width: 38px; height: 38px; min-width: 38px; background: var(--primary-bg); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; }
+        .benefit-icon-box svg { width: 18px; height: 18px; stroke: var(--primary); }
+        .benefit-info h4 { font-size: 0.85rem; font-weight: 700; color: var(--text-dark); margin-bottom: 2px; }
+        .benefit-info p { font-size: 0.73rem; color: var(--text-lighter); }
+        .promo-box { background: var(--primary-bg-light); border-radius: var(--radius-md); padding: 28px 20px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; }
+        .promo-box .promo-huge { font-size: 3.2rem; font-weight: 900; color: var(--primary); line-height: 1; }
+        .promo-box .promo-text { font-size: 0.9rem; font-weight: 600; color: var(--text-medium); }
+        .promo-box .promo-subtext { font-size: 0.8rem; color: var(--text-light); }
+        .promo-link { display: inline-flex; align-items: center; gap: 6px; background: var(--white); color: var(--text-dark); padding: 10px 22px; border-radius: var(--radius-full); font-weight: 600; font-size: 0.8rem; border: 1px solid var(--gray-200); transition: var(--transition); margin-top: 6px; }
+        .promo-link:hover { border-color: var(--primary); color: var(--primary); }
+        .news-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .news-entry { display: flex; gap: 14px; align-items: flex-start; }
+        .news-thumb { width: 130px; min-width: 130px; height: 95px; border-radius: var(--radius-sm); overflow: hidden; background: var(--primary-bg); }
+        .news-thumb img { width: 100%; height: 100%; object-fit: cover; }
+        .news-meta-row { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+        .news-cat { font-size: 0.62rem; font-weight: 600; color: var(--primary); background: var(--primary-bg); padding: 2px 8px; border-radius: var(--radius-full); text-transform: uppercase; }
+        .news-time { font-size: 0.62rem; color: var(--text-lighter); }
+        .news-headline { font-size: 0.88rem; font-weight: 700; color: var(--text-dark); line-height: 1.45; margin-bottom: 10px; transition: opacity 0.25s ease; }
+        .news-read-more { font-size: 0.75rem; color: var(--primary); font-weight: 600; display: inline-flex; align-items: center; gap: 4px; }
+        .news-arrows { display: flex; gap: 8px; margin-top: 18px; justify-content: flex-end; }
+        .arrow-btn { width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--gray-200); background: var(--white); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: var(--transition); color: var(--text-light); font-size: 14px; }
+        .arrow-btn:hover { border-color: var(--primary); color: var(--primary); }
+        .view-link { font-size: 0.8rem; color: var(--text-light); font-weight: 500; display: inline-flex; align-items: center; gap: 4px; transition: var(--transition); }
+        .view-link:hover { color: var(--primary); }
+
+        /* DASHBOARD */
+        .dashboard-section { padding: 80px 40px; background: var(--white); }
+        .dash-grid { display: grid; grid-template-columns: 1.8fr 1fr; gap: 20px; }
+        .metrics-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+        .metric-box { padding: 20px; border-radius: var(--radius-md); position: relative; overflow: hidden; }
+        .metric-box.primary-metric { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: var(--white); }
+        .metric-tag { display: inline-block; font-size: 0.7rem; font-weight: 500; background: rgba(255,255,255,0.18); padding: 4px 10px; border-radius: var(--radius-full); margin-bottom: 14px; }
+        .metric-box.primary-metric .metric-number { font-size: 2rem; font-weight: 800; line-height: 1.1; }
+        .metric-box.primary-metric .metric-unit { font-size: 0.95rem; font-weight: 400; opacity: 0.8; }
+        .metric-box.primary-metric .metric-compare { font-size: 0.73rem; opacity: 0.7; margin-top: 4px; }
+        .metric-box.primary-metric .metric-percent { font-size: 0.75rem; margin-top: 10px; display: flex; align-items: center; gap: 4px; font-weight: 600; }
+        .metric-float-icon { position: absolute; top: 16px; right: 16px; width: 38px; height: 38px; background: rgba(255,255,255,0.15); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; }
+        .metric-box.secondary-metric { background: var(--off-white); border: 1px solid var(--gray-100); }
+        .sec-metric-label { font-size: 0.8rem; color: var(--text-light); font-weight: 500; margin-bottom: 10px; }
+        .sec-metric-value { font-size: 2rem; font-weight: 800; color: var(--text-dark); line-height: 1.1; }
+        .sec-metric-value .dim { font-size: 1rem; color: var(--text-lighter); font-weight: 500; }
+        .sec-metric-sub { font-size: 0.73rem; color: var(--text-lighter); margin-top: 4px; }
+        .sparkline-svg { width: 100%; height: 28px; margin-top: 12px; }
+        .progress-track { width: 100%; height: 6px; background: var(--gray-100); border-radius: 3px; margin-top: 16px; overflow: hidden; }
+        .progress-fill { height: 100%; border-radius: 3px; background: var(--primary); transition: width 2s ease; }
+        #mini-india-map { width: 100%; height: 240px; border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--gray-100); margin: 12px 0; z-index: 1; }
+        .map-footer-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; border-top: 1px solid var(--gray-100); padding-top: 16px; }
+        .map-stat-item { text-align: center; } .map-stat-item:last-child { border-left: 1px solid var(--gray-100); padding-left: 12px; }
+        .map-stat-label { font-size: 0.7rem; color: var(--text-light); margin-bottom: 4px; }
+        .map-stat-val { font-size: 1.6rem; font-weight: 800; color: var(--text-dark); }
+
+        /* CATALOG */
+        .catalog-section { padding: 80px 40px; background: var(--off-white); }
+        .catalog-filters { display: flex; gap: 10px; justify-content: center; margin-bottom: 24px; flex-wrap: wrap; }
+        .filter-pill { padding: 8px 20px; border: 1.5px solid var(--gray-200); background: var(--white); border-radius: var(--radius-full); font-size: 0.8rem; font-weight: 600; color: var(--text-medium); cursor: pointer; transition: var(--transition); font-family: inherit; }
+        .filter-pill:hover, .filter-pill.active { background: var(--primary); color: white; border-color: var(--primary); }
+        .type-pill.active { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); box-shadow: 0 4px 15px rgba(46,125,50,0.3); }
+        .catalog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+        .vehicle-card { background: var(--white); border: 1px solid var(--gray-100); border-radius: var(--radius-lg); overflow: hidden; transition: var(--transition); cursor: pointer; }
+        .vehicle-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-xl); border-color: rgba(46,125,50,0.2); }
+        .vehicle-card-img-wrap { position: relative; }
+        .vehicle-card-img { width: 100%; height: 180px; object-fit: cover; background: var(--gray-50); }
+        .vehicle-type-badge { position: absolute; top: 12px; left: 12px; background: rgba(46,125,50,0.95); color: white; padding: 4px 10px; border-radius: 50px; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; backdrop-filter: blur(8px); }
+        .vehicle-card-body { padding: 20px; }
+        .vehicle-card-brand { font-size: 0.7rem; font-weight: 600; color: var(--primary); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+        .vehicle-card-name { font-size: 1.05rem; font-weight: 800; color: var(--text-dark); margin-bottom: 8px; }
+        .vehicle-card-specs { display: flex; gap: 14px; margin-bottom: 14px; flex-wrap: wrap; }
+        .vc-spec { font-size: 0.7rem; color: var(--text-lighter); display: flex; align-items: center; gap: 4px; }
+        .vc-spec strong { color: var(--text-medium); font-weight: 700; }
+        .vehicle-card-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 14px; border-top: 1px solid var(--gray-100); }
+        .vehicle-card-price { font-size: 1rem; font-weight: 800; color: var(--primary); }
+        .vehicle-card-tag { font-size: 0.65rem; font-weight: 600; background: var(--primary-bg); color: var(--primary); padding: 4px 10px; border-radius: var(--radius-full); text-transform: uppercase; }
+
+        /* CALCULATOR */
         .calc-section { padding: 80px 40px; background: linear-gradient(135deg, #f1f8e9, #e8f5e9); }
         .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; max-width: 1200px; margin: 0 auto; }
         .calc-input-card { background: var(--white); border-radius: var(--radius-xl); padding: 40px; box-shadow: var(--shadow-xl); }
@@ -305,26 +300,16 @@
         .calc-co2-text { font-size: 0.82rem; }
         .calc-co2-text strong { display: block; font-size: 1rem; font-weight: 800; }
 
-        /* ===== FLEX FUEL VEHICLE CATALOG (Option B) ===== */
-        .catalog-section { padding: 80px 40px; background: var(--white); }
-        .catalog-filters { display: flex; gap: 10px; justify-content: center; margin-bottom: 32px; flex-wrap: wrap; }
-        .filter-pill { padding: 8px 20px; border: 1.5px solid var(--gray-200); background: var(--white); border-radius: var(--radius-full); font-size: 0.8rem; font-weight: 600; color: var(--text-medium); cursor: pointer; transition: var(--transition); font-family: inherit; }
-        .filter-pill:hover, .filter-pill.active { background: var(--primary); color: white; border-color: var(--primary); }
-        .catalog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
-        .vehicle-card { background: var(--white); border: 1px solid var(--gray-100); border-radius: var(--radius-lg); overflow: hidden; transition: var(--transition); cursor: pointer; }
-        .vehicle-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-xl); border-color: rgba(46,125,50,0.2); }
-        .vehicle-card-img { width: 100%; height: 180px; object-fit: cover; background: var(--gray-50); }
-        .vehicle-card-body { padding: 20px; }
-        .vehicle-card-brand { font-size: 0.7rem; font-weight: 600; color: var(--primary); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
-        .vehicle-card-name { font-size: 1.05rem; font-weight: 800; color: var(--text-dark); margin-bottom: 8px; }
-        .vehicle-card-specs { display: flex; gap: 14px; margin-bottom: 14px; }
-        .vc-spec { font-size: 0.7rem; color: var(--text-lighter); display: flex; align-items: center; gap: 4px; }
-        .vc-spec strong { color: var(--text-medium); font-weight: 700; }
-        .vehicle-card-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 14px; border-top: 1px solid var(--gray-100); }
-        .vehicle-card-price { font-size: 1rem; font-weight: 800; color: var(--primary); }
-        .vehicle-card-tag { font-size: 0.65rem; font-weight: 600; background: var(--primary-bg); color: var(--primary); padding: 4px 10px; border-radius: var(--radius-full); text-transform: uppercase; }
+        /* FEATURES STRIP */
+        .features-strip { padding: 60px 40px; background: var(--white); }
+        .features-strip-inner { background: var(--white); border-radius: var(--radius-lg); padding: 24px 32px; box-shadow: var(--shadow-md); border: 1px solid rgba(0,0,0,0.04); display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+        .feat-item { display: flex; align-items: center; gap: 12px; padding: 8px 0; }
+        .feat-icon { width: 44px; height: 44px; min-width: 44px; background: var(--primary-bg); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; }
+        .feat-icon svg { width: 22px; height: 22px; stroke: var(--primary); }
+        .feat-text h4 { font-size: 0.82rem; font-weight: 700; color: var(--text-dark); }
+        .feat-text p { font-size: 0.68rem; color: var(--text-lighter); }
 
-        /* ===== GOVERNMENT POLICY TIMELINE (Option C) ===== */
+        /* POLICY TIMELINE */
         .policy-section { padding: 80px 40px; background: linear-gradient(180deg, var(--off-white), var(--primary-bg-light)); }
         .timeline-wrapper { max-width: 900px; margin: 0 auto; position: relative; padding: 20px 0; }
         .timeline-wrapper::before { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 3px; background: linear-gradient(180deg, var(--primary-light), var(--primary), var(--primary-dark)); transform: translateX(-50%); border-radius: 2px; }
@@ -342,13 +327,11 @@
         .timeline-dot.current { background: #FFA726; animation: pulse 2s infinite; }
         .timeline-dot.future { background: var(--gray-300); }
         .timeline-dot svg { width: 22px; height: 22px; stroke: white; }
-        .timeline-empty { }
         .timeline-status { display: inline-block; font-size: 0.65rem; font-weight: 700; padding: 3px 10px; border-radius: var(--radius-full); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
         .timeline-status.done { background: var(--primary-bg); color: var(--primary-dark); }
         .timeline-status.current { background: #FFF3E0; color: #E65100; }
         .timeline-status.future { background: var(--gray-100); color: var(--text-light); }
 
-        /* FOOTER */
         .footer { background: #111; color: var(--white); padding: 60px 48px 30px; }
         .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr 1.3fr; gap: 40px; margin-bottom: 40px; }
         .footer-brand-text { font-size: 1.4rem; font-weight: 800; margin-bottom: 14px; }
@@ -369,16 +352,16 @@
         @media (max-width: 1024px) {
             .navbar { padding: 0 24px; } .nav-links { display: none; } .mobile-hamburger { display: flex; }
             .hero { background-position: center center; min-height: auto; }
-            .hero::before { background: linear-gradient(180deg, rgba(248,253,248,0.95) 0%, rgba(248,253,248,0.85) 25%, rgba(248,253,248,0.5) 50%, rgba(248,253,248,0.85) 100%); }
+            .hero::before { background: linear-gradient(180deg, rgba(248,253,248,0.96) 0%, rgba(248,253,248,0.88) 30%, rgba(248,253,248,0.5) 60%, rgba(248,253,248,0.92) 100%); }
             .hero-wrapper { flex-wrap: wrap; } .hero-left { flex: 0 0 100%; padding: 40px 24px; text-align: center; } .hero-desc { margin: 0 auto 36px; } .hero-btns { justify-content: center; } .hero-tags { margin: 0 auto; }
             .hero-center { display: none; } .hero-right { flex: 0 0 100%; padding: 0 24px 40px; }
-            .dash-grid { grid-template-columns: 1fr; } .comp-grid { grid-template-columns: 1fr; }
+            .vehicle-grid { grid-template-columns: 1fr; }
             .stations-layout { grid-template-columns: 1fr; }
             .stations-list { max-height: none; flex-direction: row; overflow-x: auto; overflow-y: visible; padding-bottom: 12px; }
             .station-card { min-width: 290px; flex-shrink: 0; }
             #stations-map { height: 450px; }
+            .dash-grid { grid-template-columns: 1fr; } .comp-grid { grid-template-columns: 1fr; }
             .features-strip-inner { grid-template-columns: repeat(3, 1fr); } .footer-grid { grid-template-columns: repeat(2, 1fr); }
-            .vehicle-grid { grid-template-columns: 1fr; }
             .section-title { font-size: 2rem; }
             .timeline-wrapper::before { left: 30px; }
             .timeline-item { grid-template-columns: 60px 1fr; gap: 16px; }
@@ -402,7 +385,6 @@
         <span class="ticker-item"><span class="ticker-dot"></span> <strong>Hyderabad:</strong> E85 ₹74.05/L <span class="price-up">↓ 3.1%</span></span>
         <span class="ticker-item"><span class="ticker-dot"></span> <strong>Pune:</strong> E85 ₹73.85/L <span class="price-up">↓ 2.7%</span></span>
         <span class="ticker-item"><span class="ticker-dot"></span> <strong>Kolkata:</strong> E85 ₹74.35/L <span class="price-down">↑ 0.3%</span></span>
-        <span class="ticker-item"><span class="ticker-dot"></span> <strong>Ahmedabad:</strong> E85 ₹74.18/L <span class="price-up">↓ 1.5%</span></span>
         <span class="ticker-item"><span class="ticker-dot"></span> 📊 <strong>National Avg:</strong> ₹74.21/L • <strong>Petrol:</strong> ₹94.72/L • <strong>Saving:</strong> 21.6%</span>
     </div>
 </div>
@@ -419,9 +401,9 @@
     </a>
     <nav class="nav-links">
         <a href="#" class="active">Home</a>
-        <a href="#dashboard">Dashboard</a>
-        <a href="#stations">Fuel Stations</a>
         <a href="#vehicles">Vehicle Check</a>
+        <a href="#stations">Fuel Stations</a>
+        <a href="#dashboard">Dashboard</a>
         <a href="#catalog">FFV Models</a>
         <a href="#calculator">Calculator</a>
         <a href="#policy">Policy</a>
@@ -432,23 +414,23 @@
 
 <div class="mobile-nav" id="mobileNav">
     <a href="#" class="active" onclick="toggleMenu()">Home</a>
-    <a href="#dashboard" onclick="toggleMenu()">Dashboard</a>
     <a href="#vehicles" onclick="toggleMenu()">Vehicle Check</a>
     <a href="#stations" onclick="toggleMenu()">Fuel Stations</a>
-    <a href="#calculator" onclick="toggleMenu()">Cost Calculator</a>
+    <a href="#dashboard" onclick="toggleMenu()">Dashboard</a>
     <a href="#catalog" onclick="toggleMenu()">FFV Models</a>
+    <a href="#calculator" onclick="toggleMenu()">Cost Calculator</a>
     <a href="#policy" onclick="toggleMenu()">Policy Timeline</a>
 </div>
 
-<!-- HERO -->
+<!-- 1. HERO -->
 <section class="hero" id="home">
     <div class="hero-wrapper">
         <div class="hero-left">
             <h1 class="hero-title reveal">India's <span class="green">E85</span><br>Fuel Intelligence<br>Platform</h1>
             <p class="hero-desc reveal reveal-delay-1">Real-time analytics, fuel prices, station locator, vehicle compatibility and everything you need to know about E85 in India.</p>
             <div class="hero-btns reveal reveal-delay-2">
-                <a href="#dashboard" class="btn-hero-primary">Explore Dashboard <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
-                <a href="#vehicles" class="btn-hero-secondary"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor"/></svg> Watch Video</a>
+                <a href="#vehicles" class="btn-hero-primary">Check Your Vehicle <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+                <a href="#dashboard" class="btn-hero-secondary"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor"/></svg> Watch Video</a>
             </div>
             <div class="hero-tags reveal reveal-delay-3">
                 <div class="hero-tag"><span class="hero-tag-dot"></span> Cleaner Fuel</div>
@@ -465,44 +447,74 @@
                 <div class="stat-card reveal reveal-delay-2"><div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div><div class="stat-value"><span class="counter" data-target="85">0</span>%</div><div class="stat-label">E85 Availability</div><div class="stat-sublabel">Average Availability</div><div class="stat-change">↑ 12% this month</div></div>
             </div>
             <div class="stats-row">
-                <div class="stat-card reveal reveal-delay-3"><div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="2"/><polygon points="16 8 20 5.5 20 15.5 16 13 16 8"/></svg></div><div class="stat-value"><span class="counter" data-target="48">0</span>+</div><div class="stat-label">Flex Fuel Vehicles</div><div class="stat-sublabel">Models Available</div><div class="stat-change">↑ 8% this month</div></div>
+                <div class="stat-card reveal reveal-delay-3"><div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="2"/><polygon points="16 8 20 5.5 20 15.5 16 13 16 8"/></svg></div><div class="stat-value"><span class="counter" data-target="60">0</span>+</div><div class="stat-label">Flex Fuel Vehicles</div><div class="stat-sublabel">Cars & Bikes</div><div class="stat-change">↑ 12% this month</div></div>
                 <div class="stat-card reveal reveal-delay-4"><div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg></div><div class="stat-value">646 <span style="font-size:0.9rem">Cr L</span></div><div class="stat-label">Ethanol Production</div><div class="stat-sublabel">Annual Capacity</div><div class="stat-change">↑ 15% this year</div></div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- DASHBOARD -->
-<section class="dashboard-section" id="dashboard">
-    <div class="section-container" style="padding:0">
-        <div class="dash-grid">
-            <div class="glass-card reveal">
-                <div class="card-header"><h2 class="card-title">Live E85 Dashboard</h2><div class="live-badge"><span class="live-pulse"></span> Live</div></div>
-                <div class="metrics-grid">
-                    <div class="metric-box primary-metric"><span class="metric-tag">E85 Avg. Price</span><div class="metric-float-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg></div><div class="metric-number">₹ <span class="counter" data-target="74">0</span>.28 <span class="metric-unit">/L</span></div><div class="metric-compare">vs Petrol ₹ 94.72 /L</div><div class="metric-percent">↓ 21.6% Cheaper</div></div>
-                    <div class="metric-box secondary-metric"><div class="sec-metric-label">Active Fuel Stations</div><div class="sec-metric-value"><span class="counter" data-target="320">0</span>+</div><div class="sec-metric-sub">Live & Operational</div><svg class="sparkline-svg" viewBox="0 0 120 28"><path d="M0,26 Q15,22 30,18 T60,13 T90,8 T120,4" fill="none" stroke="#4caf50" stroke-width="2"/></svg></div>
-                    <div class="metric-box secondary-metric"><div class="sec-metric-label">Ethanol Blend</div><div class="sec-metric-value"><span class="counter" data-target="85">0</span>%</div><div class="sec-metric-sub">Ethanol Content</div><div class="progress-track"><div class="progress-fill" style="width:0%" data-width="85%"></div></div></div>
-                    <div class="metric-box secondary-metric"><div class="sec-metric-label">Fuel Availability Index</div><div class="sec-metric-value"><span class="counter" data-target="85">0</span><span class="dim">/100</span></div><div class="sec-metric-sub">High Availability</div><svg class="sparkline-svg" viewBox="0 0 120 28"><path d="M0,18 Q10,14 20,16 T40,10 T60,13 T80,6 T100,8 T120,4" fill="none" stroke="#4caf50" stroke-width="2"/></svg></div>
-                </div>
+<!-- 2. VEHICLE CHECKER -->
+<section class="vehicle-section" id="vehicles">
+    <div class="section-container">
+        <div class="section-header reveal">
+            <div class="section-badge">🚗 Check</div>
+            <h2 class="section-title">Vehicle <span class="green">Compatibility</span> Checker</h2>
+            <p class="section-subtitle">Find out if your vehicle is compatible with E85 flex fuel in seconds.</p>
+        </div>
+        <div class="vehicle-grid">
+            <div class="vehicle-form-card reveal">
+                <h3>Check Your Vehicle</h3>
+                <p class="form-sub">Select your vehicle details to check E85 compatibility.</p>
+                <div class="form-group"><label>Vehicle Brand</label><select id="vehicleBrand"><option value="">Select Brand</option><option value="maruti">Maruti Suzuki</option><option value="toyota">Toyota</option><option value="hyundai">Hyundai</option><option value="tata">Tata Motors</option><option value="mahindra">Mahindra</option><option value="honda">Honda</option><option value="kia">Kia</option><option value="mg">MG Motor</option><option value="tvs">TVS</option><option value="bajaj">Bajaj</option><option value="hero">Hero</option><option value="royalenfield">Royal Enfield</option></select></div>
+                <div class="form-group"><label>Model</label><select id="vehicleModel"><option value="">Select Model</option><option value="innova">Innova HyCross Flex</option><option value="landcruiser">Land Cruiser Flex</option><option value="baleno">Baleno Flex Fuel</option><option value="nexon">Nexon Flex Fuel</option><option value="xuv700">XUV700 Flex</option><option value="creta">Creta Flex</option><option value="city">City Flex Fuel</option><option value="apache">Apache RTR 200 Flex</option><option value="pulsar">Pulsar NS 160 Flex</option><option value="splendor">Splendor+ Flex</option></select></div>
+                <div class="form-group"><label>Year</label><select id="vehicleYear"><option value="">Select Year</option><option value="2025">2025</option><option value="2024">2024</option><option value="2023">2023</option><option value="2022">2022</option><option value="2021">2021</option></select></div>
+                <button class="check-btn" onclick="checkVehicle()">Check Compatibility <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button>
+                <div class="vehicle-result" id="vehicleResult"></div>
             </div>
-            <div class="glass-card reveal reveal-delay-1">
-                <div class="card-header"><h2 class="card-title">E85 Coverage Map</h2><a href="#stations" class="view-link">View All →</a></div>
-                <div id="mini-india-map"></div>
-                <div class="map-footer-stats">
-                    <div class="map-stat-item"><div class="map-stat-label">High Coverage States</div><div class="map-stat-val"><span class="counter" data-target="12">0</span></div></div>
-                    <div class="map-stat-item"><div class="map-stat-label">Total States Covered</div><div class="map-stat-val"><span class="counter" data-target="28">0</span></div></div>
-                </div>
+            <div class="vehicle-image-side reveal reveal-delay-2">
+                <img src="flex-vehicle.jpg" alt="Toyota Land Cruiser Flex Fuel">
             </div>
         </div>
     </div>
 </section>
 
-<!-- COMPARISON -->
+<!-- 3. FUEL STATIONS -->
+<section class="stations-section" id="stations">
+    <div class="section-container">
+        <div class="section-header reveal">
+            <div class="section-badge">📍 Locate</div>
+            <h2 class="section-title"><span class="green">E85</span> Fuel Station Network</h2>
+            <p class="section-subtitle">Find E85 fuel stations near you across India. Search by city, view details, and submit new stations.</p>
+        </div>
+        <div class="stations-toolbar reveal">
+            <div class="search-wrapper">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                <input type="text" class="search-input" id="searchStations" placeholder="Search by city (Delhi, Mumbai, Bengaluru...)" oninput="filterStations()">
+            </div>
+            <button class="submit-station-btn" onclick="openModal()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+                Submit New Station
+            </button>
+        </div>
+        <div class="stations-layout reveal">
+            <div class="stations-list" id="stationsList"></div>
+            <div id="stations-map"></div>
+        </div>
+    </div>
+</section>
+
+<!-- 4. COMPARISON -->
 <section class="comparison-section">
-    <div class="section-container" style="padding:0">
+    <div class="section-container" style="padding:0 40px;">
+        <div class="section-header reveal">
+            <div class="section-badge" style="background:var(--primary-bg);">📊 Compare</div>
+            <h2 class="section-title">E85 vs <span class="green">Petrol vs E20</span></h2>
+            <p class="section-subtitle">See why E85 is the smartest fuel choice for your wallet and the environment.</p>
+        </div>
         <div class="comp-grid">
             <div class="glass-card reveal">
-                <div class="card-header"><h2 class="card-title">E85 vs Petrol vs E20</h2></div>
+                <div class="card-header"><h2 class="card-title">Price & Benefits Comparison</h2></div>
                 <div class="comp-inner">
                     <div>
                         <div class="chart-label">Price Comparison (₹ /L)</div>
@@ -547,70 +559,70 @@
     </div>
 </section>
 
-<!-- FEATURES STRIP -->
-<section class="features-strip">
-    <div class="section-container" style="padding:0">
-        <div class="features-strip-inner reveal">
-            <div class="feat-item"><div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></div><div class="feat-text"><h4>Real-time Analytics</h4><p>Live fuel & market data</p></div></div>
-            <div class="feat-item"><div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0116 0Z"/><circle cx="12" cy="10" r="3"/></svg></div><div class="feat-text"><h4>Fuel Station Locator</h4><p>Find E85 stations near you</p></div></div>
-            <div class="feat-item"><div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="2"/><polygon points="16 8 20 5.5 20 15.5 16 13 16 8"/></svg></div><div class="feat-text"><h4>Vehicle Compatibility</h4><p>Check your vehicle</p></div></div>
-            <div class="feat-item"><div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><div class="feat-text"><h4>Cost Calculator</h4><p>Save money, choose E85</p></div></div>
-            <div class="feat-item"><div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 22h16a2 2 0 002-2V4a2 2 0 00-2-2H8a2 2 0 00-2 2v16a2 2 0 01-2 2Z"/></svg></div><div class="feat-text"><h4>Latest News</h4><p>E85 industry updates</p></div></div>
+<!-- 5. DASHBOARD -->
+<section class="dashboard-section" id="dashboard">
+    <div class="section-container" style="padding:0 40px;">
+        <div class="section-header reveal">
+            <div class="section-badge" style="background:var(--primary-bg);">📈 Analytics</div>
+            <h2 class="section-title">Live E85 <span class="green">Dashboard</span></h2>
+            <p class="section-subtitle">Real-time data and analytics for India's E85 ecosystem.</p>
+        </div>
+        <div class="dash-grid">
+            <div class="glass-card reveal">
+                <div class="card-header"><h2 class="card-title">Real-Time Metrics</h2><div class="live-badge"><span class="live-pulse"></span> Live</div></div>
+                <div class="metrics-grid">
+                    <div class="metric-box primary-metric"><span class="metric-tag">E85 Avg. Price</span><div class="metric-float-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg></div><div class="metric-number">₹ <span class="counter" data-target="74">0</span>.28 <span class="metric-unit">/L</span></div><div class="metric-compare">vs Petrol ₹ 94.72 /L</div><div class="metric-percent">↓ 21.6% Cheaper</div></div>
+                    <div class="metric-box secondary-metric"><div class="sec-metric-label">Active Fuel Stations</div><div class="sec-metric-value"><span class="counter" data-target="320">0</span>+</div><div class="sec-metric-sub">Live & Operational</div><svg class="sparkline-svg" viewBox="0 0 120 28"><path d="M0,26 Q15,22 30,18 T60,13 T90,8 T120,4" fill="none" stroke="#4caf50" stroke-width="2"/></svg></div>
+                    <div class="metric-box secondary-metric"><div class="sec-metric-label">Ethanol Blend</div><div class="sec-metric-value"><span class="counter" data-target="85">0</span>%</div><div class="sec-metric-sub">Ethanol Content</div><div class="progress-track"><div class="progress-fill" style="width:0%" data-width="85%"></div></div></div>
+                    <div class="metric-box secondary-metric"><div class="sec-metric-label">Fuel Availability Index</div><div class="sec-metric-value"><span class="counter" data-target="85">0</span><span class="dim">/100</span></div><div class="sec-metric-sub">High Availability</div><svg class="sparkline-svg" viewBox="0 0 120 28"><path d="M0,18 Q10,14 20,16 T40,10 T60,13 T80,6 T100,8 T120,4" fill="none" stroke="#4caf50" stroke-width="2"/></svg></div>
+                </div>
+            </div>
+            <div class="glass-card reveal reveal-delay-1">
+                <div class="card-header"><h2 class="card-title">E85 Coverage Map</h2><a href="#stations" class="view-link">View All →</a></div>
+                <div id="mini-india-map"></div>
+                <div class="map-footer-stats">
+                    <div class="map-stat-item"><div class="map-stat-label">High Coverage States</div><div class="map-stat-val"><span class="counter" data-target="12">0</span></div></div>
+                    <div class="map-stat-item"><div class="map-stat-label">Total States Covered</div><div class="map-stat-val"><span class="counter" data-target="28">0</span></div></div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
 
-<!-- VEHICLE CHECKER -->
-<section class="vehicle-section" id="vehicles">
+<!-- 6. VEHICLE CATALOG (CARS + BIKES) -->
+<section class="catalog-section" id="catalog">
     <div class="section-container">
         <div class="section-header reveal">
-            <div class="section-badge">🚗 Check</div>
-            <h2 class="section-title">Vehicle <span class="green">Compatibility</span> Checker</h2>
-            <p class="section-subtitle">Find out if your vehicle is compatible with E85 flex fuel in seconds.</p>
+            <div class="section-badge" style="background:var(--primary-bg);">🚗🏍️ Vehicles</div>
+            <h2 class="section-title">Flex Fuel <span class="green">Vehicle Catalog</span></h2>
+            <p class="section-subtitle">Explore 60+ flex fuel cars & bikes available in India that run on E85 ethanol.</p>
         </div>
-        <div class="vehicle-grid">
-            <div class="vehicle-form-card reveal">
-                <h3>Check Your Vehicle</h3>
-                <p class="form-sub">Select your vehicle details to check E85 compatibility.</p>
-                <div class="form-group"><label>Vehicle Brand</label><select id="vehicleBrand"><option value="">Select Brand</option><option value="maruti">Maruti Suzuki</option><option value="toyota">Toyota</option><option value="hyundai">Hyundai</option><option value="tata">Tata Motors</option><option value="mahindra">Mahindra</option><option value="honda">Honda</option><option value="kia">Kia</option><option value="mg">MG Motor</option></select></div>
-                <div class="form-group"><label>Model</label><select id="vehicleModel"><option value="">Select Model</option><option value="innova">Innova HyCross Flex</option><option value="landcruiser">Land Cruiser Flex</option><option value="baleno">Baleno Flex Fuel</option><option value="nexon">Nexon Flex Fuel</option><option value="xuv700">XUV700 Flex</option><option value="creta">Creta Flex</option><option value="city">City Flex Fuel</option><option value="seltos">Seltos Flex</option><option value="hector">Hector Flex</option></select></div>
-                <div class="form-group"><label>Year</label><select id="vehicleYear"><option value="">Select Year</option><option value="2025">2025</option><option value="2024">2024</option><option value="2023">2023</option><option value="2022">2022</option><option value="2021">2021</option></select></div>
-                <button class="check-btn" onclick="checkVehicle()">Check Compatibility <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button>
-                <div class="vehicle-result" id="vehicleResult"></div>
-            </div>
-            <div class="vehicle-image-side reveal reveal-delay-2">
-                <img src="flex-vehicle.jpg" alt="Toyota Land Cruiser Flex Fuel">
-            </div>
+        <!-- Type Filter -->
+        <div class="catalog-filters reveal" style="margin-bottom:16px;">
+            <button class="filter-pill type-pill active" onclick="filterByType('all', this)">🚗🏍️ All Vehicles</button>
+            <button class="filter-pill type-pill" onclick="filterByType('car', this)">🚗 Cars</button>
+            <button class="filter-pill type-pill" onclick="filterByType('bike', this)">🏍️ Bikes</button>
         </div>
+        <!-- Brand Filter -->
+        <div class="catalog-filters reveal" id="brandFilters">
+            <button class="filter-pill brand-pill active" onclick="filterCatalog('all', this)">All Brands</button>
+            <button class="filter-pill brand-pill" data-brand="toyota" onclick="filterCatalog('toyota', this)">Toyota</button>
+            <button class="filter-pill brand-pill" data-brand="maruti" onclick="filterCatalog('maruti', this)">Maruti</button>
+            <button class="filter-pill brand-pill" data-brand="hyundai" onclick="filterCatalog('hyundai', this)">Hyundai</button>
+            <button class="filter-pill brand-pill" data-brand="tata" onclick="filterCatalog('tata', this)">Tata</button>
+            <button class="filter-pill brand-pill" data-brand="mahindra" onclick="filterCatalog('mahindra', this)">Mahindra</button>
+            <button class="filter-pill brand-pill" data-brand="honda" onclick="filterCatalog('honda', this)">Honda</button>
+            <button class="filter-pill brand-pill" data-brand="tvs" onclick="filterCatalog('tvs', this)">TVS</button>
+            <button class="filter-pill brand-pill" data-brand="bajaj" onclick="filterCatalog('bajaj', this)">Bajaj</button>
+            <button class="filter-pill brand-pill" data-brand="hero" onclick="filterCatalog('hero', this)">Hero</button>
+            <button class="filter-pill brand-pill" data-brand="royalenfield" onclick="filterCatalog('royalenfield', this)">Royal Enfield</button>
+            <button class="filter-pill brand-pill" data-brand="yamaha" onclick="filterCatalog('yamaha', this)">Yamaha</button>
+        </div>
+        <div class="catalog-grid reveal" id="catalogGrid"></div>
     </div>
 </section>
 
-<!-- FUEL STATIONS -->
-<section class="stations-section" id="stations">
-    <div class="section-container">
-        <div class="section-header reveal">
-            <div class="section-badge">📍 Locate</div>
-            <h2 class="section-title"><span class="green">E85</span> Fuel Station Network</h2>
-            <p class="section-subtitle">Find E85 fuel stations near you across India. Search by city, view details, and submit new stations.</p>
-        </div>
-        <div class="stations-toolbar reveal">
-            <div class="search-wrapper">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-                <input type="text" class="search-input" id="searchStations" placeholder="Search by city (Delhi, Mumbai, Bengaluru...)" oninput="filterStations()">
-            </div>
-            <button class="submit-station-btn" onclick="openModal()">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
-                Submit New Station
-            </button>
-        </div>
-        <div class="stations-layout reveal">
-            <div class="stations-list" id="stationsList"></div>
-            <div id="stations-map"></div>
-        </div>
-    </div>
-</section>
-
-<!-- COST CALCULATOR (Option A) -->
+<!-- 7. COST CALCULATOR -->
 <section class="calc-section" id="calculator">
     <div class="section-container">
         <div class="section-header reveal">
@@ -623,356 +635,16 @@
                 <h3>Your Driving Profile</h3>
                 <p>Adjust the sliders to match your driving habits.</p>
                 <div class="calc-slider-group">
-                    <div class="calc-slider-label">
-                        <span class="lbl-text">Yearly Distance</span>
-                        <span class="lbl-val"><span id="calc-km">15000</span> km</span>
-                    </div>
+                    <div class="calc-slider-label"><span class="lbl-text">Yearly Distance</span><span class="lbl-val"><span id="calc-km">15000</span> km</span></div>
                     <input type="range" class="calc-slider" id="kmSlider" min="5000" max="50000" step="1000" value="15000" oninput="calculateSavings()">
                 </div>
                 <div class="calc-slider-group">
-                    <div class="calc-slider-label">
-                        <span class="lbl-text">Vehicle Mileage (Petrol)</span>
-                        <span class="lbl-val"><span id="calc-mil">15</span> km/L</span>
-                    </div>
-                    <input type="range" class="calc-slider" id="milSlider" min="8" max="25" step="1" value="15" oninput="calculateSavings()">
+                    <div class="calc-slider-label"><span class="lbl-text">Vehicle Mileage (Petrol)</span><span class="lbl-val"><span id="calc-mil">15</span> km/L</span></div>
+                    <input type="range" class="calc-slider" id="milSlider" min="8" max="70" step="1" value="15" oninput="calculateSavings()">
                 </div>
                 <div class="calc-slider-group">
-                    <div class="calc-slider-label">
-                        <span class="lbl-text">Current Petrol Price</span>
-                        <span class="lbl-val">₹ <span id="calc-petrol">94.72</span>/L</span>
-                    </div>
+                    <div class="calc-slider-label"><span class="lbl-text">Current Petrol Price</span><span class="lbl-val">₹ <span id="calc-petrol">94.72</span>/L</span></div>
                     <input type="range" class="calc-slider" id="petrolSlider" min="80" max="120" step="0.5" value="94.72" oninput="calculateSavings()">
                 </div>
                 <div class="calc-slider-group">
-                    <div class="calc-slider-label">
-                        <span class="lbl-text">E85 Price</span>
-                        <span class="lbl-val">₹ <span id="calc-e85">74.28</span>/L</span>
-                    </div>
-                    <input type="range" class="calc-slider" id="e85Slider" min="60" max="90" step="0.5" value="74.28" oninput="calculateSavings()">
-                </div>
-            </div>
-            <div class="calc-result-card reveal reveal-delay-1">
-                <h3>Your Annual Savings</h3>
-                <div class="calc-big-num"><span class="currency">₹</span><span id="calc-saving">12,500</span></div>
-                <div class="calc-savings-period">per year by switching to E85</div>
-                <div class="calc-breakdown">
-                    <div class="calc-break-item">
-                        <div class="lbl">Petrol Cost / Year</div>
-                        <div class="val">₹<span id="calc-petrol-cost">94,720</span></div>
-                    </div>
-                    <div class="calc-break-item">
-                        <div class="lbl">E85 Cost / Year</div>
-                        <div class="val">₹<span id="calc-e85-cost">82,220</span></div>
-                    </div>
-                </div>
-                <div class="calc-co2">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                    <div class="calc-co2-text">
-                        <strong><span id="calc-co2-val">1,650</span> kg CO₂ saved/year</strong>
-                        Equivalent to planting <span id="calc-trees">75</span> trees 🌱
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- FLEX FUEL VEHICLE CATALOG (Option B) -->
-<section class="catalog-section" id="catalog">
-    <div class="section-container">
-        <div class="section-header reveal">
-            <div class="section-badge" style="background:var(--primary-bg);">🚙 Vehicles</div>
-            <h2 class="section-title">Flex Fuel <span class="green">Vehicle Catalog</span></h2>
-            <p class="section-subtitle">Explore 48+ flex fuel vehicle models available in India that run on E85.</p>
-        </div>
-        <div class="catalog-filters reveal">
-            <button class="filter-pill active" onclick="filterCatalog('all', this)">All Brands</button>
-            <button class="filter-pill" onclick="filterCatalog('toyota', this)">Toyota</button>
-            <button class="filter-pill" onclick="filterCatalog('maruti', this)">Maruti Suzuki</button>
-            <button class="filter-pill" onclick="filterCatalog('hyundai', this)">Hyundai</button>
-            <button class="filter-pill" onclick="filterCatalog('tata', this)">Tata</button>
-            <button class="filter-pill" onclick="filterCatalog('mahindra', this)">Mahindra</button>
-            <button class="filter-pill" onclick="filterCatalog('honda', this)">Honda</button>
-        </div>
-        <div class="catalog-grid reveal" id="catalogGrid"></div>
-    </div>
-</section>
-
-<!-- GOVERNMENT POLICY TIMELINE (Option C) -->
-<section class="policy-section" id="policy">
-    <div class="section-container">
-        <div class="section-header reveal">
-            <div class="section-badge">📜 Policy</div>
-            <h2 class="section-title">India's <span class="green">Ethanol Roadmap</span></h2>
-            <p class="section-subtitle">Government policy milestones for ethanol blending and biofuel adoption in India.</p>
-        </div>
-        <div class="timeline-wrapper">
-            <div class="timeline-item reveal">
-                <div class="timeline-content">
-                    <span class="timeline-status done">Achieved</span>
-                    <div class="timeline-year">2018</div>
-                    <div class="timeline-title">National Biofuels Policy Launched</div>
-                    <div class="timeline-desc">Government sets initial roadmap for ethanol blending across India.</div>
-                </div>
-                <div class="timeline-dot done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></div>
-                <div class="timeline-empty"></div>
-            </div>
-            <div class="timeline-item reveal reveal-delay-1">
-                <div class="timeline-empty"></div>
-                <div class="timeline-dot done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></div>
-                <div class="timeline-content">
-                    <span class="timeline-status done">Achieved</span>
-                    <div class="timeline-year">2022</div>
-                    <div class="timeline-title">E10 Blending Achieved Nationwide</div>
-                    <div class="timeline-desc">India successfully achieves 10% ethanol blending in petrol 5 months ahead of target.</div>
-                </div>
-            </div>
-            <div class="timeline-item reveal reveal-delay-2">
-                <div class="timeline-content">
-                    <span class="timeline-status current">In Progress</span>
-                    <div class="timeline-year">2025</div>
-                    <div class="timeline-title">E20 Rollout Across India</div>
-                    <div class="timeline-desc">20% ethanol blending target for petrol nationwide. Currently at 18.5% national average.</div>
-                </div>
-                <div class="timeline-dot current"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="3"/></svg></div>
-                <div class="timeline-empty"></div>
-            </div>
-            <div class="timeline-item reveal reveal-delay-3">
-                <div class="timeline-empty"></div>
-                <div class="timeline-dot current"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="3"/></svg></div>
-                <div class="timeline-content">
-                    <span class="timeline-status current">In Progress</span>
-                    <div class="timeline-year">2026</div>
-                    <div class="timeline-title">E85 Flex Fuel Mass Rollout</div>
-                    <div class="timeline-desc">320+ E85 stations operational. Major OEMs launching flex-fuel vehicle lineup.</div>
-                </div>
-            </div>
-            <div class="timeline-item reveal reveal-delay-4">
-                <div class="timeline-content">
-                    <span class="timeline-status future">Planned</span>
-                    <div class="timeline-year">2030</div>
-                    <div class="timeline-title">2000+ E85 Stations Target</div>
-                    <div class="timeline-desc">Expand E85 infrastructure to 2000+ stations covering all major highways and metros.</div>
-                </div>
-                <div class="timeline-dot future"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2v20M2 12h20"/></svg></div>
-                <div class="timeline-empty"></div>
-            </div>
-            <div class="timeline-item reveal">
-                <div class="timeline-empty"></div>
-                <div class="timeline-dot future"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2v20M2 12h20"/></svg></div>
-                <div class="timeline-content">
-                    <span class="timeline-status future">Vision</span>
-                    <div class="timeline-year">2047</div>
-                    <div class="timeline-title">Energy Independent India</div>
-                    <div class="timeline-desc">100% biofuel adoption goal aligned with India@100 vision. Net-zero transportation emissions.</div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- MODAL -->
-<div class="modal-overlay" id="submitModal" onclick="if(event.target===this)closeModal()">
-    <div class="modal-box">
-        <button class="modal-close" onclick="closeModal()">✕</button>
-        <h3>Submit New E85 Station</h3>
-        <p class="modal-sub">Help us grow the network! Submit details of a new E85 station.</p>
-        <form onsubmit="submitStation(event)">
-            <div class="form-group"><label>Station Name</label><input type="text" id="newStationName" placeholder="e.g. IOCL Petrol Pump" required></div>
-            <div class="form-group"><label>Fuel Brand</label><select id="newStationBrand" required><option value="">Select Brand</option><option value="IOCL">Indian Oil (IOCL)</option><option value="BPCL">Bharat Petroleum (BPCL)</option><option value="HPCL">Hindustan Petroleum (HPCL)</option></select></div>
-            <div class="form-group"><label>City</label><input type="text" id="newStationCity" placeholder="e.g. Delhi" required></div>
-            <div class="form-group"><label>Full Address</label><textarea id="newStationAddress" placeholder="Street, area, pincode..." required></textarea></div>
-            <div class="form-group"><label>Your Email</label><input type="email" id="newStationEmail" placeholder="your@email.com" required></div>
-            <button type="submit" class="check-btn">Submit Station <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
-            <div class="modal-success" id="modalSuccess">✅ Thank you! Submission received. We'll verify within 48 hours.</div>
-        </form>
-    </div>
-</div>
-
-<!-- FOOTER -->
-<footer class="footer" id="contact">
-    <div class="footer-grid">
-        <div>
-            <div class="footer-brand-text"><em>E85</em> India</div>
-            <p class="footer-desc">India's leading E85 fuel intelligence platform providing real-time analytics, station locator, vehicle compatibility, cost calculator, and comprehensive biofuel information.</p>
-        </div>
-        <div class="footer-col"><h4>Platform</h4><ul><li><a href="#dashboard">Dashboard</a></li><li><a href="#stations">Fuel Stations</a></li><li><a href="#calculator">Cost Calculator</a></li><li><a href="#catalog">FFV Catalog</a></li></ul></div>
-        <div class="footer-col"><h4>Resources</h4><ul><li><a href="#vehicles">Vehicle Check</a></li><li><a href="#policy">Policy Timeline</a></li><li><a href="#">Industry Reports</a></li><li><a href="#">API Access</a></li></ul></div>
-        <div class="footer-col"><h4>Company</h4><ul><li><a href="#">About Us</a></li><li><a href="#">Contact</a></li><li><a href="#">Careers</a></li><li><a href="#">Privacy</a></li></ul></div>
-        <div class="footer-col"><h4>Stay Updated</h4><p style="font-size:0.78rem;color:rgba(255,255,255,0.45);margin-bottom:14px">Get latest E85 news delivered.</p><div style="display:flex;gap:8px"><input type="email" placeholder="Enter email" style="flex:1;padding:10px 14px;border-radius:8px;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.06);color:white;font-size:0.8rem;outline:none"><button style="padding:10px 20px;background:var(--primary);color:white;border:none;border-radius:8px;font-weight:600;font-size:0.8rem;cursor:pointer">Subscribe</button></div></div>
-    </div>
-    <div class="footer-bottom"><span class="footer-copy">© 2025 e85india.com. All rights reserved. Made with 💚 for a Greener India.</span></div>
-</footer>
-
-<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-
-<script>
-// ===== STATIONS DATA =====
-const stationsData = [
-    { id: 1, name: "IOCL E85 - Connaught Place", brand: "IOCL", city: "Delhi", address: "Connaught Place, New Delhi - 110001", price: 74.28, status: "open", lat: 28.6328, lng: 77.2197 },
-    { id: 2, name: "BPCL E85 Station - Bandra", brand: "BPCL", city: "Mumbai", address: "Bandra West, Mumbai, Maharashtra - 400050", price: 74.15, status: "open", lat: 19.0596, lng: 72.8295 },
-    { id: 3, name: "HPCL E85 - Whitefield", brand: "HPCL", city: "Bengaluru", address: "Whitefield Main Road, Bengaluru, Karnataka - 560066", price: 74.50, status: "open", lat: 12.9698, lng: 77.7500 },
-    { id: 4, name: "IOCL E85 - Hinjewadi", brand: "IOCL", city: "Pune", address: "Hinjewadi Phase 1, Pune, Maharashtra - 411057", price: 73.95, status: "open", lat: 18.5908, lng: 73.7385 },
-    { id: 5, name: "BPCL E85 - T. Nagar", brand: "BPCL", city: "Chennai", address: "T. Nagar, Chennai, Tamil Nadu - 600017", price: 74.10, status: "open", lat: 13.0418, lng: 80.2341 },
-    { id: 6, name: "HPCL E85 - Noida Sec 62", brand: "HPCL", city: "Noida", address: "Sector 62, Noida, UP - 201309", price: 74.50, status: "closed", lat: 28.6280, lng: 77.3649 },
-    { id: 7, name: "IOCL E85 - Banjara Hills", brand: "IOCL", city: "Hyderabad", address: "Banjara Hills, Hyderabad, Telangana - 500034", price: 74.05, status: "open", lat: 17.4126, lng: 78.4350 },
-    { id: 8, name: "BPCL E85 - Salt Lake", brand: "BPCL", city: "Kolkata", address: "Salt Lake Sector V, Kolkata, WB - 700091", price: 74.35, status: "open", lat: 22.5800, lng: 88.4300 }
-];
-let userSubmittedStations = [];
-let miniMap, stationsMap, markers = [];
-
-// ===== FLEX FUEL VEHICLES DATA =====
-const vehiclesData = [
-    { brand: 'toyota', name: 'Innova HyCross Flex', img: 'https://images.unsplash.com/photo-1549317661-bd32c8ce0afa?auto=format&fit=crop&w=400&q=80', mileage: '15.1 km/L', engine: '2.0L', price: '₹19.99 L', tag: 'NEW' },
-    { brand: 'toyota', name: 'Land Cruiser Flex', img: 'flex-vehicle.jpg', mileage: '12 km/L', engine: '3.5L', price: '₹2.10 Cr', tag: 'PREMIUM' },
-    { brand: 'maruti', name: 'Baleno Flex Fuel', img: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=400&q=80', mileage: '22 km/L', engine: '1.2L', price: '₹7.50 L', tag: 'POPULAR' },
-    { brand: 'maruti', name: 'Wagon R Flex', img: 'https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=400&q=80', mileage: '24 km/L', engine: '1.0L', price: '₹6.20 L', tag: 'BUDGET' },
-    { brand: 'tata', name: 'Nexon Flex Fuel', img: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=400&q=80', mileage: '17 km/L', engine: '1.2L', price: '₹9.80 L', tag: 'NEW' },
-    { brand: 'tata', name: 'Punch Flex', img: 'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&w=400&q=80', mileage: '20 km/L', engine: '1.2L', price: '₹7.00 L', tag: 'POPULAR' },
-    { brand: 'hyundai', name: 'Creta Flex', img: 'https://images.unsplash.com/photo-1568844293986-8d0400bd4745?auto=format&fit=crop&w=400&q=80', mileage: '17 km/L', engine: '1.5L', price: '₹12.50 L', tag: 'POPULAR' },
-    { brand: 'hyundai', name: 'Venue Flex Fuel', img: 'https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?auto=format&fit=crop&w=400&q=80', mileage: '18 km/L', engine: '1.2L', price: '₹8.50 L', tag: 'NEW' },
-    { brand: 'mahindra', name: 'XUV700 Flex', img: 'https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?auto=format&fit=crop&w=400&q=80', mileage: '15 km/L', engine: '2.0L', price: '₹15.50 L', tag: 'PREMIUM' },
-    { brand: 'mahindra', name: 'Scorpio-N Flex', img: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=400&q=80', mileage: '14 km/L', engine: '2.2L', price: '₹14.00 L', tag: 'POPULAR' },
-    { brand: 'honda', name: 'City Flex Fuel', img: 'https://images.unsplash.com/photo-1580414057403-c5f451f30e1c?auto=format&fit=crop&w=400&q=80', mileage: '17.8 km/L', engine: '1.5L', price: '₹12.00 L', tag: 'NEW' },
-    { brand: 'honda', name: 'Elevate Flex', img: 'https://images.unsplash.com/photo-1581540222194-0def2dda95b8?auto=format&fit=crop&w=400&q=80', mileage: '16 km/L', engine: '1.5L', price: '₹11.50 L', tag: 'NEW' }
-];
-
-// ===== RENDER VEHICLE CATALOG =====
-function renderCatalog(filter = 'all') {
-    const grid = document.getElementById('catalogGrid');
-    const filtered = filter === 'all' ? vehiclesData : vehiclesData.filter(v => v.brand === filter);
-    grid.innerHTML = filtered.map(v => `
-        <div class="vehicle-card">
-            <img src="${v.img}" alt="${v.name}" class="vehicle-card-img" onerror="this.src='https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=400&q=80'">
-            <div class="vehicle-card-body">
-                <div class="vehicle-card-brand">${v.brand.toUpperCase()}</div>
-                <div class="vehicle-card-name">${v.name}</div>
-                <div class="vehicle-card-specs">
-                    <div class="vc-spec">⛽ <strong>${v.mileage}</strong></div>
-                    <div class="vc-spec">🔧 <strong>${v.engine}</strong></div>
-                </div>
-                <div class="vehicle-card-bottom">
-                    <div class="vehicle-card-price">${v.price}</div>
-                    <span class="vehicle-card-tag">${v.tag}</span>
-                </div>
-            </div>
-        </div>
-    `).join('');
-}
-function filterCatalog(brand, btn) {
-    document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
-    btn.classList.add('active');
-    renderCatalog(brand);
-}
-
-// ===== COST CALCULATOR =====
-function calculateSavings() {
-    const km = parseInt(document.getElementById('kmSlider').value);
-    const mileage = parseInt(document.getElementById('milSlider').value);
-    const petrolPrice = parseFloat(document.getElementById('petrolSlider').value);
-    const e85Price = parseFloat(document.getElementById('e85Slider').value);
-    
-    document.getElementById('calc-km').textContent = km.toLocaleString('en-IN');
-    document.getElementById('calc-mil').textContent = mileage;
-    document.getElementById('calc-petrol').textContent = petrolPrice.toFixed(2);
-    document.getElementById('calc-e85').textContent = e85Price.toFixed(2);
-    
-    const petrolLiters = km / mileage;
-    const e85Liters = petrolLiters * 1.15; // E85 has ~15% less efficiency
-    const petrolCost = petrolLiters * petrolPrice;
-    const e85Cost = e85Liters * e85Price;
-    const savings = Math.max(0, petrolCost - e85Cost);
-    const co2Saved = Math.round(petrolLiters * 2.31 * 0.85); // ~2.31 kg CO2/L petrol, 85% reduction
-    const trees = Math.round(co2Saved / 22);
-    
-    document.getElementById('calc-saving').textContent = Math.round(savings).toLocaleString('en-IN');
-    document.getElementById('calc-petrol-cost').textContent = Math.round(petrolCost).toLocaleString('en-IN');
-    document.getElementById('calc-e85-cost').textContent = Math.round(e85Cost).toLocaleString('en-IN');
-    document.getElementById('calc-co2-val').textContent = co2Saved.toLocaleString('en-IN');
-    document.getElementById('calc-trees').textContent = trees;
-}
-
-// ===== MAPS =====
-function initMaps() {
-    miniMap = L.map('mini-india-map', { zoomControl: false, attributionControl: false, scrollWheelZoom: false, dragging: false, doubleClickZoom: false }).setView([22.5, 80], 4);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 8 }).addTo(miniMap);
-    const icon = L.divIcon({ className: 'custom-marker', html: '<div class="custom-pin"></div>', iconSize: [18, 18], iconAnchor: [9, 18] });
-    stationsData.forEach(s => { L.marker([s.lat, s.lng], { icon }).addTo(miniMap); });
-    
-    stationsMap = L.map('stations-map').setView([22.5, 80], 5);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '© OpenStreetMap', maxZoom: 18 }).addTo(stationsMap);
-    renderStations(stationsData);
-}
-
-function renderStations(stations) {
-    const list = document.getElementById('stationsList');
-    list.innerHTML = '';
-    markers.forEach(m => stationsMap.removeLayer(m));
-    markers = [];
-    if (stations.length === 0) { list.innerHTML = '<div class="no-results">🔍 No stations found.<br>Try a different city.</div>'; return; }
-    stations.forEach((s, i) => {
-        const card = document.createElement('div');
-        card.className = 'station-card' + (i === 0 ? ' active' : '');
-        card.innerHTML = `<div class="station-card-top"><div class="station-name">${s.name}</div><div class="station-price">₹${s.price.toFixed(2)}</div></div><span class="station-brand ${s.brand.toLowerCase()}">${s.brand}</span><div class="station-address">${s.address}</div><div class="station-meta"><span class="station-badge ${s.status === 'open' ? 'open' : 'closed'}">${s.status === 'open' ? 'Open 24x7' : 'Closed'}</span><span class="station-badge e85">E85 Available</span></div>`;
-        card.onclick = () => { document.querySelectorAll('.station-card').forEach(c => c.classList.remove('active')); card.classList.add('active'); stationsMap.flyTo([s.lat, s.lng], 13, { duration: 1.2 }); setTimeout(() => markers[i].openPopup(), 800); };
-        list.appendChild(card);
-        const icon = L.divIcon({ className: 'custom-marker', html: '<div class="custom-pin"></div>', iconSize: [22, 22], iconAnchor: [11, 22] });
-        const marker = L.marker([s.lat, s.lng], { icon }).addTo(stationsMap);
-        marker.bindPopup(`<strong>${s.name}</strong><div style="color:#666;margin-bottom:6px">${s.address}</div><div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px"><span style="background:#e8f5e9;color:#2e7d32;padding:3px 10px;border-radius:50px;font-size:11px;font-weight:600">${s.brand}</span><strong style="color:#2e7d32;font-size:15px">₹${s.price.toFixed(2)}/L</strong></div>`);
-        markers.push(marker);
-    });
-}
-
-function filterStations() {
-    const q = document.getElementById('searchStations').value.toLowerCase().trim();
-    const all = [...stationsData, ...userSubmittedStations];
-    if (!q) { renderStations(all); return; }
-    renderStations(all.filter(s => s.city.toLowerCase().includes(q) || s.name.toLowerCase().includes(q) || s.address.toLowerCase().includes(q) || s.brand.toLowerCase().includes(q)));
-}
-
-function openModal() { document.getElementById('submitModal').classList.add('active'); document.body.style.overflow = 'hidden'; }
-function closeModal() { document.getElementById('submitModal').classList.remove('active'); document.body.style.overflow = ''; document.getElementById('modalSuccess').style.display = 'none'; }
-function submitStation(e) {
-    e.preventDefault();
-    const ns = { id: Date.now(), name: document.getElementById('newStationName').value, brand: document.getElementById('newStationBrand').value, city: document.getElementById('newStationCity').value, address: document.getElementById('newStationAddress').value, price: 74.50, status: 'open', lat: 22.5 + (Math.random() - 0.5) * 10, lng: 80 + (Math.random() - 0.5) * 10 };
-    userSubmittedStations.push(ns);
-    document.getElementById('modalSuccess').style.display = 'block';
-    e.target.reset();
-    setTimeout(() => { closeModal(); renderStations([...stationsData, ...userSubmittedStations]); }, 2000);
-}
-
-// ===== COMMON =====
-window.addEventListener('load', () => { 
-    setTimeout(() => { 
-        document.getElementById('loadingScreen').classList.add('hidden'); 
-        initAnimations(); 
-        setTimeout(() => { initMaps(); renderCatalog(); calculateSavings(); }, 300); 
-    }, 1200); 
-});
-function toggleMenu() { document.getElementById('hamburger').classList.toggle('active'); document.getElementById('mobileNav').classList.toggle('active'); }
-const navbar = document.getElementById('navbar'), scrollTopBtn = document.getElementById('scrollTop');
-window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 60); scrollTopBtn.classList.toggle('visible', window.scrollY > 500); });
-function initAnimations() {
-    const obs = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); e.target.querySelectorAll('.counter').forEach(animateCounter); e.target.querySelectorAll('.progress-fill').forEach(b => { const w = b.getAttribute('data-width'); if (w) setTimeout(() => b.style.width = w, 300); }); e.target.querySelectorAll('.bar-stick').forEach((b,i) => { const h = b.getAttribute('data-h'); if (h) setTimeout(() => b.style.height = h, 200 + i*200); }); } }); }, { threshold: 0.1 });
-    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-}
-const animated = new Set();
-function animateCounter(el) { if (animated.has(el)) return; const t = parseInt(el.getAttribute('data-target')); if (!t) return; animated.add(el); let c = 0; const inc = t / 50; const step = () => { c += inc; if (c < t) { el.textContent = Math.ceil(c); requestAnimationFrame(step); } else el.textContent = t; }; step(); }
-const headlines = ["E85 rollout expands to 100+ new fuel stations across India","Government announces new subsidies for flex-fuel vehicles","Toyota launches India's first mass-market flex-fuel vehicle","Ethanol production capacity reaches record high in 2025"];
-let idx = 0; const hl = document.getElementById('newsHeadline');
-function nextNews() { idx = (idx + 1) % headlines.length; hl.style.opacity = 0; setTimeout(() => { hl.textContent = headlines[idx]; hl.style.opacity = 1; }, 200); }
-function prevNews() { idx = (idx - 1 + headlines.length) % headlines.length; hl.style.opacity = 0; setTimeout(() => { hl.textContent = headlines[idx]; hl.style.opacity = 1; }, 200); }
-function checkVehicle() {
-    const brand = document.getElementById('vehicleBrand').value;
-    const model = document.getElementById('vehicleModel').value;
-    const year = document.getElementById('vehicleYear').value;
-    const result = document.getElementById('vehicleResult');
-    if (!brand || !model || !year) { result.className = 'vehicle-result incompatible'; result.innerHTML = '⚠️ Please select all fields to check compatibility.'; return; }
-    const compatible = ['innova', 'landcruiser', 'baleno', 'nexon', 'xuv700', 'hector'];
-    if (compatible.includes(model) && parseInt(year) >= 2023) { result.className = 'vehicle-result compatible'; result.innerHTML = '✅ Great news! Your vehicle is <strong>E85 Compatible</strong>.'; } 
-    else { result.className = 'vehicle-result incompatible'; result.innerHTML = '⚠️ Your vehicle may <strong>not be compatible</strong>. Consider a flex-fuel conversion kit.'; }
-}
-document.querySelectorAll('a[href^="#"]').forEach(a => { a.addEventListener('click', function(e) { const id = this.getAttribute('href'); if (id === '#') return; e.preventDefault(); const t = document.querySelector(id); if (t) window.scrollTo({ top: t.offsetTop - 110, behavior: 'smooth' }); }); });
-</script>
-</body>
-</html>
+                    
